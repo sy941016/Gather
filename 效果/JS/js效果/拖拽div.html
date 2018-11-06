@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="submit" value="按钮" id="btn">
+</body>
+<script>
+    var btn=document.getElementById("btn");
+    var num=0;
+    btn.onclick=function() {
+        if (num == 0) {
+            var div = document.createElement("div");
+            div.style.width = "286px";
+            div.style.height = "286px";
+            div.style.border = "10px solid red";
+            div.style.position = "absolute";
+            div.style.top = "200px";
+            div.style.left = "350px";
+            div.style.cursor="pointer";
+            document.body.appendChild(div);
+            var close = document.createElement("input");
+            close.type = "button";
+            close.value = "关闭";
+            div.appendChild(close);
+            document.body.appendChild(div);
+            close.onclick=function(){
+                document.body.removeChild(div);
+                num=0;
+            };
+            div.onmousedown = function (e) {
+                var ev = e || window.event;
+                var ox = ev.offsetX || ev.layerX;
+                var oy = ev.offsetY || ev.layerY;
+                this.onmousemove = move;
+                function move(e) {
+                    var ev = e || window.event;
+                    var cx = ev.clientX;
+                    var cy = ev.clientY;
+                    this.style.top = cy - oy + "px";
+                    this.style.left = cx - ox + "px";
+                }
+            };
+            div.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+        num++;
+    }
+</script>
+</html>

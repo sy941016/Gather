@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/function.js"></script>
+    <script src="js/animate.js"></script>
+</head>
+<style>
+    body,ul,li{
+        margin:0;
+        padding: 0;
+        list-style: none;
+    }
+    .bigbox{
+        width:400px;
+        height:400px;
+        border:2px solid #000;
+        position: absolute;
+        margin:auto;
+        left: 0;
+        right: 0;
+        top:0;
+        bottom:0;
+        overflow: hidden;
+    }
+    .innerbox{
+        width:2000px;
+        height: 100%;
+    }
+    .box{
+        width: 400px;
+        height:100%;
+        float:left;
+        text-align: center;
+        line-height: 400px;
+        font-size:64px;
+        color: #999;
+    }
+    .one{
+        background: red;
+    }
+    .two{
+        background: blue;
+    }
+    .three{
+        background: yellow;
+    }
+    .four{
+        background: green;
+    }
+    .five{
+        background: orange;
+    }
+    .btn{
+        position: absolute;
+        width: 45px;
+        height: 80px;
+        top:50%;
+        margin-top:-40px;
+        z-index: 999;
+        background: rgba(0,0,0,0.5);
+        text-align: center;
+        line-height: 80px;
+        font-size: 64px;
+        font-weight:bolder;
+        cursor: pointer;
+    }
+    .leftbtn{
+        left:0;
+        border-bottom-right-radius: 5px;
+        border-top-right-radius:5px;
+    }
+    .rightbtn{
+        right:0;
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+    }
+    .libtnbox{
+        width: 250px;
+        height: 30px;
+        z-index: 999;
+        position: absolute;
+        bottom: 20px;
+        margin-left:-125px;
+        left:50%;
+    }
+    .libtnbox>li{
+        width: 30px;
+        height: 100%;
+        border-radius: 50%;
+        float: left;
+        background: gray;
+        margin-left:25px;
+        text-align: center;
+        line-height: 30px;
+        font-size: 24px;
+    }
+    .libtnbox>li:first-child{
+        margin-left:0;
+        background:orange;
+    }
+</style>
+<body>
+   <div class="bigbox">
+       <div class="innerbox">
+            <div class="box one">一</div>
+            <div class="box two">二</div>
+            <div class="box three">三</div>
+            <div class="box four">四</div>
+            <div class="box five">五</div>
+       </div>
+       <div class="btn leftbtn">&lt;</div>
+       <div class="btn rightbtn">&gt;</div>
+       <ul class="libtnbox">
+           <li class="libtn">1</li>
+           <li class="libtn">2</li>
+           <li class="libtn">3</li>
+           <li class="libtn">4</li>
+           <li class="libtn">5</li>
+       </ul>
+   </div>
+</body>
+<script>
+    var innerbox=getClass("innerbox")[0];
+    var leftbtn=getClass("leftbtn")[0];
+    var rightbtn=getClass("rightbtn")[0];
+    var libtn=getClass("libtn");
+    var t= setInterval(move,2000);
+    var flag=true;
+    var flag1=true;
+    var num=0;
+    var next;
+    function move(){
+        if(flag){
+            flag=false;
+            num++;
+            if(num>=libtn.length){
+                num=0;
+            }
+            for(var i=0;i<libtn.length;i++){
+                for(var j=0;j<libtn.length;j++){
+                    libtn[j].style.backgroundColor="#ccc";
+                }
+                libtn[num].style.backgroundColor="orange";
+            }
+            animate(innerbox,{marginLeft:-400},500,function(){
+                var first=getFirstChild(this);
+                this.appendChild(first);
+                this.style.marginLeft=0;
+                flag=true;
+            })
+        }
+    }
+    leftbtn.onmouseover=rightbtn.onmouseover=innerbox.onmouseover=function(){
+        clearTimeout(t)
+    };
+    leftbtn.onmouseout=rightbtn.onmouseout=innerbox.onmouseout=function(){
+        t= setInterval(move,2000);
+    };
+    rightbtn.onclick=function(){
+        move()
+    };
+    leftbtn.onclick=function() {
+        if (flag1) {
+            flag1 = false;
+            flag = true;
+            num--;
+            if (num == -1) {
+                num = libtn.length - 1;
+            }
+            for (var i = 0; i < libtn.length; i++) {
+                for (var j = 0; j < libtn.length; j++) {
+                    libtn[j].style.backgroundColor = "#ccc";
+                }
+                libtn[num].style.backgroundColor = "orange";
+            }
+            var first = getFirstChild(innerbox);
+            var last = getLastChild(innerbox);
+            innerbox.insertBefore(last, first);
+            innerbox.style.marginLeft = "-400px";
+            animate(innerbox, {marginLeft: 0}, 500, function () {
+                flag1 = true;
+            })
+        }
+    };
+    for(var i=0;i<libtn.length;i++) {
+        libtn[i].index = i;
+        libtn[i].onmouseover = function () {
+            next = this.index;
+            var numl = next - num;
+            if (flag) {
+                flag=false;
+                if (numl >= 0) {
+                    animate(innerbox, {marginLeft: numl * (-400)}, 300, function () {
+                        for (var i = 0; i < numl; i++) {
+                            var first = getFirstChild(this);
+                            this.appendChild(first);
+                        }
+                        this.style.marginLeft = 0;
+                        num = next;
+                        flag=true;
+                    })
+                } else {
+                    flag=false;
+                    innerbox.style.marginLeft = numl * 400 + "px";
+                    for (var i = 0; i < -numl; i++) {
+                        var first = getFirstChild(innerbox);
+                        var last = getLastChild(innerbox);
+                        innerbox.insertBefore(last, first);
+                    }
+                    animate(innerbox, {marginLeft: 0}, 300, function () {
+                        num = next;
+                        flag=true;
+                    })
+                }
+                for (var j = 0; j < libtn.length; j++) {
+                    libtn[j].style.backgroundColor = "#ccc";
+                }
+                libtn[this.index].style.backgroundColor = "orange";
+            }
+        }
+    }
+</script>
+</html>

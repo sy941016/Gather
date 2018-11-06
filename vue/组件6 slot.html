@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <script src="js/jquery-3.1.1.js"></script>
+</head>
+<body>
+<div id="app">
+    <child>
+        <p slot="header">我是头</p>
+        <p slot="footer">我是尾</p>
+    </child>
+</div>
+</body>
+<script>
+    Vue.component("child",{//\换行符
+        template:'\
+        <div>\
+        <header ><slot name="header">这是头部</slot></header>\
+        <slot>默认是空的</slot>\
+        <footer><slot name="footer">这是尾部</slot></footer>\
+        </div>\
+        '
+    });
+    new Vue({
+        el:"#app"
+    })
+</script>
+</html>

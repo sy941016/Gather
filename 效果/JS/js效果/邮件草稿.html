@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    body,h3{
+        margin:0;
+    }
+    .box{
+        width:300px;
+        height:auto;
+        background:#eee;
+        padding:20px 10px;
+    }
+    .texts{
+        padding:10px;
+        font-weight: 800;
+        color:red;
+        border-bottom: 1px solid #9a9a9a;
+    }
+    textarea{
+        width:314px;
+        height:300px;
+        resize: none;
+    }
+</style>
+<script src="js/function.js"></script>
+<body>
+<div class="box">
+    <h3>邮件草稿:</h3>
+    <hr/>
+    <p class="texts">你好！</p>
+</div>
+<form action="" name="form">
+    <textarea name="text" id="" cols="30" rows="10"></textarea>
+    <input type="button" value="发送" id="btn"/>
+</form>
+</body>
+<script>
+    var box=getClass("box")[0];
+    var text=document.form.text;
+    var btn=document.form.btn;
+    text.onkeydown=btn.onclick=function(e){
+        var ev=e||window.event;
+        if(ev.type=="click"||(ev.type=="keydown"&&ev.keyCode==13&&ev.ctrlKey==true)){
+            var p=document.createElement("p");
+            p.innerHTML=text.value;
+            p.className="texts";
+            text.value="";
+            box.appendChild(p);
+        }
+    }
+</script>
+</html>

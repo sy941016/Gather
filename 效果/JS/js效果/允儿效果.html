@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>淘宝效果</title>
+    <script src="js/function.js"></script>
+    <script src="js/animate.js"></script>
+</head>
+<style>
+    body,ul,li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        box-sizing: border-box;
+    }
+    .bigbox{
+        width: 420px;
+        height:270px;
+        margin: 20px auto;
+        position: relative;
+    }
+    .box{
+        width: 180px;
+        height:270px;
+        position: relative;
+        margin: auto;
+        border: 2px solid blue;
+    }
+    .copy{
+        width: 180px;
+        height: 270px;
+        position: absolute;
+        left: 115px;
+        top:0;
+    }
+    .box>img{
+        width: 100%;
+        height: 100%;
+    }
+    .mask{
+        position: absolute;
+        top:0;
+        left: 0;
+        width:45px;
+        height:67px;
+        background: rgba(0,0,0,.5);
+        display: none;
+    }
+    .nvfu{
+        width: 100%;
+        height:135px ;
+        margin-top: 20px;
+    }
+    .nvfu>li{
+        width: 90px;
+        height: 135px;
+        float: left;
+        position: relative;
+        border:4px solid blue;
+        margin-left:15px;
+    }
+    .nvfu>li>img{
+        width: 100%;
+        height: 100%;
+    }
+    .showbox{
+        width: 180px;
+        height:270px;
+        position: absolute;
+        top: 0;
+        left:462px;
+        overflow: hidden;
+        display: none;
+        border: 2px solid blue;
+    }
+    .showbox>img{
+        width: 720px;
+        height: 1080px;
+    }
+    .sanjiao{
+        position: absolute;
+        top:-10px;
+        left:37px;
+        width: 0;
+        height: 0;
+        color: white;
+        text-align: center;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 10px solid plum;
+        display: none;
+    }
+    .a{
+        display: block;
+    }
+</style>
+<body>
+<div class="bigbox">
+       <div class="box">
+           <img src="" alt="">
+           <div class="mask"></div>
+       </div>
+       <div class="copy"></div>
+    <ul class="nvfu">
+        <li><img src="img/t1.jpg" alt=""/><span class="sanjiao a"></span></li>
+        <li><img src="img/t2.jpg" alt=""/><span class="sanjiao"></span></li>
+        <li><img src="img/t3.jpg" alt=""/><span class="sanjiao"></span></li>
+        <li><img src="img/t1.jpg" alt=""/><span class="sanjiao"></span></li>
+    </ul>
+    <div class="showbox"><img src="" alt=""/></div>
+</div>
+</body>
+<script>
+    var box=getClass("box")[0];
+    var copy=getClass("copy")[0];
+    var mask=getClass("mask")[0];
+    var showbox=getClass("showbox")[0];
+    var sanjiao=getClass("sanjiao");
+    var showimg=showbox.getElementsByTagName("img")[0];
+    var nvfu=getClass("nvfu")[0];
+    var nvfuList=nvfu.getElementsByTagName("img");
+    var img=box.getElementsByTagName("img")[0];
+    img.src=nvfuList[0].src;
+    showimg.src=nvfuList[0].src;
+    var li=document.getElementsByTagName("li");
+    for(var i=0;i<li.length;i++){
+        li[i].index=i;
+        li[i].onmouseover= function () {
+            img.src=nvfuList[this.index].src;
+            showimg.src=nvfuList[this.index].src;
+            for(var j=0;j<li.length;j++){
+                sanjiao[j].style.display="none";
+            }
+            sanjiao[this.index].style.display="block";
+        }
+    }
+    copy.onmouseover=function(){
+        mask.style.display="block";
+        showbox.style.display="block";
+    };
+    copy.onmouseout=function(){
+        mask.style.display="none";
+        showbox.style.display="none";
+    };
+    copy.onmousemove=function(e){
+        var ev=e||window.event;
+        var ox=ev.offsetX;
+        var oy=ev.offsetY;
+        var left=ox-mask.offsetWidth/2;
+        var top=oy-mask.offsetHeight/2;
+        if(left>box.offsetWidth-mask.offsetWidth){
+            left=box.offsetWidth-mask.offsetWidth
+        }
+        if(top>box.offsetHeight-mask.offsetHeight){
+            top=box.offsetHeight-mask.offsetHeight
+        }
+        if(left<0){
+            left=0
+        }
+        if(top<0){
+            top=0
+        }
+        mask.style.left=left+"px";
+        mask.style.top=top+"px";
+        showimg.style.marginLeft=-4*left+"px";
+        showimg.style.marginTop=-4*top+"px";
+    }
+</script>
+</html>

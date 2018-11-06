@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>连连看</title>
+    <style>
+        canvas{
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+<canvas id='canvas' width=500 height=500></canvas>
+<script>
+    var canvas=document.getElementById('canvas');
+    var cobj=canvas.getContext('2d');
+
+    //1、种子文件
+    var rectArr=[];
+    for(var i=0;i<8;i++){
+        var rectObj={
+            w:50,
+            h:50,
+            color:'rgb('+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+')'
+        };
+        rectArr.push(rectObj)
+    }
+
+    // 2、第一关小矩形个数设置
+    var newArr=[];
+    var step=2;
+    function sum(step){
+        for(var i=0;i<step;i++){
+            for(var j=0;j<rectArr.length;j++){
+                var newObj={};
+                for(var k in rectArr[j]){
+                    newObj[k]=rectArr[j][k]
+                }
+                newArr.push(newObj)
+            }
+        }
+    }
+    sum(step);
+
+    // 3、将小矩形画于画布
+    function drawsum(){
+        var rows=0,cols=0;
+        for(var i=0;i<newArr.length;i++){
+            if(i%(step+2)==0){
+                rows++;
+                cols=0
+            }
+            cobj.beginPath();
+            cobj.fillStyle=newArr[i].color;
+            cobj.rect((newArr[i].w+5)*cols,(newArr[i].h+5)*rows,newArr[i].w,newArr[i].h);
+            cobj.fill();
+            newArr[i].x=(newArr[i].w+5)*cols;
+            newArr[i].y=(newArr[i].h+5)*rows;
+            cols++;
+        }
+    }
+    drawsum();
+    // 判断矩形消失的次数
+    var num=0
+    // 存放被点击的小方块的下标的
+    var numarr=[];
+    // 用来放点击过后的小方块，个数为2
+    var arrs=[];
+    // 4、操作小矩形
+    canvas.onclick=function(e){
+        var ox=e.offsetX;
+        var oy=e.offsetY;
+        function newDraw(){
+            cobj.clearRect(0,0,500,500);
+            for(var i=0;i<newArr.length;i++){
+                cobj.fillStyle=newArr[i].color;
+                var str=newArr[i].x+','+newArr[i].y+','+newArr[i].w+','+newArr[i].h;
+                var event1=new addEvent(cobj,'rect',str,function(){
+                    if(i==numarr[0]||i==numarr[1]){
+                        return;
+                    }
+                    numarr.push(i);
+                    arrs.push(newArr[i]);
+                    if(arrs.length==2){
+                        if(arrs[0].color==arrs[1].color&&numarr[0]!=numarr[1]){
+                            arrs[0].color='rgba(0,0,0,0)';
+                            arrs[1].color='rgba(0,0,0,0)';
+                            newDraw();
+                            num++;
+                            if(num==newArr.length/2){
+                                step*=2;
+                                newArr=[];
+                                sum(step);
+                                drawsum();
+                                num=0;
+                            }
+                        }
+                        arrs=[];
+                        numarr=[];
+                    }
+
+                });
+                event1.add(ox,oy);
+            }
+        }
+        newDraw()
+    };
+
+    function addEvent(cobj,type,data,callback){
+        this.cobj=cobj;
+        this.type=type;
+        this.data=data;
+        this.callback=callback;
+        this.draw()
+    }
+    addEvent.prototype={
+        draw:function(){
+            if(this.type=='arc'){
+                this.cobj.beginPath();
+                var arr=this.data.split(',');
+                this.cobj.arc(arr[0],arr[1],arr[2],arr[3],arr[4])
+                this.cobj.fill()
+            }
+            if(this.type=='rect'){
+                this.cobj.beginPath();
+                var arr=this.data.split(',');
+                this.cobj.rect(arr[0],arr[1],arr[2],arr[3])
+                this.cobj.fill()
+            }
+        },
+        add:function(cx,cy){
+            if(this.cobj.isPointInPath(cx,cy))
+                this.callback();
+        }
+    }
+</script>
+</body>
+</html>

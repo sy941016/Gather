@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <script src="js/jquery-3.1.1.js"></script>
+</head>
+<body>
+     <div id="app">
+         <p>新值：{{a}}</p>
+         <p>旧值：{{newa}}</p>
+         <input type="text" v-model="a">
+         <br>
+         <button v-on:click="add">点击+1</button>
+         <p>{{js}}</p>
+         <p>{{msg|zh}}</p>
+         <input type="text" v-model="msg">
+     </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            a:1,
+            newa:"",
+            msg:"hello,world"
+        },
+        methods:{
+            add:function(){
+                this.a++
+            }
+        },
+        watch:{
+             jt:function(xin,jiu){
+                 this.newa=jiu
+             }
+        },
+         filters:{
+             zh:function(val){
+                 if(!val){
+                     return"无"
+                 }
+                 val=val.toString();
+                 return val.charAt(0).toUpperCase()+val.slice(1)
+             }
+        },
+        computed:{
+            js:function(){
+                return this.a*4
+            }
+        }
+    })
+//    computed 计算 return
+//    filters  过滤 return  传参
+//    watch    监听         传参
+//    methods  方法
+</script>
+</html>

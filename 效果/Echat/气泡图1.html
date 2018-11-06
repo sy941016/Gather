@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/echarts.js"></script>
+</head>
+<body>
+<div id="main" style="width: 600px;height: 600px"></div>
+</body>
+<script>
+    var myChart = echarts.init(document.getElementById("main"));
+    var dataBJ = [
+        [201312, 72, 99, 100],
+        [201401, 92, 74, 84],
+        [201402, 45, 23, 70],
+        [201403, 83, 50, 55],
+        [201404, 55, 90, 89],
+        [201405, 54, 85, 82],
+        [201406, 48, 74, 27],
+        [201407, 75, 36, 33],
+        [201408, 56, 83, 31],
+        [201409, 59, 84, 35],
+        [201410, 72, 34, 68],
+        [201411, 86, 36, 15],
+        [201412, 58, 87, 81],
+        [201501, 89, 85, 70],
+        [201502, 83, 75, 65],
+        [201503, 78, 22, 78],
+        [201504, 63, 93, 83],
+        [201505, 50, 80, 73],
+        [201506, 52, 81, 45],
+        [201507, 52, 77, 44],
+        [201508, 40, 64, 47],
+        [201509, 41, 63, 43],
+        [201510, 60, 87, 54],
+        [201511, 45, 89, 39],
+        [201512, 20, 45, 68],
+        [201601, 60, 88, 50],
+        [201602, 46, 68, 45],
+        [201603, 84, 87, 93],
+        [201604, 58, 90, 87],
+        [201605, 49, 80, 66],
+        [201606, 53, 80, 42]
+    ];
+    var schema = [
+        {name: 'date', index: 0, text: '月'},
+        {name: '票房', index: 1, text: '票房'},
+        {name: '占比', index: 2, text: '占比'}
+
+    ];
+    var itemStyle = {
+        normal: {
+            opacity: 0.8,
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowOffsetY: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+    };
+    option = {
+        color: [
+            '#dd4444'
+        ],
+        backgroundColor: "#000",
+        tooltip: {
+            padding: 10,
+            backgroundColor: '#222',
+            borderColor: '#777',
+            borderWidth: 1
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            data: ['7-30', '7-31', '8-1', '8-2', '8-3', '8-4', '8-5', '8-6', '8-7', '8-8', '8-9', '8-10', '8-11', '8-12', '8-13', '8-14', '8-15', '8-16', '8-17', '8-18', '8-19', '8-20', '8-21', '8-22', '8-23', '8-24', '8-25', '8-26', '8-27', '8-28', '8-29'],
+            nameGap: 16,
+            nameTextStyle: {
+                color: '#fff',
+                fontSize: 14
+            },
+            axisLabel: {
+                interval: 6
+            },
+            splitLine: {
+                show: false
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#eee'
+                }
+            }
+        },
+        yAxis: {
+            type: 'value',
+            max: 100,
+            min: 0,
+            interval: 20,
+            nameLocation: 'end',
+            nameGap: 20,
+            nameTextStyle: {
+                color: '#fff',
+                fontSize: 16
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#eee'
+                }
+            },
+            splitLine: {
+                show: false
+            }
+        },
+        visualMap: [
+            {
+                left: 'right',
+                top: '10%',
+                show: true,
+                dimension: 1,
+                min: 0,
+                max: 100,
+                itemWidth: 30,
+                itemHeight: 120,
+                calculable: true,
+                precision: 0.1,
+                textGap: 30,
+                textStyle: {
+                    color: '#fff'
+                },
+                inRange: {
+                    symbolSize: [10, 70]
+                },
+                outOfRange: {
+                    symbolSize: [10, 70],
+                    color: ['rgba(255,255,255,.2)']
+                },
+                controller: {
+                    inRange: {
+                        color: ['#c23531']
+                    },
+                    outOfRange: {
+                        color: ['#444']
+                    }
+                }
+            },
+            {
+                left: 'right',
+                bottom: '5%',
+                show: true,
+                dimension: 3,
+                min: 0,
+                max: 130,
+                itemHeight: 120,
+                calculable: true,
+                precision: 0.1,
+                textGap: 30,
+                textStyle: {
+                    color: '#fff'
+                },
+                inRange: {
+                    colorLightness: [1, 0.5]
+                },
+                outOfRange: {
+                    color: ['rgba(255,255,255,.2)']
+                },
+                controller: {
+                    inRange: {
+                        color: ['#c23531']
+                    },
+                    outOfRange: {
+                        color: ['#444']
+                    }
+                }
+            }
+        ],
+        series: [
+            {
+                name: '战狼2',
+                type: 'scatter',
+                itemStyle: itemStyle,
+                data: dataBJ.map(function (item, index) {
+                    item = item.slice();
+                    item[0] = index;
+                    return item;
+                }),
+                markLine: {
+                    data: [
+                        {type: 'max', name: '最大值'},
+                        {
+                            name: 'XXXX水平线',
+                            yAxis: 80
+                        }
+                    ]
+                }
+            }
+        ]
+    };
+    myChart.setOption(option);
+</script>
+</html>

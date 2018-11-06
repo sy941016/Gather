@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-3.1.1.js"></script>
+</head>
+<body>
+<table border="1" align="center">
+    <caption>成绩表</caption>
+    <thead bgcolor="#e5e5e5" align="center" valign="bottom">
+    <tr>
+      <td colspan="2">
+          搜索: <input type="text" name="keyword" id="keyword"/>
+      </td>
+    </tr>
+    <tr bgcolor="#e5e5e5">
+        <td>姓名</td>
+        <td>成绩</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr >
+        <td width="185">王帅</td>
+        <td width="220">97</td>
+    </tr>
+    <tr >
+        <td width="185">李帅</td>
+        <td width="220">94</td>
+    </tr>
+    <tr >
+        <td width="185">王强</td>
+        <td width="220">87</td>
+    </tr>
+    <tr >
+        <td width="185">陈静</td>
+        <td width="220">90</td>
+    </tr>
+    <tr >
+        <td width="185">张三</td>
+        <td width="220">85</td>
+    </tr>
+    <tr >
+        <td width="185">张超</td>
+        <td width="220">60</td>
+    </tr>
+    <tr >
+        <td width="185">李强</td>
+        <td width="220">90</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<script>
+    $("#keyword").keyup(function(){
+        if($("#keyword").val()!=""){
+            $("table tbody tr").hide().filter(":contains('"+($(this).val())+"')").show();
+        }else{
+            $("table tbody tr").show();
+        }
+    })
+</script>
+</html>

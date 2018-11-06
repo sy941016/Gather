@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	#canvas{
+		background: #ccc;
+	}
+	</style>
+<body>
+	<canvas id="canvas" width="500" height="500"></canvas>
+</body>
+</html>
+<script>
+var canvas=document.getElementById('canvas');
+var cobj=canvas.getContext('2d');
+ cobj.arc(150,150,50,0,2*Math.PI);
+    cobj.stroke();
+    var angle=0;
+    canvas.onclick=function(e){
+        var cx= e.clientX;
+        var cy= e.clientY;
+        setInterval(function(){
+            if(cobj.isPointInPath(cx,cy)){
+                cobj.clearRect(0,0,500,400);
+                angle+=0.1;
+                cobj.beginPath();
+                cobj.arc(150,150,50+10*Math.sin(angle),0,2*Math.PI);
+                cobj.stroke();
+            }
+        },10)
+    }
+</script>

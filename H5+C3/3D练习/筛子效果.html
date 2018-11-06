@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div style="display: block">
+<div class="boxs">
+    <div class="box">
+        <div class="bigbox1">
+            <div class="box1"></div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="bigbox2">
+            <div class="box2"></div>
+            <div class="box2"></div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="bigbox3">
+            <div class="box3"></div>
+            <div class="box3"></div>
+            <div class="box3"></div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="bigbox4">
+            <div class="box4s">
+                <div class="box4"></div>
+                <div class="box4"></div>
+            </div>
+            <div class="box4s">
+                <div class="box4"></div>
+                <div class="box4"></div>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="bigbox4">
+            <div class="box4s">
+                <div class="box4"></div>
+                <div class="box4"></div>
+            </div>
+            <div class="box4s">
+                <div class="box4"></div>
+            </div>
+            <div class="box4s">
+                <div class="box4"></div>
+                <div class="box4"></div>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+        <div class="bigbox4">
+            <div class="box4s">
+                <div class="box4"></div>
+                <div class="box4"></div>
+            </div>
+            <div class="box4s">
+                <div class="box4"></div>
+                <div class="box4"></div>
+            </div>
+            <div class="box4s">
+                <div class="box4"></div>
+                <div class="box4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="btn"></div>
+</div>
+<style>
+/*一点    */
+    .bigbox1{
+        width:300px;
+        height: 300px;
+        display: flex;
+        background:#ff5;
+        align-items: center;
+        justify-content: center;
+    }
+    .box1{
+        width: 50px;
+        height: 50px;
+        background: #019;
+        border-radius: 50%;
+    }
+/*两点    */
+    .bigbox2{
+        width:300px;
+        height: 300px;
+        display: flex;
+        background:#ff5;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .box2{
+        width: 50px;
+        height: 50px;
+        background: #019;
+        border-radius: 50%;
+    }
+/*三点    */
+    .bigbox3{
+        width:300px;
+        height: 300px;
+        display: flex;
+        background:#ff5;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .box3{
+        width: 50px;
+        height: 50px;
+        background: #019;
+        border-radius: 50%;
+    }
+    .box3:nth-of-type(1){
+        align-self: flex-start;
+    }
+    .box3:nth-of-type(3){
+        align-self: flex-end;
+    }
+/*四点    */
+    .bigbox4{
+        width:300px;
+        height: 300px;
+        display: flex;
+        background:#ff5;
+        justify-content: space-around;
+    }
+    .box4s{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .box4{
+        width: 50px;
+        height: 50px;
+        background: #019;
+        border-radius: 50%;
+    }
+    body{
+        perspective: 1800px;
+        background-color: black;
+    }
+    .boxs{
+        width: 300px;
+        height: 300px;
+        margin: 100px auto;
+        position: relative;
+        transform-style: preserve-3d;
+        perspective: 1000000px;
+        transform-origin: center center -150px;
+        transition: all 1.5s;
+    }
+    .box{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        opacity: 0.9;
+    }
+    .box:nth-of-type(1){
+        left: 0;
+        top: 0;
+        background: red;
+        animation:  1.5s linear infinite;
+        animation-name: box1;
+    }
+    .box:nth-of-type(2){
+        background: green;
+        transform: rotateY(270deg) translateX(-300px);
+        transform-origin: left;
+        animation: box2 1.5s linear infinite;
+    }
+    .box:nth-of-type(3){
+        background: yellow;
+        transform: rotateY(-270deg) translateX(300px);
+        transform-origin: right;
+        animation: box3 1.5s linear infinite;
+    }
+    .box:nth-of-type(4){
+        background: blue;
+        transform: rotateX(90deg);
+        transform-origin: bottom;
+        animation: box4 1.5s linear infinite;
+    }
+    .box:nth-of-type(5){
+        background: pink;
+        transform: rotateX(270deg);
+        transform-origin: top;
+        animation: box5 1.5s linear infinite;
+    }
+    .box:nth-of-type(6){
+        background: orange;
+        transform: translateZ(-300px);
+        animation: box6 1.5s linear infinite;
+    }
+    .btn{
+        width: 100px;
+        height: 100px;
+        background: olive;
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+    .boxs .box{
+        animation-play-state:paused;
+    }
+    @keyframes box1{
+        0%{
+            transform: translateZ(0);
+        }
+        50%{
+            transform:translateZ(150px);
+        }
+    }
+    @keyframes box2{
+        0%{
+            transform:  rotateY(270deg) translateX(-300px) translateZ(0);
+        }
+        50%{
+            transform: rotateY(270deg) translateX(-300px) translateZ(150px);
+        }
+
+    }
+    @keyframes box3{
+        0%{
+            transform:  rotateY(-270deg) translateX(300px) translateZ(0);
+        }
+        50%{
+            transform: rotateY(-270deg) translateX(300px) translateZ(150px);
+        }
+    }
+    @keyframes box4{
+        0%{
+            transform:  rotateX(90deg) translateZ(0);
+        }
+        50%{
+            transform: rotateX(90deg) translateZ(-150px);
+        }
+    }
+    @keyframes box5{
+        0%{
+            transform:  rotateX(270deg) translateZ(0);
+        }
+        50%{
+            transform: rotateX(270deg) translateZ(-150px);
+        }
+    }
+    @keyframes box6{
+        0%{
+            transform:  translateZ(-300px);
+        }
+        50%{
+            transform:  translateZ(-450px);
+        }
+    }
+</style>
+<script>
+    var boxs=$(".boxs")[0];
+    var box=$(".box")[0];
+    var num=0;
+    var num1=0;
+    function move(){
+        num+=90*Math.ceil(Math.random()*4);
+        num1+=90*Math.ceil(Math.random()*4);
+        if(num>=360){
+            num=0
+        }
+        if(num1>=360){
+            num1=0
+        }
+        boxs.style.transform="rotateY("+num+"deg) rotateX("+num1+"deg)";
+    }
+    $(".btn").click(function(){
+        move();
+        $(".boxs .box").css({"animationPlayState":"running"});
+        box.addEventListener("webkitAnimationIteration",function(){
+            $(".boxs .box").css({"animationPlayState":"paused"});
+        });
+    });
+</script>
+</body>
+</html>

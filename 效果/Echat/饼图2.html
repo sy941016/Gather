@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/echarts.js"></script>
+</head>
+<body>
+<div id="main" style="width:600px;height:600px"></div>
+</body>
+<script>
+    var myChart = echarts.init(document.getElementById('main'));
+    var tips = 0;
+    function loading() {
+        return [{
+            value: tips,
+            itemStyle: {
+                normal: {
+                    color: 'green'
+                }
+            }
+        }, {
+            value: 100 - tips
+        }];
+    }
+    option = {
+        backgroundColor:"#000000",
+        title: {
+            text: (tips * 1) + '%',
+            x: 'center',
+            y: 'center',
+            textStyle: {
+                color: 'red',
+                fontSize: 40
+            }
+        },
+        tooltip: {
+            trigger: 'item'
+        },
+        series: [{
+            name: 'loading',
+            type: 'pie',
+            radius: ['30%', '35%'],
+            hoverAnimation: false,
+            label: {
+                normal: {
+                    show: false
+                }
+            },
+            data: loading()
+        }]
+    };
+    setInterval(function() {
+        if (tips == 80) {
+            tips = 80;
+        } else {
+            ++tips;
+        }
+        myChart.setOption({
+            title: {
+                text: tips + '%'
+            },
+            series: [{
+                name: 'loading',
+                data: loading()
+            }]
+        })
+    }, 20);
+    myChart.setOption(option);
+</script>
+</html>

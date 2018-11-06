@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="js/jquery-3.1.1.js"></script>
+    <title></title>
+  </head>
+  <style>
+    ul,li{
+      list-style: none;
+    }
+    ul{
+      width: 100%;
+      height:200px
+    }
+    ul>li{
+      width: 100%;
+      height:20%;
+      border-bottom:1px solid red;
+    }
+  </style>
+  <body>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  </body>
+<script>
+  var json_data=["aa","bb","cc","dd","ee"];
+   $("ul>li").click(function(){
+       alert(json_data[$(this).index()])
+   })
+</script>
+</html>

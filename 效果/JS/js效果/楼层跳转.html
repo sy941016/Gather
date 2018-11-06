@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/function.js"></script>
+    <script src="js/animate.js"></script>
+</head>
+<style>
+    body,ul,li{
+        margin:0;
+        padding:0;
+        list-style: none;
+    }
+    .btnbox{
+        width: 80px;
+        height: 250px;
+        position: fixed;
+        top:50%;
+        left:10px;
+        border:1px solid #000;
+    }
+    .btnbox>li{
+        width:100%;
+        height:50px;
+        border-bottom:1px solid #000;
+        box-sizing:border-box;
+        text-align: center;
+        line-height: 50px;
+        font-size: 8px;
+        cursor: pointer;
+    }
+    .btnbox>li:last-child{
+        border-bottom:0;
+    }
+    .bigbox{
+        width: 800px;
+        height: 100%;
+        margin:auto;
+    }
+    .box{
+        width: 800px;
+        height: 300px;
+        margin-top:20px;
+        text-align: center;
+        line-height: 300px;
+        font-weight: bolder;
+        font-size: 64px;
+    }
+    .bigbox>.box:first-child{
+        margin-top:0;
+    }
+    .one,.yi{
+        background: red;
+    }
+    .two,.er{
+        background: skyblue;
+    }
+    .three,.san{
+        background:green;
+    }
+    .four,.si{
+        background: yellow;
+    }
+    .five,.wu{
+        background: purple;
+    }
+</style>
+<body>
+<ul class="btnbox">
+    <li class="yi">1</li>
+    <li class="er">2</li>
+    <li class="san">3</li>
+    <li class="si">4</li>
+    <li class="wu">5</li>
+</ul>
+<div class="bigbox">
+    <div class="box one">1</div>
+    <div class="box two">2</div>
+    <div class="box three">3</div>
+    <div class="box four">4</div>
+    <div class="box five">5</div>
+<div>
+</body>
+<script>
+    var box=getClass("box");
+    var arr=[];
+    for(i=0;i<box.length;i++){
+        arr.push(box[i].offsetTop);
+    }
+    var btn=document.getElementsByTagName("li");
+    for(var m=0;m<btn.length;m++){
+        window.scrollTo(0,1);
+        btn[m].index=m;
+        btn[m].onclick=function(){
+            var obj=document.documentElement.scrollTop!=0?document.documentElement:document.body;
+            animate(obj,{scrollTop:arr[this.index]},500,function(){
+            })
+        }
+    }
+</script>
+</html>

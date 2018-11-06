@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>九星连珠</title>
+	<style>
+		#canvas{
+			border:1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<canvas id='canvas' width=1500 height=1500></canvas>
+	<script>
+    var canvas=document.getElementById("canvas");
+    var ctx=canvas.getContext("2d");
+    var x=0,y=0;
+    var num=0;
+    var arr=['red','orange','pink','green','blue','purple','lime','yellow','gray','lightgreen'];
+    ctx.translate(500,400);
+    function move(){
+	    ctx.clearRect(-500,-400,1500,1500);
+
+	   	for(var i=0;i<10;i++){
+	   		ctx.beginPath();
+	   		ctx.arc(0,0,35*i,0,Math.PI*2)
+	   		ctx.closePath();
+	   		ctx.stroke();
+	   	}
+
+	   	num+=0.1;
+	   	for(var j=0;j<10;j++){
+	   			ctx.save();
+	   			ctx.beginPath();
+	   			ctx.arc(35*j*Math.cos(j*num*Math.PI/180),35*j*Math.sin(j*num*Math.PI/180),13,0,Math.PI*2);
+	   			ctx.fillStyle=arr[j];
+	   			ctx.closePath();	   			
+	   			ctx.fill();
+	   			ctx.restore();
+	   	}
+	   	window.requestAnimationFrame(move);
+   	}
+   	 window.requestAnimationFrame(move);
+   	 
+   	 // setInterval(move,10)
+
+	</script>
+</body>
+</html>

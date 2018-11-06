@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>按序加载</title>
+    <script src="js/function.js"></script>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    .bigbox{
+        width:1280px;
+        height:640px;
+        margin:auto;
+    }
+    .box{
+        width: 320px;
+        height:320px;
+        border: 1px solid #dfdfdf;
+        float:left;
+        box-sizing:border-box;
+    }
+    .box>img{
+        width: 100%;
+        height: 100%;
+    }
+    .aa{
+        height: 286px;
+    }
+</style>
+<body>
+<!-- <div class="box"><img src="" alt=""/></div>
+<div class="box"><img src="" alt=""/></div>
+<div class="box"><img src="" alt=""/></div>
+<div class="box"><img src="" alt=""/></div>
+<div class="box"><img src="" alt=""/></div>
+<div class="box"><img src="" alt=""/></div>
+<div class="box"><img src="" alt=""/></div>
+<div class="box"><img src="" alt=""/></div>
+-->
+<div class="bigbox">
+     <div class="box"><img src="img/sj.jpg" alt=""/></div>
+     <div class="box"><img src="img/sj.jpg" alt=""/></div>
+     <div class="box"><img src="img/sj.jpg" alt=""/></div>
+     <div class="box"><img src="img/sj.jpg" alt=""/></div>
+     <div class="box"><img src="img/sj.jpg" alt=""/></div>
+     <div class="box"><img src="img/sj.jpg" alt=""/></div>
+     <div class="box"><img src="img/sj.jpg" alt=""/></div>
+     <div class="box"><img src="img/sj.jpg" alt=""/></div>
+</div>
+<div class="bigbox">
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+</div>
+<div class="bigbox">
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+</div>
+<div class="bigbox">
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+</div>
+<div class="bigbox">
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+    <div class="box"><img src="img/sj.jpg" alt=""/></div>
+</div>
+<div class="aa"></div>
+</body>
+<!--<script>-->
+<!--window.scrollTo(0,1);-->
+<!--window.onscroll=function(){-->
+<!--var Height=document.documentElement.clientHeight;-->
+<!--var obj=document.documentElement.scrollTop!=0?document-->
+<!--.documentElement:document.body;-->
+<!--var top=obj.scrollTop;-->
+<!--var box=getClass("box");-->
+<!--for(var i=0;i<box.length;i++){-->
+<!--var boxImg=box[i].getElementsByTagName("img");-->
+<!--for(var j=0;j<boxImg.length;j++){-->
+<!--if(top+Height/2>=box[i].offsetTop){-->
+<!--boxImg[j].src="img/sj.jpg"-->
+<!--}-->
+<!--}-->
+<!--}-->
+
+<!--}-->
+<!--</script>-->
+<script>
+    var box=getClass("box");
+    var img=document.getElementsByTagName("img");
+    var Height=document.documentElement.clientHeight;
+    //清除所有img的路径并且加载首屏
+    for(var i=0;i<img.length;i++){
+        img[i].Src=img[i].src;
+        img[i].src="";
+        if(box[i].offsetTop<Height){
+            img[i].src=img[i].Src;
+        }
+    }
+    //按序加载
+    window.onscroll=function(){
+        var obj=document.documentElement.scrollTop!=0?document
+                .documentElement:document.body;
+        var top=obj.scrollTop;
+        for(var i=0;i<box.length;i++){
+            var imgs=box[i].getElementsByTagName("img");
+            for(var j=0;j<imgs.length;j++){
+                if(top+Height/2>=box[i].offsetTop){
+                    imgs[j].src=imgs[j].Src;
+                }
+            }
+        }
+    }
+</script>
+</html>

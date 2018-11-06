@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    body,html{
+        margin:0;padding: 0;overflow: hidden;
+    }
+    canvas{
+        background: #eee;
+    }
+    </style>
+</head>
+<body>
+    <canvas id='canvas'></canvas>
+    <img src="img/11.jpg" alt="" hidden>
+    <img src="img/11.jpg" alt="" hidden>
+    <img src="img/11.jpg" alt="" hidden>
+    <img src="img/11.jpg" alt="" hidden>
+    <img src="img/11.jpg" alt="" hidden>
+    <img src="img/11.jpg" alt="" hidden>
+    <img src="img/11.jpg" alt="" hidden>
+    <script>
+    var canvas=document.getElementById('canvas');
+    var img=document.getElementsByTagName('img');
+    var w=document.documentElement.clientWidth;
+    var h=document.documentElement.clientHeight;
+    canvas.width=w;
+    canvas.height=h;
+    var cobj=canvas.getContext('2d');
+    var spring=0.8,friction=0.8;
+    var timer;
+    // 小lv按钮
+    cobj.beginPath();
+    cobj.fillStyle='#000';
+    cobj.rect(0,0,50,50);
+    cobj.fill();
+    // 点击画布
+    canvas.onclick=function(e){
+        var cx=e.clientX;
+        var cy=e.clientY;
+        if(cobj.isPointInPath(cx,cy)){
+            clearInterval(timer);
+            var arr=create();
+            timer=setInterval(function(){
+                cobj.clearRect(0,0,canvas.width,canvas.height);
+                for(var i=0;i<arr.length;i++){
+                    draw(arr[i]);
+                }
+                // 小lv按钮
+                cobj.beginPath();
+                cobj.fillStyle='red';
+                cobj.rect(0,0,50,50);
+                cobj.fill();
+
+            },60)
+        }
+    }
+    // 绘制每一个线条连着图片的函数
+    function draw(obj){
+        obj.vx+=(obj.targetX-obj.spriteX)*spring;
+        obj.vy+=(obj.targetY-obj.spriteY)*spring;
+        obj.spriteX+=(obj.vx*=friction);
+        obj.spriteY+=(obj.vy*=friction);
+
+        cobj.beginPath();
+        cobj.lineWidth=8;
+        cobj.strokeStyle='#000';
+        cobj.moveTo(obj.startX,obj.startY);
+        cobj.lineTo(obj.spriteX,obj.spriteY);
+        cobj.stroke();
+        cobj.drawImage(obj.src,obj.spriteX-obj.width/2,obj.spriteY,obj.width,obj.height);
+    }
+
+    function create(){
+        var imgarr=[];
+        for(var i=0;i<img.length;i++){
+            var imgobj={
+                src:img[i],
+                vx:0,
+                vy:0,
+                targetX:180*(i+1),
+                targetY:Math.random()*280+100,
+                startX:180*(i+1),
+                startY:-100,
+                spriteX:180*(i+1),
+                spriteY:-100,
+                width:180,
+                height:180
+            }
+            imgarr.push(imgobj);
+        }
+        return imgarr;
+    }
+    </script>
+</body>
+</html>

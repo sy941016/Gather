@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        width: 300px;
+        height: 300px;
+        border: 1px solid #999;
+        text-align: center;
+        line-height: 300px;
+        font-size: 64px;
+    }
+    .one{
+        position: absolute;
+        top:0;
+        left:0;
+        background: #000;
+    }
+    .two{
+        position: absolute;
+        top:0;
+        left:-300px;
+        transform: rotateY(90deg);
+        transform-origin:right;
+        background:red;
+    }
+    .three{
+        position: absolute;
+        top:0;
+        left:300px;
+        transform: rotateY(-90deg);
+        transform-origin:left;
+        background: green;
+    }
+    .six{
+        position: absolute;
+        top:0;
+        left:0;
+        transform: translateZ(300px);
+        background: skyblue;
+    }
+    .four{
+        position: absolute;
+        top:-300px;
+        left:0;
+        transform: rotateX(-90deg);
+        transform-origin:bottom;
+        background: purple;
+    }
+    .five{
+        position: absolute;
+        top:300px;
+        left:0;
+        transform: rotateX(90deg);
+        transform-origin:top;
+        background: #fff;
+    }
+    .box{
+        width: 300px;
+        height:300px;
+        position: relative;
+        margin:400px auto;
+        background: red;
+        transform-style:preserve-3d;
+        transform-origin:50% 50% 150px;
+        animation: moveBox 4s infinite linear;
+    }
+    @keyframes moveBox {
+        0%{
+            transform: rotateX(0deg) rotateY(0deg);
+        }
+        100%{
+            transform:rotateX(360deg) rotateY(360deg);
+        }
+    }
+</style>
+<body>
+<div class="box">
+      <div class="container one">1</div>
+      <div class="container two">2</div>
+      <div class="container three">3</div>
+      <div class="container four">4</div>
+      <div class="container five">5</div>
+      <div class="container six">6</div>
+</div>
+<script>
+    // var box=document.getElementsByClassName("box")[0];
+    // var cx=box.offsetWidth/2+box.offsetLeft;//获取中心点到屏幕左边的距离
+    // var cy=box.offsetHeight/2+box.offsetTop;//获取中心点到屏幕上边的距离
+    // document.onmousemove=function(e){
+    //     var px=e.clientX-cx;//鼠标点击的X轴坐标
+    //     var py=e.clientY-cy;//鼠标点击的Y轴坐标
+    //     var m=Math.sqrt(px*px+py*py);
+    //     var sin=px/m;
+    //     var cos=py/m;
+    //     box.style.transform="rotate3d("+sin+","+cos+",0,"+m+"deg)";
+    // }
+</script>
+</body>
+</html>

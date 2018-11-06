@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <script src="js/jquery-3.1.1.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{ a }}</p>
+    <aaa v-on:zadd="fadd"></aaa>
+    <aaa v-on:zadd="fadd"></aaa>
+</div>
+</body>
+<script>
+    Vue.component('aaa', {
+        template: '<button v-on:click="zadd">{{ b }}</button>',
+        data: function () {
+            return {
+                b: 0
+            }
+        },
+        methods: {
+            zadd: function () {
+                this.b += 1;
+                this.$emit('zadd')//触发当前实例上的事件
+            }
+        }
+    });
+    new Vue({
+        el: '#app',
+        data: {
+            a: 0
+        },
+        methods: {
+            fadd: function () {
+                this.a += 1
+            }
+        }
+    })
+</script>
+</html>

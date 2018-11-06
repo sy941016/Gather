@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/citys.js"></script>
+</head>
+<body>
+<form action="" name="myform">
+    <label for="">
+        <select name="sheng">
+            <option value="sheng">请选择</option>
+            </select>省
+    </label>
+    <label for="">
+        <select name="shi">
+            <option value="shi">请选择</option>
+            </select>市
+    </label>
+    <label for="">
+        <select name="qu">
+            <option value="qu">请选择</option>
+            </select>区/县
+    </label>
+</form>
+</body>
+<script>
+    var sheng=document.myform.sheng;
+    var shi=document.myform.shi;
+    var qu=document.myform.qu;
+    var num;
+    var num1;
+    sheng.onfocus=function(){
+        sheng.innerHTML="<option>请选择</option>";
+        for(var i=0;i<provinceList.length;i++){
+            var option=document.createElement("option");
+            option.text=provinceList[i].name;
+            sheng.appendChild(option)
+        }
+        sheng.onchange=function(){
+            shi.innerHTML="<option>请选择</option>";
+            num=sheng.selectedIndex-1;
+            for(var i=0;i<provinceList[num].cityList.length;i++){
+                var option=document.createElement("option");
+                option.text=provinceList[num].cityList[i].name;
+                shi.appendChild(option)
+            }
+        };
+        shi.onchange=function(){
+            qu.innerHTML="<option>请选择</option>";
+            num1=shi.selectedIndex-1;
+            for(var i=0;i<provinceList[num].cityList[num1].areaList.length;i++){
+                var option=document.createElement("option");
+                option.text=provinceList[num].cityList[num1].areaList[i];
+                qu.appendChild(option)
+            }
+        }
+    }
+</script>
+</html>

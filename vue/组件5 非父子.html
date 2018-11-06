@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <script src="js/jquery-3.1.1.js"></script>
+</head>
+<body>
+<div id="app">
+    <child1></child1>
+    <br>
+    <child2></child2>
+</div>
+</body>
+<script>
+    var bus=new Vue();
+    Vue.component("child1",{
+        template:"<button v-on:click='add'>child1</button>",
+        methods:{
+            add:function(){
+                console.log("我是child1的hello");
+                bus.$emit("add","hello")
+            }
+        }
+    });
+    Vue.component("child2",{
+        template:"<button>child2</button>",
+        created:function(){
+            bus.$on("add",function(val){
+                console.log("信息来自child1:"+"hello")
+            })
+        }
+    });
+    new Vue({
+        el:"#app"
+    })
+</script>
+</html>

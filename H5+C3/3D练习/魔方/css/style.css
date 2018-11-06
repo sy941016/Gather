@@ -1,0 +1,552 @@
+/*全局样式*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/*外层容器样式*/
+
+.outer {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    width: 200px;
+    height: 200px;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d
+    transform-style: preserve-3d;
+    -moz-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    backface-visibility: hidden;
+}
+
+
+/*内层容器样式*/
+
+.inner {
+    /*开启3D视图*/
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    /*-webkit-perspective: 1000px;*/
+    /*动画样式*/
+    -webkit-animation: change 6s linear infinite;
+    -moz--animation: change 6s linear infinite;
+    animation: change 6s linear infinite;
+}
+
+
+/*动画*/
+
+@-webkit-keyframes change {
+    0% {
+        -webkit-transform: translateZ(-10em) rotateX(0deg) rotateY(0deg);
+    }
+    33% {
+        -webkit-transform: translateZ(-10em) rotateX(120deg) rotateY(240deg);
+    }
+    66% {
+        -webkit-transform: translateZ(-10em) rotateX(240deg) rotateY(480deg);
+    }
+    100% {
+        -webkit-transform: translateZ(-10em) rotateX(360deg) rotateY(720deg);
+    }
+}
+@-moz-keyframes change {
+    0% {
+        -webkit-transform: translateZ(-10em) rotateX(0deg) rotateY(0deg);
+    }
+    33% {
+        -webkit-transform: translateZ(-10em) rotateX(120deg) rotateY(240deg);
+    }
+    66% {
+        -webkit-transform: translateZ(-10em) rotateX(240deg) rotateY(480deg);
+    }
+    100% {
+        -webkit-transform: translateZ(-10em) rotateX(360deg) rotateY(720deg);
+    }
+}
+@keyframes change {
+    0% {
+        transform: translateZ(-10em) rotateX(0deg) rotateY(0deg);
+    }
+    33% {
+        transform: translateZ(-10em) rotateX(120deg) rotateY(240deg);
+    }
+    66% {
+        transform: translateZ(-10em) rotateX(240deg) rotateY(480deg);
+    }
+    100% {
+        transform: translateZ(-10em) rotateX(360deg) rotateY(720deg);
+    }
+}
+/*六大面通用样式*/
+.inner>div {
+    height: 308px;
+    width: 308px;
+    text-align: center;
+    line-height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+
+/*前面样式*/
+
+.front {
+    margin-top: -154px;
+    margin-left: -154px;
+    border: 5px solid #AF2BB5;
+    -webkit-transform: translateZ(158px);
+    -moz-transform: translateZ(158px);
+    transform: translateZ(158px);
+}
+
+
+/*后面样式*/
+
+.after {
+    margin-top: -154px;
+    margin-left: -154px;
+    border: 5px solid #1EA26E;
+    -webkit-transform: translateZ(-158px);
+    -moz-transform: translateZ(-158px);
+    transform: translateZ(-158px);
+}
+
+
+/*左面样式*/
+
+.left {
+    margin-top: -154px;
+    margin-left: -154px;
+    border: 5px solid #D1CF18;
+    -webkit-transform: rotateY(90deg) translateZ(158px);
+    -moz-transform: rotateY(90deg) translateZ(158px);
+    transform: rotateY(90deg) translateZ(158px);
+}
+
+
+/*右面样式*/
+
+.right {
+    margin-top: -154px;
+    margin-left: -154px;
+    border: 5px solid #197FAA;
+    -webkit-transform: rotateY(90deg) translateZ(-158px);
+    -moz-transform: rotateY(90deg) translateZ(-158px);
+    transform: rotateY(90deg) translateZ(-158px);
+}
+
+
+/*上面样式*/
+
+.up {
+    margin-top: -154px;
+    margin-left: -154px;
+    border: 5px solid #C91443;
+    -webkit-transform: rotateX(90deg) translateZ(158px);
+    -moz-transform: rotateX(90deg) translateZ(158px);
+    transform: rotateX(90deg) translateZ(158px);
+}
+
+
+/*下面样式*/
+
+.down {
+    margin-top: -154px;
+    margin-left: -154px;
+    border: 5px solid #0FB0AC;
+    -webkit-transform: rotateX(90deg) translateZ(-158px);
+    -moz-transform: rotateX(90deg) translateZ(-158px);
+    transform: rotateX(90deg) translateZ(-158px);
+}
+
+
+/*前面9个小div样式*/
+
+.front>div {
+    height: 100px;
+    width: 100px;
+    background: #8A2BE2;
+    border-radius: 10px;
+}
+
+.front1 {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+}
+
+.front2 {
+    position: absolute;
+    left: 104px;
+    top: 2px;
+}
+
+.front3 {
+    position: absolute;
+    left: 206px;
+    top: 2px;
+}
+
+.front4 {
+    position: absolute;
+    left: 2px;
+    top: 104px;
+}
+
+.front5 {
+    position: absolute;
+    left: 104px;
+    top: 104px;
+}
+
+.front6 {
+    position: absolute;
+    left: 206px;
+    top: 104px;
+}
+
+.front7 {
+    position: absolute;
+    left: 2px;
+    top: 206px;
+}
+
+.front8 {
+    position: absolute;
+    left: 104px;
+    top: 206px;
+}
+
+.front9 {
+    position: absolute;
+    left: 206px;
+    top: 206px;
+}
+
+
+/*后面9个小div样式*/
+
+.after div {
+    height: 100px;
+    width: 100px;
+    background: #04EC99;
+    border-radius: 10px;
+}
+
+.after1 {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+}
+
+.after2 {
+    position: absolute;
+    left: 104px;
+    top: 2px;
+}
+
+.after3 {
+    position: absolute;
+    left: 206px;
+    top: 2px;
+}
+
+.after4 {
+    position: absolute;
+    left: 2px;
+    top: 104px;
+}
+
+.after5 {
+    position: absolute;
+    left: 104px;
+    top: 104px;
+}
+
+.after6 {
+    position: absolute;
+    left: 206px;
+    top: 104px;
+}
+
+.after7 {
+    position: absolute;
+    left: 2px;
+    top: 206px;
+}
+
+.after8 {
+    position: absolute;
+    left: 104px;
+    top: 206px;
+}
+
+.after9 {
+    position: absolute;
+    left: 206px;
+    top: 206px;
+}
+
+
+/*左面9个小div样式*/
+
+.left div {
+    height: 100px;
+    width: 100px;
+    background: #F4F871;
+    border-radius: 10px;
+}
+
+.left1 {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+}
+
+.left2 {
+    position: absolute;
+    left: 104px;
+    top: 2px;
+}
+
+.left3 {
+    position: absolute;
+    left: 206px;
+    top: 2px;
+}
+
+.left4 {
+    position: absolute;
+    left: 2px;
+    top: 104px;
+}
+
+.left5 {
+    position: absolute;
+    left: 104px;
+    top: 104px;
+}
+
+.left6 {
+    position: absolute;
+    left: 206px;
+    top: 104px;
+}
+
+.left7 {
+    position: absolute;
+    left: 2px;
+    top: 206px;
+}
+
+.left8 {
+    position: absolute;
+    left: 104px;
+    top: 206px;
+}
+
+.left9 {
+    position: absolute;
+    left: 206px;
+    top: 206px;
+}
+
+
+/*右面9个小div样式*/
+
+.right div {
+    height: 100px;
+    width: 100px;
+    background: #7FB6FF;
+    border-radius: 10px;
+}
+
+.right1 {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+}
+
+.right2 {
+    position: absolute;
+    left: 104px;
+    top: 2px;
+}
+
+.right3 {
+    position: absolute;
+    left: 206px;
+    top: 2px;
+}
+
+.right4 {
+    position: absolute;
+    left: 2px;
+    top: 104px;
+}
+
+.right5 {
+    position: absolute;
+    left: 104px;
+    top: 104px;
+}
+
+.right6 {
+    position: absolute;
+    left: 206px;
+    top: 104px;
+}
+
+.right7 {
+    position: absolute;
+    left: 2px;
+    top: 206px;
+}
+
+.right8 {
+    position: absolute;
+    left: 104px;
+    top: 206px;
+}
+
+.right9 {
+    position: absolute;
+    left: 206px;
+    top: 206px;
+}
+
+
+/*上面9个小div样式*/
+
+.up div {
+    height: 100px;
+    width: 100px;
+    background: #FF7F8F;
+    border-radius: 10px;
+}
+
+.up1 {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+}
+
+.up2 {
+    position: absolute;
+    left: 104px;
+    top: 2px;
+}
+
+.up3 {
+    position: absolute;
+    left: 206px;
+    top: 2px;
+}
+
+.up4 {
+    position: absolute;
+    left: 2px;
+    top: 104px;
+}
+
+.up5 {
+    position: absolute;
+    left: 104px;
+    top: 104px;
+}
+
+.up6 {
+    position: absolute;
+    left: 206px;
+    top: 104px;
+}
+
+.up7 {
+    position: absolute;
+    left: 2px;
+    top: 206px;
+}
+
+.up8 {
+    position: absolute;
+    left: 104px;
+    top: 206px;
+}
+
+.up9 {
+    position: absolute;
+    left: 206px;
+    top: 206px;
+}
+
+
+/*下面9个小div样式*/
+
+.down div {
+    height: 100px;
+    width: 100px;
+    background: #6FFFFA;
+    border-radius: 10px;
+}
+
+.down1 {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+}
+
+.down2 {
+    position: absolute;
+    left: 104px;
+    top: 2px;
+}
+
+.down3 {
+    position: absolute;
+    left: 206px;
+    top: 2px;
+}
+
+.down4 {
+    position: absolute;
+    left: 2px;
+    top: 104px;
+}
+
+.down5 {
+    position: absolute;
+    left: 104px;
+    top: 104px;
+}
+
+.down6 {
+    position: absolute;
+    left: 206px;
+    top: 104px;
+}
+
+.down7 {
+    position: absolute;
+    left: 2px;
+    top: 206px;
+}
+
+.down8 {
+    position: absolute;
+    left: 104px;
+    top: 206px;
+}
+
+.down9 {
+    position: absolute;
+    left: 206px;
+    top: 206px;
+}

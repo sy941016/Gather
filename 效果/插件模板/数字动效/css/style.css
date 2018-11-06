@@ -1,0 +1,182 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: green;
+}
+/*翻页动画*/
+@-webkit-keyframes flipTop {
+    0% {
+        -webkit-transform: perspective(400px) rotateX(0deg);
+    }
+
+    100% {
+        -webkit-transform: perspective(400px) rotateX(-90deg);
+    }
+}
+
+@-webkit-keyframes flipBottom {
+    0% {
+        -webkit-transform: perspective(400px) rotateX(90deg);
+    }
+
+    100% {
+        -webkit-transform: perspective(400px) rotateX(0deg);
+    }
+}
+
+@-moz-keyframes flipTop {
+    0% {
+        -moz-transform: perspective(400px) rotateX(0deg);
+    }
+
+    100% {
+        -moz-transform: perspective(400px) rotateX(-90deg);
+    }
+}
+
+@-moz-keyframes flipBottom {
+    0% {
+        -moz-transform: perspective(400px) rotateX(90deg);
+    }
+
+    100% {
+        -moz-transform: perspective(400px) rotateX(0deg);
+    }
+}
+
+.dataStatistics {
+    color: #fedec2;
+    font-size: 160px;
+    font-weight: bold;
+    line-height: 170px;
+    height: 170px;
+    width: 746px;
+    margin: 0 auto;
+}
+
+.dataStatistics .seperator {
+    vertical-align: top;
+    margin: 0 -20px;
+    display: inline;
+}
+
+.dataStatistics .seconds, .dataStatistics .minutes, .dataStatistics .hours, .dataStatistics .days {
+    height: 100%;
+    display: inline;
+}
+
+.dataStatistics .digit_set {
+    float: left;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    border: 1px solid #111111;
+    width: 120px;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+    margin: 0 1px;
+}
+
+.dataStatistics .digit {
+    position: absolute;
+    height: 100%;
+}
+
+.dataStatistics .digit > div {
+    position: absolute;
+    left: 0;
+    overflow: hidden;
+    height: 50%;
+    width: 90px;
+    padding: 0 15px;
+}
+
+.dataStatistics .digit > div.digit_top, .dataStatistics .digit > div.shadow_top {
+    width: 120px;
+    background-color: #e38538;
+    border-bottom: 1px solid #e38538;
+    box-sizing: border-box;
+    top: 0;
+    z-index: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+.dataStatistics .digit > div.digit_top:before, .dataStatistics .digit > div.shadow_top:before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.dataStatistics .digit > div.shadow_top {
+    width: 120px;
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease-in;
+}
+
+.dataStatistics .digit > div.digit_bottom, .dataStatistics .digit > div.shadow_bottom {
+    background-color: #e38538;
+    bottom: 0;
+    z-index: 0;
+    border-radius: 0 0 10px 10px;
+}
+
+.dataStatistics .digit > div.digit_bottom .digit_wrap, .dataStatistics .digit > div.shadow_bottom .digit_wrap {
+    display: block;
+    margin-top: -95%;
+}
+
+.dataStatistics .digit > div.digit_bottom:before, .dataStatistics .digit > div.shadow_bottom:before {
+    content: "";
+    border-radius: 0 0 10px 10px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.digit_wrap {
+    line-height: 170px;
+    display: block;
+    overflow: hidden;
+}
+
+.dataStatistics .digit > div.shadow_bottom {
+    opacity: 0;
+    -webkit-transition: opacity 0.3s ease-in;
+}
+
+.dataStatistics .digit.previous .digit_top, .dataStatistics .digit.previous .shadow_top {
+    opacity: 1;
+    z-index: 2;
+    -webkit-transform-origin: 50% 100%;
+    -webkit-animation: flipTop 0.3s ease-in both;
+    -moz-transform-origin: 50% 100%;
+    -moz-animation: flipTop 0.3s ease-in both;
+    transform-origin: 50% 100%;
+    animation: flipTop 0.3s ease-in both;
+}
+
+.dataStatistics .digit.previous .digit_bottom, .dataStatistics .digit.previous .shadow_bottom {
+    z-index: 1;
+    opacity: 1;
+}
+
+.dataStatistics .digit.active .digit_top {
+    z-index: 1;
+}
+
+.dataStatistics .digit.active .digit_bottom {
+    z-index: 2;
+    -webkit-transform-origin: 50% 0;
+    -webkit-animation: flipBottom 0.3s 0.3s ease-out both;
+    -moz-transform-origin: 50% 0;
+    -moz-animation: flipBottom 0.3s 0.3s ease-out both;
+    transform-origin: 50% 0;
+    animation: flipBottom 0.3s 0.3s ease-out both;
+}

@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+a, img {
+    border: 0;
+}
+body {
+    font-size: 13px;
+    background-color: #f0f0f0;
+    color: #666666;
+}
+#box_title {
+    width: 394px;
+    margin: 20px auto 0 auto;
+    font-weight: bold;
+    line-height: 28px;
+    font-size: 14px;
+}
+/* con */
+#con {
+    width: 394px;
+    height: 540px;
+    margin: 0 auto;
+    position: relative;
+    border-top: 1px solid #d6d6d6;
+    background-color: #FFF;
+    overflow: hidden;
+}
+#con ul {
+    position: relative;
+    margin: 0 10px 0 10px;
+    top: 0;
+    left: 0;
+    padding: 0;
+}
+#con ul li {
+    width: 100%;
+    border-top: 1px dotted #d6d6d6;
+    padding: 10px 0;
+    overflow: hidden;
+    line-height: 1.5;
+}
+#con ul li .div_left {
+    float: left;
+    width: 50px;
+    border: 1px solid;
+}
+#con ul li .div_right {
+    float: right;
+    width: 305px
+}
+#con ul li .div_right a {
+    color: #6EAFD5;
+    padding: 0;
+}
+#con ul li .div_right .twit_item_time {
+    color: #999;
+    padding: 0;
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/function.js"></script>
+</head>
+<style>
+	.box{
+		width: 200px;
+		height:200px;
+		position: absolute;
+		margin:auto;
+		left: 0;
+		right: 0;
+		top:0;
+		bottom:0;
+		background:green;
+		border-radius: 50%;
+	}
+	#heart{
+		width: 100px;
+		height: 90px;
+		position: relative;
+		margin:auto;
+	}
+	#heart:before,#heart:after{
+		width: 150px;
+		height: 240px;
+		left: 150px;
+		top: 0;
+		background-color: red;
+		position: absolute;
+		content: "";
+		-moz-border-radius:150px 150px 0 0;
+		border-radius: 150px 150px 0 0;
+		-webkit-transform:rotate(-45deg);
+		-ms-transform:rotate(-45deg);
+		-moz-transform:rotate(-45deg);
+		-o-transform:rotate(-45deg);
+		transform:rotate(-45deg);
+		-webkit-transform-origin:0 100%;
+		-ms-transform-origin:0 100%;
+		-moz-transform-origin:0 100%;
+		-o-transform-origin:0 100%;
+		tansform-origin:0 100%;
+	}
+	#heart:after{
+		left: 0;
+		-webkit-transform:rotate(45deg);
+		-ms-transform:rotate(45deg);
+		-moz-transform:rotate(45deg);
+		-o-transform:rotate(45deg);
+		transform:rotate(45deg);
+		-webkit-transform-origin:100% 100%;
+		-ms-transform-origin:100% 100%;
+		-moz-transform-origin:100% 100%;
+		-o-transform-origin:100% 100%;
+		transform-origin:100% 100%;
+	}
+</style>
+<body>
+	<div class="box"></div>
+    <div id="heart"></div>
+</body>
+<script>
+	var box=getClass("box")[0];
+	var heart=document.getElementById("heart");
+	var speed=5;
+	setInterval(function(){
+		var Width=parseInt(getStyle(box,"width"));
+		var Height=parseInt(getStyle(box,"height"));
+		var newWidth=Width+speed;
+		var newHeight=Height+speed;
+		box.style.width=newWidth+"px";
+		box.style.height=newHeight+"px";
+		if(newWidth>=400){
+			speed*=-1;
+		}if(newWidth<=200){
+			speed*=-1
+		}
+	},50);
+</script>
+</html>

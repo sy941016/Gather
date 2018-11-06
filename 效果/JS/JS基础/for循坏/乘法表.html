@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <title></title>
+    <style >
+        table {
+            width: 800px;
+            height: 300px;
+            border-collapse: collapse;
+        }
+        table th {
+            border: 1px solid black;
+        }
+        h1 {
+            color: darkred;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+<script>
+    document.write("<table>");
+    var str = "乘法表";
+    document.write("<h1>" + str + "</h1>");
+    for ( var x = 1; x <= 9; x++) {
+        if(x%2==0){
+           document.write("<tr bgcolor='skyblue'>");
+        }else{
+            document.write("<tr bgcolor='purple'>");
+        }
+         for ( var y = 1; y <= x; y++) {
+             document.write("<th >" + y + "*" + x + "=" + (x * y) + "</th>");
+        }
+        document.write("</tr>");
+    }
+    for(var a=1;a<=9;a++){
+        document.write("<tr>");
+        for(var b=1;b<=a;b++){
+            if(b%2==0){
+        document.write("<th bgcolor='red'>"+b+"*"+a+"="+(a*b)+"</th>");
+            }else
+            {
+                document.write("<th bgcolor='blue'>"+b+"*"+a+"="+(a*b)+"</th>");
+            }
+    }
+    document.write("</tr>");
+    }
+    var color;
+    for ( var x = 1; x <= 9; x++) {
+        document.write("<tr>");
+        for ( var y = 1; y <= x; y++) {
+            if(y%2==0&&x%2==0){
+                color="red";
+            }else  if(y%2==1&&x%2==1){
+                color="skyblue";
+            }else  if(y%2==1&&x%2==0){
+                color="purple";
+            }else if(y%2==0&&x%2==1){
+                color="green";
+            }
+            document.write("<th bgcolor="+color+" >" + y + "*" + x + "=" + (x * y) + "</th>");
+        }
+        document.write("</tr>");
+    }
+    document.write("</table>");
+    function aa(a,b) {
+
+    }
+    aa(1,9);
+</script>
+</html>

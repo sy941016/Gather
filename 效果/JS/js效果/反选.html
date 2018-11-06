@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action=""name="myform">
+    <input type="checkbox" value="basketball" name="ball">篮球
+    <input type="checkbox" value="baseball" name="ball">棒球
+    <input type="checkbox" value="tennis" name="ball">乒乓球
+    <input type="checkbox" value="football" name="ball">足球
+    <input type="button" name="All" value="全选">
+    <input type="button" name="None" value="反选">
+    <input type="button" name="NotAll" value="全不选">
+</form>
+</body>
+<script>
+    var aa=document.myform.ball;
+    var bb=document.myform.All;
+    var cc=document.myform.None;
+    var dd=document.myform.NotAll;
+    bb.onclick=function(){
+        for(var i=0;i<aa.length;i++){
+            aa[i].checked="checked";
+        }
+    };
+    dd.onclick=function(){
+        for(var i=0;i<aa.length;i++){
+            aa[i].checked=false;
+        }
+    };
+    cc.onclick=function(){
+        for(var i=0;i<aa.length;i++){
+            if(aa[i].checked==false){
+                aa[i].checked=true;
+            }else{
+                aa[i].checked=false;
+            }
+        }
+    }
+</script>
+</html>

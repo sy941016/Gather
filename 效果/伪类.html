@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .aa{
+        width: 80%;
+        height: 100px;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 100px;
+        background: red;
+        color: #fff;
+        position: relative;
+    }
+    .aa::before{
+        content: "";
+        display: inline-block;
+        border-top: 1px solid #fff;
+        width: 35%;
+        position: absolute;
+        left: 0;
+        top: 50%;
+    }
+    .aa::after{
+        content: "";
+        display: inline-block;
+        border-top: 1px solid #fff;
+        width: 35%;
+        position: absolute;
+        right: 0;
+        top: 50%;
+    }
+
+</style>
+<body>
+<div class="aa">
+    播放盗版光碟
+</div>
+</body>
+</html>

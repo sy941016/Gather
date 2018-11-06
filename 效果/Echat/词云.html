@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cy</title>
+    <script src="js/echarts.js"></script>
+    <script src="http://data-visual.cn/datav/src/js/echarts/extension/echarts-wordcloud.min.js"></script>
+</head>
+<body>
+<div id="main" style="width:600px;height:600px;border:1px solid red"></div>
+</body>
+<script>
+    var myChart = echarts.init(document.getElementById('main'));
+    option = {
+        backgroundColor:'rab(13,32,76,0.7)',
+        series: [{
+            type: 'wordCloud',
+            sizeRange: [12, 50],
+            rotationRange: [0, 0],
+            shape: 'circle',
+            textStyle: {
+                normal: {
+                    color: function() {
+                        return 'rgb(' + [
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160)
+                        ].join(',') + ')';
+                    }
+                },
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            data: [
+                {
+                    name: "战狼2热映",
+                    value: 7000
+                },
+                {
+                    name: "北京文化股价",
+                    value: 6181
+                },
+                {
+                    name: " 吴京回应",
+                    value: 4386
+                },
+                {
+                    name: "捷成股份股价",
+                    value: 4055
+                },
+                {
+                    name: "猫眼娱票合并",
+                    value: 2467
+                },
+                {
+                    name: " 二十二表情包",
+                    value: 2244
+                },
+                {
+                    name: "徐峥打记者",
+                    value: 1898
+                },
+                {
+                    name: "杨洋粉丝锁场 ",
+                    value: 1484
+                },
+                {
+                    name: "三生三世被批",
+                    value: 1112
+                },
+                {
+                    name: "悟空传片源泄露 ",
+                    value: 965
+                },
+                {
+                    name: "光线狂赚7亿",
+                    value: 847
+                },
+                {
+                    name: "十冷2上映",
+                    value: 582
+                },
+                {
+                    name: " 魁拔4",
+                    value: 555
+                }
+            ]
+        }]
+    };
+    myChart.setOption(option);
+</script>
+</html>

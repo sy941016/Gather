@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <script src="js/vue.js"></script>
+    <script src="js/jquery-3.1.1.js"></script>
+</head>
+<body>
+<div id="box">
+    <div @click="show2()">
+        <!--事件对象-->
+        <input type="button" value="按钮" @click="show($event)">
+        <!--Vue阻止事件冒泡-->
+        <!--<input type="button" value="按钮" @click.stop="show()">-->
+    </div>
+</div>
+
+<div id="b1">
+    <input type="button" value="默认" @contextmenu="mr($event)">
+    <!--Vue阻止默认行为-->
+    <!--<input type="button" value="按钮" @contextmenu.prevent="show()">-->
+</div>
+<!--键盘-->
+<div id="b2">
+    <input type="text" @keydown="jp($event)">
+</div>
+</body>
+<script>
+   var box=new Vue({
+        el:"#box",
+        data:{
+
+        },
+        methods:{
+            show:function(ev){
+                alert(1);
+                ev.cancelBubble=true;//JS阻止冒泡
+            },
+            show2:function(){
+                alert(2)
+            }
+        }
+    });
+   var b1=new Vue({
+       el:"#b1",
+       data:{
+       },
+       methods:{
+           mr:function(ev){
+               alert(1);
+               ev.preventDefault();//JS阻止默认行为
+           }
+       }
+   });
+   var b2=new Vue({
+       el:"#b2",
+       data:{
+       },
+       methods:{
+           jp:function(ev){
+               alert(ev.keyCode);
+           }
+       }
+   })
+</script>
+</html>

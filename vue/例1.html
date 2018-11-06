@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <script src="js/jquery-3.1.1.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>
+        <input type="text" v-model="star">
+        <button v-on:click="add">添加</button>
+    </div>
+    <div v-show="isshow">
+        <input type="text" v-model="value">
+        <button v-on:click="save">保存</button>
+    </div>
+    <table>
+        <tr>
+            <td>明星</td>
+            <td>删除</td>
+            <td>修改</td>
+        </tr>
+        <tr v-for="(item,index) in stars">
+            <td>{{item}}</td>
+            <td v-on:click="del(index)">删除</td>
+            <td v-on:click="edit(value)">修改</td>
+        </tr>
+    </table>
+</div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            stars:[],
+            star:"",
+            value:"",
+            index:"",
+            isshow:false
+        },
+        methods:{
+            //添加
+            add:function(){
+                if(this.star!="") {
+                   this.stars.push(this.star);
+                   this.star = ""
+                }
+            },
+            //保存
+            save:function(){
+                this.$set(this.stars,this.index,this.value);
+                this.isshow=false
+            },
+            //删除
+            del:function(index){
+               this.stars.splice(index,1)
+            },
+            //修改
+            edit:function(index,value){
+                this.isshow=true;//显示save
+                this.index=index;
+                this.value=value
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,59 @@
+﻿<html>
+	<head>
+	    <!---->
+		<title>canvas基础</title>
+		<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+		<style>
+		   canvas{
+		       background:#ccc
+		   }
+		</style>
+		<script language="JavaScript">
+		  $(function(){
+		     var canvas=document.getElementById("canvas");
+			 var context=canvas.getContext("2d");
+			 context.strokeStyle="green";
+			 function drawRect(x,y,w,h){
+			    
+			    //线条起点
+			    context.moveTo(x,y);
+				//画第一条线
+				context.lineTo(x+w,y);
+				//画第二条线
+				context.lineTo(x+w,y+h);
+				//画第三条线
+				context.lineTo(x,y+h);
+				context.closePath();
+				//设置路径
+				context.stroke();
+			 }
+			 
+			 //drawRect(100,100,200,100);
+			 function drawCircl(x,y,r){
+			  //重置当前路径
+			  context.beginPath();
+			  for(var i=0;i<360;i=i+0.1){
+			      //math.PI=3.14
+				  //Math.cos(),Math.sin()只接受弧度
+				  //1弧度:在一个圆上,弧长等于半径的弧所对应的圆心角是1弧度
+				  //1圆周=2*PI弧度=360度------->1度=PI/180弧度
+			      context.lineTo(x+r*Math.cos(Math.PI/180*i),y+r*Math.sin(Math.PI/180*i));
+				  //设置路径
+				  context.stroke();
+			  }
+			 
+			 }
+			 drawCircl(200,200,100);
+			
+		  })
+		</script>
+
+	</head>
+	<body>
+	    <canvas id="canvas" width="500" height="500">
+		    你的浏览器out了
+		</canvas>
+	    
+	</body>
+
+</html>

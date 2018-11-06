@@ -1,0 +1,20 @@
+.bigbox{
+    width: 740px;
+    height: 350px;
+    position: relative;
+    margin: 100px auto;
+    border: 10px solid #ccc;
+}
+.box{
+    width: 740px;
+    height: 350px;
+    position: absolute;
+}
+.box>img{
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.one{
+    z-index: 1;
+}

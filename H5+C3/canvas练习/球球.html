@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id='canvas'></canvas>
+    <script>
+    var canvas=document.getElementById('canvas');
+    var w=document.documentElement.clientWidth;
+    var h=document.documentElement.clientHeight;
+    canvas.height=h;
+    canvas.width=w;
+    var cobj=canvas.getContext('2d');
+
+    var ballarr=[];
+    function ball(x,y,r,vx,vy,color){
+        this.x=x;
+        this.y=y;
+        this.r=r;
+        this.vx=vx;
+        this.vy=vy;
+        this.g=0.5;
+        this.color=color;
+        this.drawBall=function(){
+            cobj.beginPath();
+            cobj.fillStyle=this.color;
+            cobj.arc(this.x,this.y,this.r,0,Math.PI*2);
+            cobj.fill();
+        };
+        this.move=function(){
+            this.x+=this.vx;
+            this.y+=this.vy;
+            this.vy+=this.g;
+            if(this.x>canvas.width-this.r||this.x<this.r){
+                this.vx=-this.vx;
+            }
+            if(this.y>canvas.height-this.r){
+                this.vy=this.vy*-0.8;
+            }
+            if(Math.abs(this.vy)<0.2&&this.y>canvas.height-this.r-6){
+                this.vy=0;
+                this.g=0;
+            }
+            if(this.vy==0){
+                this.vx=0.98*this.vx;
+            }
+        };
+    }
+    canvas.onmousemove=function(e){
+        var str='rgb('+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+')';
+        var newBall=new ball(e.clientX,e.clientY,Math.random()*20+20,Math.random()*10-5,2,str);
+        ballarr.push(newBall);
+        // newBall.drawBall();
+    }
+    setInterval(function(){
+        cobj.clearRect(0,0,w,h);
+        for(var i=0;i<ballarr.length;i++){
+            ballarr[i].drawBall();
+            ballarr[i].move();
+        }
+        if(ballarr.length>300){
+            ballarr.shift();
+        }
+    },10)
+    </script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+@charset "utf-8";
+body {
+	background-color: rgba(255, 255, 255, 1.00);
+	font-size: 14px;
+	color: #444;
+}
+
+header,
+footer {
+	height: 100px;
+	width: 100%;
+	background-color: rgba(190, 144, 220, 1.00);
+	text-align: center;
+}
+
+footer {
+	clear: both;
+	height: 75px;
+	border-top: 2px solid #eeeef0;
+	margin-top: 50px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+}
+
+header h1,
+footer h1 {
+	font: 18px/100px "微软雅黑";
+	color: #fff;
+}
+
+footer h1 {
+	line-height: 75px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+body,
+article,
+menu,
+section,
+ul {
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: rgb(86, 13, 134);
+	display: block;
+}
+
+a:hover,
+.active {
+	background: rgba(11, 194, 232, 1.00);
+	color: #fff;
+}
+
+article {
+	text-align: left;
+	margin: 0 auto 110px;
+	width: 90%;
+	min-width: 1000px;
+	position: relative;
+	display: block;
+}
+
+.content {
+	display: inline-block;
+	width:100%;
+}
+
+menu {
+	width: 15%;
+	background-color: rgb(233, 205, 251);
+	float: left;
+	border-radius: 8px;
+	margin-top: 26px;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+ul li {
+	height: 50px;
+	color: #fff;
+	font: 16px/50px '微软雅黑', Cambria;
+	text-align: center;
+	border-bottom: 1px dashed rgba(227, 167, 253, 0.87);
+}
+
+ul li:last-child {
+	border-bottom: none;
+}
+
+ul li:last-child a:hover,
+ul li:last-child a.active {
+	border-radius: 0 0 8px 8px;
+}
+
+ul li:first-child a:hover,
+ul li:first-child a.active {
+	border-radius: 8px 8px 0 0;
+}
+
+section {
+	width: 80%;
+	float: right;
+	margin-top: 36px;
+}
+
+table,
+table td,
+table th {
+	border-collapse: collapse;
+	border: 1px solid #F0EFED;
+	color: #444;
+	text-align: center;
+}
+
+table th {
+	background: #F7F7F6;
+	height: 46px;
+}
+
+table td {
+	font: normal 16px/34px '微软雅黑';
+	height: 56px;
+	border-bottom: 1px solid #F0EFED;
+	padding: 0 10px;
+}
+
+.home {
+	font-size: 50px;
+	text-align: center;
+}
+
+.home h2 {
+	font-size: 40px;
+	color: #890EF3;
+}
+
+.home p {
+	font-size: 18px;
+	color: #000;
+}
+
+.ritCnt {
+	width: 450px;
+	margin: 0 auto;
+}
+
+.ritCnt h3 {
+	font-size: 26px;
+	color: #B70BE5;
+	padding-bottom: 40px;
+}
+
+label {
+	width: 80px;
+	text-align: right;
+	padding-right: 8px;
+}
+
+input {
+	width: 250px;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 8px;
+	border: 1px solid rgba(217, 214, 214, 1.00);
+}
+
+.group {
+	padding: 10px 0;
+}
+
+.button {
+	width: 100px;
+	height: 50px;
+	border-radius: 5px;
+	background-color: rgba(190, 144, 220, 1.00);
+	color: #fff;
+	font-size: 16px;
+	margin-top: 8px;
+	cursor: pointer;
+	border: none;
+}
+
+.myPopup {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 99990;
+	background-color: rgba(0, 0, 0, 0.60);
+	display: none;
+}
+
+.popcnt {
+	width: 500px;
+	margin: 100px auto;
+	background-color: #fff;
+	border-radius: 15px;
+	color: #000;
+	font-family: '微软雅黑';
+	padding: 15px 30px;
+	line-height: 32px;
+	text-align: center;
+}
+
+.popcnt p {
+	text-align: justify;
+	font-size: 16px;
+	text-indent: 32px;
+}

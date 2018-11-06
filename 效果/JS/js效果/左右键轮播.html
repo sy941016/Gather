@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/function.js"></script>
+    <script src="js/animate.js"></script>
+</head>
+<style>
+    body{margin: 0;
+    }
+    .bigbox{
+        width: 500px;
+        height: 300px;
+        border:10px solid #ccc;
+        margin: 100px auto;
+        overflow: hidden;
+    }
+    .innerbox{
+        width: 2500px;
+        height: 100%;
+    }
+    .box{
+        float: left;
+        width: 500px;
+        height: 100%;
+        text-align: center;
+        line-height: 300px;
+        font-size: 64px;
+        font-weight: bolder;
+        color:#fff;
+    }
+    .one{
+        background-color: red;
+    }
+    .two{
+        background-color: orange;
+    }
+    .three{
+        background-color: purple;
+    }
+    .four{
+        background-color: blue;
+    }
+    .five{
+        background-color: green;
+    }
+</style>
+<body>
+<div class="bigbox">
+    <div class="innerbox">
+        <div class="box one">01</div>
+        <div class="box two">02</div>
+        <div class="box three">03</div>
+        <div class="box four">04</div>
+        <div class="box five">05</div>
+    </div>
+</div>
+</body>
+<script>
+    var innerbox=getClass("innerbox")[0];
+    var box=getClass("box");
+    var num=0;
+    var flag=true,flag1=true;
+    document.onkeydown=document.onkeyup= function (e) {
+        var ev=e||window.event;
+        if(ev.keyCode==37){
+            if(flag){
+                flag=false;
+                num++;
+                if(num>=box.length){
+                    num=box.length-1;
+                }
+                animate(innerbox,{marginLeft:-500*num},500, function () {
+                    flag=true;flag1=true;
+                })
+            }
+        }
+        if(ev.keyCode==39){
+            if(flag1){
+                flag1=false;
+                num--;
+                if(num<0){
+                    num=0;
+                }
+                animate(innerbox,{marginLeft:-500*num},500, function () {
+                    flag1 = true;flag=true;
+                });
+            }
+        }
+    }
+</script>
+</html>

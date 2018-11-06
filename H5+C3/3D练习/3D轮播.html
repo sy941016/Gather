@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="js/jquery-3.1.1.js"></script>
+</head>
+<style>
+    body{
+        margin: 0;;
+    }
+    .container{
+        width: 1000px;
+        height: 300px;
+        margin: 100px auto;
+        position: relative;
+        perspective: 500px;
+    }
+    .item{
+        width: 300px;
+        height: 300px;
+        background: red;
+        position: absolute;
+        transition: all 0.5s;
+    }
+    .container .item:nth-of-type(1){
+        left:0;
+        z-index:-2;
+    }
+    .container .item:nth-of-type(2){
+        left:0;
+        z-index: 1;
+    }
+    .container .item:nth-of-type(3){
+        left:175px;
+        z-index: 2;
+    }
+    .container .item:nth-of-type(4){
+        left:350px;
+        z-index: 3;
+        transform: translateZ(100px);
+    }
+    .container .item:nth-of-type(5){
+        left:525px;
+        z-index: 2;
+    }
+    .container .item:nth-of-type(6){
+        left:700px;
+        z-index: 1;
+    }
+    .container .item:nth-of-type(7){
+        left:700px;
+        z-index:-2;
+    }
+    .item img{
+        width: 300px;;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="item"><img src="img/1.jpg" alt=""></div>
+    <div class="item"><img src="img/2.jpg" alt=""></div>
+    <div class="item"><img src="img/3.jpg" alt=""></div>
+    <div class="item"><img src="img/4.jpg" alt=""></div>
+    <div class="item"><img src="img/5.jpg" alt=""></div>
+    <div class="item"><img src="img/6.jpg" alt=""></div>
+    <div class="item"><img src="img/7.jpg" alt=""></div>
+</div>
+</body>
+<script>
+    var item=$(".item");
+    var container=$(".container");
+    item.each(function(){
+        $(this).click(function(){
+            var index=$(this).index();
+            var cha=index-3;
+            if(cha>0){
+                $(".item").slice(0,cha).appendTo(container);
+            }else{
+                $(".item").slice(cha).insertBefore($(".item").first());
+            }
+        });
+    });
+    var t=setInterval(move,2000);
+    function move(){
+        $(".item").slice(0,1).appendTo(container);
+    }
+    container.hover(function(){
+        clearInterval(t);
+    },function(){
+        t=setInterval(move,2000);
+    })
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    function Animal(name){
+        this.name = name;
+        this.showName = function(){
+            alert(this.name);
+        }
+    }
+
+    function Cat(name){
+        Animal.apply(this,[name]);
+    }
+
+    var cat = new Cat("咕咕");
+    cat.showName();
+
+    /*call的用法*/
+    Animal.call(this,name);
+</script>
+</html>

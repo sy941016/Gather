@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/function.js"></script>
+    <script src="js/animate.js"></script>
+</head>
+<style>
+    body,ul,li{
+        margin:0;
+        padding:0;
+        list-style: none;
+    }
+    body{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .bigbox{
+        width: 100%;
+        height: 100%;
+    }
+    .box{
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 655px;
+        font-size: 64px;
+        font-weight: bolder;
+    }
+    .one{
+        background: red;
+    }
+    .two{
+        background: green;
+    }
+    .three{
+        background: yellow;
+    }
+    .four{
+        background: skyblue;
+    }
+    .five{
+        background: purple;
+    }
+    .btnbox{
+        width: 80px;
+        height: 250px;
+        position: fixed;
+        top:50%;
+        left:10px;
+        border:1px solid #000;
+    }
+    .btnbox>li{
+        width:100%;
+        height:50px;
+        border-bottom:1px solid #000;
+        box-sizing:border-box;
+        text-align: center;
+        line-height: 50px;
+        font-size: 8px;
+        cursor: pointer;
+    }
+    .btnbox>li:last-child{
+        border-bottom:0;
+    }
+</style>
+<body>
+  <div class="bigbox">
+      <div class="box one">1</div>
+      <div class="box two">2</div>
+      <div class="box three">3</div>
+      <div class="box four">4</div>
+      <div class="box five">5</div>
+  </div>
+  <ul class="btnbox">
+      <li class="btn">1</li>
+      <li class="btn">2</li>
+      <li class="btn">3</li>
+      <li class="btn">4</li>
+      <li class="btn">5</li>
+  </ul>
+</body>
+<script>
+    var box=getClass("box");
+    var bigBox=getClass("bigbox")[0];
+    var btn=getClass("btn");
+    var flag=true;
+    var flag1=false;
+    var arr=[];
+    var num=0;
+    var Height=document.documentElement.clientHeight;
+    bigBox.style.height=Height*5+"px";
+    for(var i=0;i<box.length;i++){
+        box[i].style.height=Height+"px";
+        arr.push(box[i].offsetTop)
+    }
+    mouseWheel(bigBox,function(){
+        if(flag1){
+            flag1=false;
+            num--;
+            if(num==-1){
+                num=0;
+            }
+            animate(bigBox,{marginTop:-arr[num]},500,function(){
+                flag1=true;
+                flag=true;
+            })
+        }
+    },function(){
+        if(flag){
+            flag=false;
+            num++;
+            if(num>=box.length){
+                num=box.length-1;
+            }
+            animate(bigBox,{marginTop:-arr[num]},500,function(){
+                flag=true;
+                flag1=true;
+            })
+        }
+    });
+    for(var j=0;j<btn.length;j++){
+        btn[j].index=j;
+        btn[j].onclick=function(){
+            var numl=this.index;
+            animate(bigBox,{marginTop:-arr[this.index]},function(){
+                num=numl;
+            })
+        }
+    }
+</script>
+</html>

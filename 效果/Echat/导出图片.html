@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="js/jquery-3.1.1.js"></script>
+	<script src="js/echarts3.min.js"></script>
+
+</head>
+
+<body>
+<div id="main" style="width: 800px;height: 800px;"></div>
+<img src="" alt="" class="img" style="width: 200px;height:200px">
+<script>
+	    var myChart = echarts.init(document.getElementById('main'));
+	    option = {
+		    xAxis: {
+		        type: 'category',
+		        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+		    },
+		    yAxis: {
+		        type: 'value'
+		    },
+		    series: [{
+		        data: [120, 200, 150, 80, 70, 110, 130],
+		        type: 'bar'
+		    }]
+		};
+		myChart.setOption(option);
+
+		var url = myChart.getConnectedDataURL({
+            pixelRatio: 2,//导出的图片分辨率比率,默认是1
+            backgroundColor: '#fff',//图表背景色
+            excludeComponents:['toolbox'],//保存图表时忽略的工具组件,默认忽略工具栏
+            type:'png'//图片类型支持png和jpeg
+        });
+		// var $a = document.createElement('a');
+		// var type = 'png';
+		// $a.download = type;
+		// $a.target = '_blank';
+		// $a.href = url;
+		// $a.download = url;
+		//
+		// // Chrome and Firefox
+		// if (typeof MouseEvent === 'function') {
+		// var evt = new MouseEvent('click', {
+		//     view: window,
+		//     bubbles: true,
+		// 	cancelable: false
+		// });
+		//     $a.dispatchEvent(evt);//触发事件
+		// }
+		// // IE
+		// else {
+		// var html = ''
+		// + '<body style="margin:0;">'
+		// + '<img src="' + url + '" style="max-width:100%;" title="' + myChart.getOption().title[0].text + '" />'
+		// + '</body>';
+		// var tab = window.open();
+		//     tab.document.write(html);
+		// }
+        var img=document.getElementsByClassName("img")[0];
+        img.setAttribute("src",url);
+</script>
+</body>
+</html>
