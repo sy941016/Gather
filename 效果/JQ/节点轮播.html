@@ -78,7 +78,7 @@
     }
 
     .b1 {
-        background: red;
+        background: darkgreen;
     }
 
     .b2 {
@@ -86,11 +86,11 @@
     }
 
     .b3 {
-        background: yellow;
+        background: forestgreen;
     }
 
     .b4 {
-        background: blue;
+        background: darkolivegreen;
     }
 
     .b5 {
@@ -99,15 +99,15 @@
 </style>
 <body>
 <div class="container">
-    <!--按钮div-->
-    <div class="box">
-        <div class="box-inner b1">01</div>
-        <div class="box-inner b2">02</div>
-        <div class="box-inner b3 ">03</div>
-        <div class="box-inner b4">04</div>
-        <div class="box-inner b5">05</div>
-    </div>
     <!--内容div-->
+    <div class="box">
+        <div class="box-inner b1">一</div>
+        <div class="box-inner b2">二</div>
+        <div class="box-inner b3 ">三</div>
+        <div class="box-inner b4">四</div>
+        <div class="box-inner b5">五</div>
+    </div>
+    <!--按钮div-->
     <div class="spot-box">
         <div class="spot hov"></div>
         <div class="spot hov"></div>
@@ -169,10 +169,11 @@
         });
         //点击切换
         spot.click(function () {
-            let Index = $(this).index();
+            let Index = $(this).index();//当前下标
             let cha = Index - num;
             Spot(Index);
             if (cha >= 0) {
+                //当前的下标和点击的下标的差值 就滑动几屏 每屏幕为500
                 box.animate({marginLeft: -500 * cha}, 500, function () {
                     for (let i = 0; i < cha; i++) {
                         $(".box-inner").first().appendTo(box);
@@ -180,6 +181,7 @@
                     $(".box").css({marginLeft: 0});
                 });
             } else {
+                //取绝对值Math.abs()
                 $(".box").css({marginLeft: -500 * Math.abs(cha)});
                 for (let j = 0; j < Math.abs(cha); j++) {
                     $(".box-inner").last().prependTo(box);
