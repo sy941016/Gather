@@ -169,19 +169,19 @@
         });
         //点击切换
         spot.click(function () {
-            var Index = $(this).index();
-            var cha = Index - num;
+            let Index = $(this).index();
+            let cha = Index - num;
             Spot(Index);
             if (cha >= 0) {
                 box.animate({marginLeft: -500 * cha}, 500, function () {
-                    for (var i = 0; i < cha; i++) {
+                    for (let i = 0; i < cha; i++) {
                         $(".box-inner").first().appendTo(box);
                     }
                     $(".box").css({marginLeft: 0});
                 });
             } else {
                 $(".box").css({marginLeft: -500 * Math.abs(cha)});
-                for (var j = 0; j < Math.abs(cha); j++) {
+                for (let j = 0; j < Math.abs(cha); j++) {
                     $(".box-inner").last().prependTo(box);
                 }
                 box.animate({marginLeft: 0}, 500);
