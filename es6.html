@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title id="title">ES666</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<button class="click">点击</button>
+</body>
+<script>
+    $('.click').click(function () {
+        alert(1)
+    })
+    $('.click').unbind()
+
+    //class 继承
+    class Student {
+        constructor(name) {
+            this.name = name;
+        }
+
+        hello() {
+            alert('Hello,' + this.name + '!');
+        }
+    }
+
+    class PrimaryStudent extends Student {//extends继承Student的所有方法
+        constructor(name, grade) {
+            super(name);//创建子类的this对象
+            this.grade = grade;
+        }
+
+        myGrade() {
+            alert('I am at grade ' + this.grade);
+        }
+    }
+
+    console.log(Object.getPrototypeOf(PrimaryStudent))
+    //实类化
+    let jay = new PrimaryStudent('jay', '100')
+    jay.hello()
+
+    let xiaoming = new Student('小明')
+    xiaoming.hello()
+
+    function aa(){
+        console.log(this)
+    }
+    aa()
+
+    let arr=[1,2,3,4]
+    arr.forEach((item,index)=>{
+        console.log(item)
+        console.log(index)
+    })
+
+    //解构赋值
+    const [a, b, c, d, e] = 'hello';
+    console.log(a);
+
+    function move({x = 0, y = 0} = {}) {
+        return [x, y];
+    }
+
+    move({x: 3, y: 8}); // [3, 8]
+    move({x: 3}); // [3, 0]
+    move({}); // [0, 0]
+    move(); // [0, 0]
+
+    function move1({x, y} = {x: 0, y: 0}) {
+        return [x, y];
+    }
+
+    move1({x: 3, y: 8}); // [3, 8]
+    move1({x: 3}); // [3, undefined]
+    move1({}); // [undefined, undefined]
+    move1(); // [0, 0]
+
+    const map = new Map();
+    map.set('first', 'hello');
+    map.set('second', 'world');
+
+    for (let [key, value] of map) {
+        console.log(key + " is " + value);
+    }
+
+    //symbol
+    let mySymbol = Symbol();
+    // 第一种写法
+    let ss = {};
+    ss[mySymbol] = 'Hello!';
+    // 第二种写法
+    let sss = {
+        [mySymbol]: 'Hello!'
+    };
+    // 第三种写法
+    let ssss = {};
+    Object.defineProperty(ssss, mySymbol, {value: 'Hello!'});
+
+    console.log(ssss[mySymbol]); //hello
+
+    //promise then
+    //做饭
+    function cook() {
+        console.log('开始做饭。');
+        var p = new Promise(function (resolve, reject) {        //做一些异步操作
+            setTimeout(function () {
+                console.log('做饭完毕！');
+                resolve('鸡蛋炒饭');
+            }, 1000);
+        });
+        return p;
+    }
+
+    //吃饭
+    function eat(data) {
+        console.log('开始吃饭：' + data);
+        var p = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                console.log('吃饭完毕!');
+                resolve('一块碗和一双筷子');
+            }, 2000);
+        });
+        return p;
+    }
+
+    function wash(data) {
+        console.log('开始洗碗：' + data);
+        var p = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                console.log('洗碗完毕!');
+                // resolve('干净的碗筷');
+                reject('闹肚子了')
+            }, 2000);
+        });
+        return p;
+    }
+
+    cook()
+        .then((data) => {
+            return eat(data);
+        })
+        .then((data) => {
+            return wash(data);
+        })
+        .catch((data) => {
+            console.log(data);
+        });
+
+    let arr1 = [1, 2, 3, 1, 1];
+    let arr2 = new Set(arr1);
+    console.log(arr2);
+
+    $.ajax({
+        type: 'get',
+        url: 'http://localhost:3002/api',
+        success: function (data) {
+            console.log(data)
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    });
+
+    function* gen() {
+        yield  123 + 456;
+    }
+
+    var gen = gen();
+    console.log(gen.next());
+
+    let a1 = 'abcd';
+    let a2 = [1, 2, 3];
+    console.log(a2.lastIndexOf(3))
+
+
+</script>
+</html>

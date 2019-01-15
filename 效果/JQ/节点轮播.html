@@ -6,32 +6,95 @@
     <script src="js/jquery-3.1.1.min.js"></script>
 </head>
 <style>
-    .container{width: 500px;height: 300px;border: 10px solid #999999;margin: 100px auto;
-      text-align: center;line-height: 300px;color: #fff;font-weight: bolder;font-size: 48px;position: relative;overflow: hidden;}
-    .box{height: 100%;width: 2500px;}
-    .box-inner{width: 500px;height: 100%;float: left;}
-    .spot-box{width: 200px;height: 20px;display: flex;justify-content: space-between;
-     position: absolute;left: 50%;margin-left: -100px;bottom: 20px;z-index: 99;}
-    .spot{width: 20px;height: 20px;background: #ccc;border-radius: 50%;cursor: pointer;
-     transition: all 1s;}
-    .spot:first-child{background: orange;}
-    .btn{width: 40px;height:60px;background: rgba(0,0,0,0.5);cursor: pointer;line-height:60px;font-size: 36px;border-radius: 5px;position: absolute;top: 50%;margin-top: -30px;}
-    .left{left: 10px;}
-    .right{ right: 10px;}
-    .b1{
-          background: red;
+    .container {
+        width: 500px;
+        height: 300px;
+        border: 10px solid #999999;
+        margin: 100px auto;
+        text-align: center;
+        line-height: 300px;
+        color: #fff;
+        font-weight: bolder;
+        font-size: 48px;
+        position: relative;
+        overflow: hidden;
     }
-    .b2{
-          background: green;
+
+    .box {
+        height: 100%;
+        width: 2500px;
     }
-    .b3{
-          background: yellow;
+
+    .box-inner {
+        width: 500px;
+        height: 100%;
+        float: left;
     }
-    .b4{
-          background: blue;
+
+    .spot-box {
+        width: 200px;
+        height: 20px;
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        left: 50%;
+        margin-left: -100px;
+        bottom: 20px;
+        z-index: 99;
     }
-    .b5{
-          background: gray;
+
+    .spot {
+        width: 20px;
+        height: 20px;
+        background: #ccc;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 1s;
+    }
+
+    .spot:first-child {
+        background: orange;
+    }
+
+    .btn {
+        width: 40px;
+        height: 60px;
+        background: rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        line-height: 60px;
+        font-size: 36px;
+        border-radius: 5px;
+        position: absolute;
+        top: 50%;
+        margin-top: -30px;
+    }
+
+    .left {
+        left: 10px;
+    }
+
+    .right {
+        right: 10px;
+    }
+
+    .b1 {
+        background: red;
+    }
+
+    .b2 {
+        background: green;
+    }
+
+    .b3 {
+        background: yellow;
+    }
+
+    .b4 {
+        background: blue;
+    }
+
+    .b5 {
+        background: gray;
     }
 </style>
 <body id="mybody">
@@ -55,73 +118,77 @@
 </div>
 </body>
 <script>
-    $(function(){
-        var box=$(".box"),
-            hov=$(".hov"),
-            spot=$(".spot"),
-            left=$(".left"),
-            right=$(".right"),
-            num=0,
-            t=setInterval(autoPlay,2000);
+    $(function () {
+        var box = $(".box"),
+            hov = $(".hov"),
+            spot = $(".spot"),
+            left = $(".left"),
+            right = $(".right"),
+            num = 0,
+            t = setInterval(autoPlay, 2000);
+
 //        move 函数
-        function move(flag){
-            if(!box.is(":animated")){
-                if(flag){
-                    num>=spot.length-1?num=0:num++;
-                    box.animate({marginLeft:-500},1000,function(){
+        function move(flag) {
+            if (!box.is(":animated")) {
+                if (flag) {
+                    num >= spot.length - 1 ? num = 0 : num++;
+                    box.animate({marginLeft: -500}, 1000, function () {
                         $(".box-inner").first().appendTo(box);
-                        $(".box").css({marginLeft:0});
+                        $(".box").css({marginLeft: 0});
                     });
-                }else{
-                    num<0?num=spot.length-2:num--;
+                } else {
+                    num < 0 ? num = spot.length - 2 : num--;
                     $(".box-inner").last().prependTo(box);
-                    $(".box").css({marginLeft:-500});
-                    box.animate({marginLeft:0},1000);
+                    $(".box").css({marginLeft: -500});
+                    box.animate({marginLeft: 0}, 1000);
                 }
                 Spot(num);
             }
         }
+
         //自动轮播
-        function autoPlay(){
+        function autoPlay() {
             move(true);
         }
+
         //hover 效果
-        hov.hover(function(){
+        hov.hover(function () {
             clearInterval(t);
-        },function(){
-            t=setInterval(move,2000);
+        }, function () {
+            t = setInterval(move, 2000);
         });
         //右点击
-        right.click(function(){
+        right.click(function () {
             move(true);
         });
         //左点击
-        left.click(function(){
-           move(false);
+        left.click(function () {
+            move(false);
         });
         //点击切换
-        spot.click(function(){
-            var Index=$(this).index();
-            var cha=Index-num;
-           Spot(Index);
-            if(cha>=0){
-                   box.animate({marginLeft:-500*cha},500,function(){
-                       for(var i=0;i<cha;i++){
-                           $(".box-inner").first().appendTo(box);
-                       }
-                      $(".box").css({marginLeft:0});
-                   });
-            }else{
-                $(".box").css({marginLeft:-500*Math.abs(cha)});
-                for(var j=0;j<Math.abs(cha);j++){
+        spot.click(function () {
+            var Index = $(this).index();
+            var cha = Index - num;
+            Spot(Index);
+            if (cha >= 0) {
+                box.animate({marginLeft: -500 * cha}, 500, function () {
+                    for (var i = 0; i < cha; i++) {
+                        $(".box-inner").first().appendTo(box);
+                    }
+                    $(".box").css({marginLeft: 0});
+                });
+            } else {
+                $(".box").css({marginLeft: -500 * Math.abs(cha)});
+                for (var j = 0; j < Math.abs(cha); j++) {
                     $(".box-inner").last().prependTo(box);
                 }
-                box.animate({marginLeft:0},500);
+                box.animate({marginLeft: 0}, 500);
             }
-            num=Index;
+            num = Index;
         });
-        function Spot(num){
-            spot.eq(num).css({"background":"orange"}).siblings().css({"background":"#ccc"});
+
+        function Spot(num) {
+            spot.eq(num).css({"background": "orange"}).siblings().css({"background": "#ccc"});
         }
     })
 
