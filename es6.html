@@ -45,13 +45,14 @@
     let xiaoming = new Student('小明')
     xiaoming.hello()
 
-    function aa(){
+    function aa() {
         console.log(this)
     }
+
     aa()
 
-    let arr=[1,2,3,4]
-    arr.forEach((item,index)=>{
+    let arr = [1, 2, 3, 4]
+    arr.forEach((item, index) => {
         console.log(item)
         console.log(index)
     })
@@ -149,10 +150,29 @@
             console.log(data);
         });
 
-    let arr1 = [1, 2, 3, 1, 1];
-    let arr2 = new Set(arr1);
-    console.log(arr2);
+    //generator函数
+    function* gen() {
+        yield  123 + 456;
+    }
+    var gen = gen();
+    console.log(gen.next());
 
+    //indexOf
+    let a1 = 'abcd';
+    let a2 = [1, 2, 3];
+    console.log(a2.lastIndexOf(3)) //2
+    console.log(a1.indexOf('a'))  //0
+
+    //取交集
+    let aaa = [1, 2, 3, 4, 5]
+    let bbb = [2, 3, 8, 9, 7]
+    //Set去重
+    aaa = new Set(aaa)
+    bbb = new Set(bbb)
+    let arr3 = new Set([...aaa].filter(x => bbb.has(x)));
+    console.log(arr3)
+
+    //本地接口调用
     $.ajax({
         type: 'get',
         url: 'http://localhost:3002/api',
@@ -163,18 +183,5 @@
             console.log(err)
         }
     });
-
-    function* gen() {
-        yield  123 + 456;
-    }
-
-    var gen = gen();
-    console.log(gen.next());
-
-    let a1 = 'abcd';
-    let a2 = [1, 2, 3];
-    console.log(a2.lastIndexOf(3))
-
-
 </script>
 </html>
