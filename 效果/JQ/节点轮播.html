@@ -97,8 +97,9 @@
         background: gray;
     }
 </style>
-<body id="mybody">
+<body>
 <div class="container">
+    <!--按钮div-->
     <div class="box">
         <div class="box-inner b1">01</div>
         <div class="box-inner b2">02</div>
@@ -106,6 +107,7 @@
         <div class="box-inner b4">04</div>
         <div class="box-inner b5">05</div>
     </div>
+    <!--内容div-->
     <div class="spot-box">
         <div class="spot hov"></div>
         <div class="spot hov"></div>
@@ -113,13 +115,14 @@
         <div class="spot hov"></div>
         <div class="spot hov"></div>
     </div>
-    <!-- <div class="btn left hov">&lt;</div>
-    <div class="btn right hov">&gt;</div> -->
+    <!--左右按钮-->
+    <div class="btn left hov">&lt;</div>
+    <div class="btn right hov">&gt;</div>
 </div>
 </body>
 <script>
     $(function () {
-        var box = $(".box"),
+        let box = $(".box"),
             hov = $(".hov"),
             spot = $(".spot"),
             left = $(".left"),
@@ -127,8 +130,9 @@
             num = 0,
             t = setInterval(autoPlay, 2000);
 
-//        move 函数
+        //move 函数
         function move(flag) {
+            //:animated 选择器选取当前的所有动画元素
             if (!box.is(":animated")) {
                 if (flag) {
                     num >= spot.length - 1 ? num = 0 : num++;
@@ -145,12 +149,10 @@
                 Spot(num);
             }
         }
-
         //自动轮播
         function autoPlay() {
             move(true);
         }
-
         //hover 效果
         hov.hover(function () {
             clearInterval(t);
@@ -191,6 +193,5 @@
             spot.eq(num).css({"background": "orange"}).siblings().css({"background": "#ccc"});
         }
     })
-
 </script>
 </html>
