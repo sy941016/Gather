@@ -32,16 +32,16 @@
         z-index: 1;
     }
     .two{
-        background: red;
+        background: mediumseagreen;
     }
     .three{
         background:#000;
     }
     .four{
-        background:yellow;
+        background:darkolivegreen;
     }
     .five{
-        background: purple;
+        background: forestgreen;
     }
     .btnbox{
         position: absolute;
@@ -132,11 +132,14 @@
             t=setInterval(move,2000);
             num=$(this).index();
         });
+        // $(selector).hover(inFunction,outFunction)   inFunction	必需 规定 mouseover 事件发生时运行的函数
+        // outFunction	可选 规定 mouseout 事件发生时运行的函数
         $(".btns").hover(function(){
             clearTimeout(t);
         },function(){
             t=setInterval(move,2000);
         });
+
         $(".left").click(function(){
             num-=2;
             if(num==-2){
@@ -144,6 +147,7 @@
             }
             move();
         });
+
         $(".right").click(function(){
             move();
         })
