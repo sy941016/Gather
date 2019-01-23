@@ -25,6 +25,8 @@
             alert('Hello,' + this.name + '!');
         }
     }
+    let xiaoming = new Student('小明')
+    xiaoming.hello()
 
     class PrimaryStudent extends Student {//extends   继承Student的所有方法
         constructor(name, grade) {
@@ -36,20 +38,11 @@
             alert('I am at grade ' + this.grade);
         }
     }
-
+    //继承了谁?
     console.log(Object.getPrototypeOf(PrimaryStudent))
     //实类化
     let jay = new PrimaryStudent('jay', '100')
     jay.hello()
-
-    let xiaoming = new Student('小明')
-    xiaoming.hello()
-
-    function aa() {
-        console.log(this)
-    }
-
-    aa()
 
     let arr = [1, 2, 3, 4]
     arr.forEach((item, index) => {
