@@ -15,28 +15,22 @@
     new Vue({
         el:"#app",
         beforeCreate:function(){
-            alert(1);
             console.log('beforeCreate')
         },
         created:function(){
-            alert(2);
             console.log('created')
         },
         beforeMount:function(){
-            alert(3);
             console.log('beforeMount')
+        },
+        mounted:function(){
+            console.log(mounted)
         },
         beforeUpdate:function(){
             console.log('beforeUpdate')
         },
         updated:function(){
             console.log('updated')
-        },
-        activated:function(){
-            console.log('activated')
-        },
-        deactivated:function(){
-            console.log('deactivated')
         },
         beforeDestroy:function(){
             console.log('beforeDestroy')
