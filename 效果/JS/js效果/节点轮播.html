@@ -50,7 +50,7 @@
         background: green;
     }
     .five{
-        background: orange;
+        background: skyblue;
     }
     .btn{
         position: absolute;
@@ -122,15 +122,15 @@
    </div>
 </body>
 <script>
-    var innerbox=getClass("innerbox")[0];
-    var leftbtn=getClass("leftbtn")[0];
-    var rightbtn=getClass("rightbtn")[0];
-    var libtn=getClass("libtn");
-    var t= setInterval(move,2000);
-    var flag=true;
-    var flag1=true;
-    var num=0;
-    var next;
+    let innerbox=getClass("innerbox")[0];
+    let leftbtn=getClass("leftbtn")[0];
+    let rightbtn=getClass("rightbtn")[0];
+    let libtn=getClass("libtn");
+    let t= setInterval(move,2000);
+    let flag=true;
+    let flag1=true;
+    let num=0;
+    let next;
     function move(){
         if(flag){
             flag=false;
@@ -138,26 +138,30 @@
             if(num>=libtn.length){
                 num=0;
             }
-            for(var i=0;i<libtn.length;i++){
-                for(var j=0;j<libtn.length;j++){
+            //libtn颜色控制
+            for(let i=0;i<libtn.length;i++){
+                for(let j=0;j<libtn.length;j++){
                     libtn[j].style.backgroundColor="#ccc";
                 }
                 libtn[num].style.backgroundColor="orange";
             }
+
             animate(innerbox,{marginLeft:-400},500,function(){
-                var first=getFirstChild(this);
+                let first=getFirstChild(this);
                 this.appendChild(first);
                 this.style.marginLeft=0;
                 flag=true;
             })
         }
     }
+    //
     leftbtn.onmouseover=rightbtn.onmouseover=innerbox.onmouseover=function(){
         clearTimeout(t)
     };
     leftbtn.onmouseout=rightbtn.onmouseout=innerbox.onmouseout=function(){
         t= setInterval(move,2000);
     };
+    //
     rightbtn.onclick=function(){
         move()
     };
@@ -169,14 +173,14 @@
             if (num == -1) {
                 num = libtn.length - 1;
             }
-            for (var i = 0; i < libtn.length; i++) {
-                for (var j = 0; j < libtn.length; j++) {
+            for (let i = 0; i < libtn.length; i++) {
+                for (let j = 0; j < libtn.length; j++) {
                     libtn[j].style.backgroundColor = "#ccc";
                 }
                 libtn[num].style.backgroundColor = "orange";
             }
-            var first = getFirstChild(innerbox);
-            var last = getLastChild(innerbox);
+            let first = getFirstChild(innerbox);
+            let last = getLastChild(innerbox);
             innerbox.insertBefore(last, first);
             innerbox.style.marginLeft = "-400px";
             animate(innerbox, {marginLeft: 0}, 500, function () {
@@ -184,17 +188,18 @@
             })
         }
     };
-    for(var i=0;i<libtn.length;i++) {
+
+    for(let i=0;i<libtn.length;i++) {
         libtn[i].index = i;
         libtn[i].onmouseover = function () {
             next = this.index;
-            var numl = next - num;
+            let numl = next - num;
             if (flag) {
                 flag=false;
                 if (numl >= 0) {
                     animate(innerbox, {marginLeft: numl * (-400)}, 300, function () {
-                        for (var i = 0; i < numl; i++) {
-                            var first = getFirstChild(this);
+                        for (let i = 0; i < numl; i++) {
+                            let first = getFirstChild(this);
                             this.appendChild(first);
                         }
                         this.style.marginLeft = 0;
@@ -204,9 +209,9 @@
                 } else {
                     flag=false;
                     innerbox.style.marginLeft = numl * 400 + "px";
-                    for (var i = 0; i < -numl; i++) {
-                        var first = getFirstChild(innerbox);
-                        var last = getLastChild(innerbox);
+                    for (let i = 0; i < -numl; i++) {
+                        let first = getFirstChild(innerbox);
+                        let last = getLastChild(innerbox);
                         innerbox.insertBefore(last, first);
                     }
                     animate(innerbox, {marginLeft: 0}, 300, function () {
@@ -214,7 +219,7 @@
                         flag=true;
                     })
                 }
-                for (var j = 0; j < libtn.length; j++) {
+                for (let j = 0; j < libtn.length; j++) {
                     libtn[j].style.backgroundColor = "#ccc";
                 }
                 libtn[this.index].style.backgroundColor = "orange";

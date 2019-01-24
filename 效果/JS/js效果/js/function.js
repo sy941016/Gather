@@ -10,15 +10,6 @@
  * 9.兼容的事件绑定函数
  * 10.插入某个元素之后
  * 11.兼容滚轮下拉函数
-
-
-
-
-
-
-
-
-
  **/
 //1.
 function getClass(a){
@@ -143,7 +134,7 @@ function prevSibling(node){
     }
     return prev;
 }
-//递归想法写法
+//递归思想写法
 function getPrevSibling(node){
     var prev=node.previousSibling;
     if(prev.nodeType==1){
