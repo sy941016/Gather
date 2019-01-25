@@ -8,35 +8,11 @@
 
 </body>
 <script>
-    //原型链
-    function SuperType() {
-        this.property = true;
-    }
-
-    SuperType.prototype.getSuperValue = function () {
-        return this.property;
-    };
-
-    function SubType() {
-        this.subproperty = false;
-    }
-
-    //继承了 SuperType
-    SubType.prototype = new SuperType();
-
-    SubType.prototype.getSubValue = function () {
-        return this.subproperty;
-    };
-
-    var instance = new SubType();
-    alert(instance.getSuperValue()); //true
-
-
     // call apply
     function Animal(name) {
         this.name = name;
         this.showName = function () {
-            alert(this.name);
+            console.log(this.name);
         }
     }
 
@@ -56,7 +32,7 @@
     }
 
     SuperType.prototype.sayName = function () {
-        alert(this.name);
+        console.log(this.name);
     };
 
     function SubType(name, age) {
@@ -69,7 +45,7 @@
     SubType.prototype = new SuperType();
     SubType.prototype.constructor = SubType;
     SubType.prototype.sayAge = function () {
-        alert(this.age);
+        console.log(this.age);
     };
 
     var instance1 = new SubType("Nicholas", 29);
@@ -79,7 +55,7 @@
     instance1.sayAge();           //29
 
     var instance2 = new SubType("Greg", 27);
-    alert(instance2.colors);      //"red,blue,green"
+    console.log(instance2.colors);      //"red,blue,green"
     instance2.sayName();          //"Greg";
     instance2.sayAge();           //27
 </script>
