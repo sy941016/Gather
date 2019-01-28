@@ -1,78 +1,82 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="UTF-8" />
-		<title>首页</title>
-		<link rel="stylesheet" href="mycss.css" />
-	</head>
+<head>
+    <meta charset="UTF-8"/>
+    <title>首页</title>
+    <link rel="stylesheet" href="mycss.css"/>
+</head>
 
-	<body>
-		<div id="myPopup" class="myPopup">
+<body>
+<div id="myPopup" class="myPopup">
 
-		</div>
-		<header>
-			<h1>这是我的网页头部</h1></header>
-		<article>
-			<div class="content">
-				<menu>
-					<ul>
-						<li>
-							<a href="#" onclick="ajaxLoad('linkpage1.html','myCnt')">载入表格页面</a>
-						</li>
-						<li>
-							<a href="#" onclick="ajaxLoad('linkpage2.html','myCnt')">载入表单页面</a>
-						</li>
-						<li>
-							<a href="#" onclick="ajaxLoad('linkpage3.html','myCnt')">带按钮可弹出页面</a>
-						</li>
-						<li>
-							<a href="#" onclick="ajaxLoad('linkpage4.html','myCnt')">任意载入的页面</a>
-						</li>
-					</ul>
-				</menu>
-				<section id="myCnt">
+</div>
+<header>
+    <h1>这是我的网页头部</h1></header>
+<article>
+    <div class="content">
+        <menu>
+            <ul>
+                <li>
+                    <a href="#" onclick="ajaxLoad('linkpage1.html','myCnt')">载入表格页面</a>
+                </li>
+                <li>
+                    <a href="#" onclick="ajaxLoad('linkpage2.html','myCnt')">载入表单页面</a>
+                </li>
+                <li>
+                    <a href="#" onclick="ajaxLoad('linkpage3.html','myCnt')">带按钮可弹出页面</a>
+                </li>
+                <li>
+                    <a href="#" onclick="ajaxLoad('linkpage4.html','myCnt')">任意载入的页面</a>
+                </li>
+            </ul>
+        </menu>
+        <section id="myCnt">
 
-				</section>
-			</div>
-		</article>
-		<footer><h1>这是我的网页尾部</h1></footer>
-	</body>
-	<script src="jquery-2.2.0.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			window.onload = ajaxLoad("home.html", "myCnt");
-			$("ul li").click(function() {
-				$(this).children("a").addClass("active");
-				if($(this).siblings("li").children("a").hasClass("active")) {
-					$(this).siblings("li").children("a").removeClass("active");
-				}
-			});
-		});
+        </section>
+    </div>
+</article>
+<footer><h1>这是我的网页尾部</h1></footer>
+</body>
+<script src="jquery-2.2.0.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        window.onload = ajaxLoad("home.html", "myCnt");
+        $("ul li").click(function () {
+            $(this).children("a").addClass("active");
+            if ($(this).siblings("li").children("a").hasClass("active")) {
+                $(this).siblings("li").children("a").removeClass("active");
+            }
+        });
+    });
 
-		function ajaxLoad(myUl, myId) {
-			var xmlhttp;
-			if(window.XMLHttpRequest) {
-				// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
-				xmlhttp = new XMLHttpRequest();
-			} else {
-				// IE6, IE5 浏览器执行代码
-				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			xmlhttp.onreadystatechange = function() {
-				if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-					document.getElementById(myId).innerHTML = xmlhttp.responseText;
-					if(myId == "myPopup") {
-						document.getElementById("myPopup").style.display = 'block';
-					}
-				}
-			}
-			xmlhttp.open("GET", myUl, true);
-			xmlhttp.send();
-		}
+    function ajaxLoad(myUl, myId) {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function () {
+            //readyState 表示请求 /响应过程的当前活动阶段
+            //status表示响应的 HTTP状态
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById(myId).innerHTML = xmlhttp.responseText;
+                if (myId == "myPopup") {
+                    document.getElementById("myPopup").style.display = 'block';
+                }
+            }
+        }
+        //三个参数：要发送的请求的类型 （"get"、"post"等）、请求的 URL和表示是否异步发送请求的布尔值
+        xmlhttp.open("GET", myUl, true);
+        //send()方法接收一个参数，即要作为请求主体发送的数据。如果不需要通过请求主体发送 数据，则必须传入 null
+        xmlhttp.send();
+    }
 
-		function myClose() {
-			document.getElementById("myPopup").style.display = 'none';
-		}
-	</script>
+    function myClose() {
+        document.getElementById("myPopup").style.display = 'none';
+    }
+</script>
 </html>
