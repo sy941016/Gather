@@ -1,18 +1,18 @@
 window.onload=function(){
-	var bigbox=getClass("bigbox")[0];
-    var box=getClass("box");
-    var t=setInterval(move,2000);
-    var num=0;
-    var btn=getClass("btn");
-    var rightbtn=getClass("rightbtn")[0];
-    var leftbtn=getClass("leftbtn")[0];
+    let bigbox=getClass("bigbox")[0];
+    let box=getClass("box");
+    let t=setInterval(move,2000);
+    let num=0;
+    let btn=getClass("btn");
+    let rightbtn=getClass("rightbtn")[0];
+    let leftbtn=getClass("leftbtn")[0];
     function move(){
         num++;
         if(num>=box.length){
             num=0;
         }
-        for(var i=0;i<box.length;i++){
-            for(var j=0;j<box.length;j++){
+        for(let i=0;i<box.length;i++){
+            for(let j=0;j<box.length;j++){
                 box[j].style.zIndex=0;
                 btn[j].style.backgroundColor="#000";
             }
@@ -20,11 +20,11 @@ window.onload=function(){
             btn[num].style.backgroundColor="orange";
         }
     }
-    for(var i=0;i<btn.length;i++){
+    for(let i=0;i<btn.length;i++){
         btn[i].index=i;
         btn[i].onmouseover= function () {
             clearTimeout(t);
-            for(var j=0;j<btn.length;j++){
+            for(let j=0;j<btn.length;j++){
                 box[j].style.zIndex=0;
                 btn[j].style.backgroundColor="#000";
             }
