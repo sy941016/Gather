@@ -29,12 +29,12 @@
     <div class="biaopan"></div>
 </div>
 <script>
-    var biaopan=getClass("biaopan")[0];
-    var len;
+    let biaopan=getClass("biaopan")[0];
+    let len;
     //刻度
     function drawKe(){
-        for(var i=0;i<60;i++){
-           var newDiv=document.createElement("div");
+        for(let i=0;i<60;i++){
+            let newDiv=document.createElement("div");
             i%5==0?len=16:len=8;
             newDiv.style.cssText="width:4px;height:"+len+"px;background:#000;position:absolute;"+
                    "left:50%;margin-left:-2px;"+
@@ -45,7 +45,7 @@
     drawKe();
     //表针
     function drawZhen(zw,zh,zc,zclass){
-        var newDiv=document.createElement("div");
+        let newDiv=document.createElement("div");
         newDiv.style.cssText="width:"+zw+"px;height:"+zh+"px;background:"+zc+";position:absolute;left:50%;"+
                "margin-left:-"+(zw/2)+"px;bottom:50%;transform-origin:50% 100%;";
         biaopan.appendChild(newDiv);
@@ -56,16 +56,16 @@
     drawZhen(2,120,"red","mz");
 
     //当前
-    var sz=getClass("sz")[0];
-    var fz=getClass("fz")[0];
-    var mz=getClass("mz")[0];
+    let sz=getClass("sz")[0];
+    let fz=getClass("fz")[0];
+    let mz=getClass("mz")[0];
     yd();
     setInterval(yd,1000);
     function yd(){
-        var now=new Date();
-        var hours=now.getHours();//10
-        var min=now.getMinutes();
-        var sec=now.getSeconds();
+        let now=new Date();
+        let hours=now.getHours();//10
+        let min=now.getMinutes();
+        let sec=now.getSeconds();
         mz.style.transform="rotate("+sec*6+"deg)";
         fz.style.transform="rotate("+min*6+"deg)";
         sz.style.transform="rotate("+(hours+min/60)*30+"deg)";

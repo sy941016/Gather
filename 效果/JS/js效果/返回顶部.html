@@ -26,9 +26,9 @@
 </body>
 <script>
     window.onscroll=function(){
-        var box=getClass("box")[0];
-        var obj=document.documentElement.scrollTop!=0?document.documentElement:document.body;
-        var top=obj.scrollTop;
+        let box=getClass("box")[0];
+        let obj=document.documentElement.scrollTop!=0?document.documentElement:document.body;
+        let top=obj.scrollTop;
         if(top>=800){
             box.style.display="block";
         }

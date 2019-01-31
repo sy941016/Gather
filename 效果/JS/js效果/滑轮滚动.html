@@ -7,21 +7,24 @@
     <script src="js/animate.js"></script>
 </head>
 <style>
-    body,ul,li{
-        margin:0;
-        padding:0;
+    body, ul, li {
+        margin: 0;
+        padding: 0;
         list-style: none;
     }
-    body{
+
+    body {
         width: 100%;
         height: 100%;
         overflow: hidden;
     }
-    .bigbox{
+
+    .bigbox {
         width: 100%;
         height: 100%;
     }
-    .box{
+
+    .box {
         width: 100%;
         height: 100%;
         text-align: center;
@@ -29,104 +32,112 @@
         font-size: 64px;
         font-weight: bolder;
     }
-    .one{
+
+    .one {
         background: red;
     }
-    .two{
+
+    .two {
         background: green;
     }
-    .three{
+
+    .three {
         background: yellow;
     }
-    .four{
+
+    .four {
         background: skyblue;
     }
-    .five{
+
+    .five {
         background: purple;
     }
-    .btnbox{
+
+    .btnbox {
         width: 80px;
         height: 250px;
         position: fixed;
-        top:50%;
-        left:10px;
-        border:1px solid #000;
+        top: 50%;
+        left: 10px;
+        border: 1px solid #000;
     }
-    .btnbox>li{
-        width:100%;
-        height:50px;
-        border-bottom:1px solid #000;
-        box-sizing:border-box;
+
+    .btnbox > li {
+        width: 100%;
+        height: 50px;
+        border-bottom: 1px solid #000;
+        box-sizing: border-box;
         text-align: center;
         line-height: 50px;
         font-size: 8px;
         cursor: pointer;
     }
-    .btnbox>li:last-child{
-        border-bottom:0;
+
+    .btnbox > li:last-child {
+        border-bottom: 0;
     }
 </style>
 <body>
-  <div class="bigbox">
-      <div class="box one">1</div>
-      <div class="box two">2</div>
-      <div class="box three">3</div>
-      <div class="box four">4</div>
-      <div class="box five">5</div>
-  </div>
-  <ul class="btnbox">
-      <li class="btn">1</li>
-      <li class="btn">2</li>
-      <li class="btn">3</li>
-      <li class="btn">4</li>
-      <li class="btn">5</li>
-  </ul>
+<div class="bigbox">
+    <div class="box one">1</div>
+    <div class="box two">2</div>
+    <div class="box three">3</div>
+    <div class="box four">4</div>
+    <div class="box five">5</div>
+</div>
+<ul class="btnbox">
+    <li class="btn">1</li>
+    <li class="btn">2</li>
+    <li class="btn">3</li>
+    <li class="btn">4</li>
+    <li class="btn">5</li>
+</ul>
 </body>
 <script>
-    var box=getClass("box");
-    var bigBox=getClass("bigbox")[0];
-    var btn=getClass("btn");
-    var flag=true;
-    var flag1=false;
-    var arr=[];
-    var num=0;
-    var Height=document.documentElement.clientHeight;
-    bigBox.style.height=Height*5+"px";
-    for(var i=0;i<box.length;i++){
-        box[i].style.height=Height+"px";
+    let box = getClass("box");
+    let bigBox = getClass("bigbox")[0];
+    let btn = getClass("btn");
+    let flag = true;
+    let flag1 = false;
+    let arr = [];
+    let num = 0;
+    let Height = document.documentElement.clientHeight;
+    bigBox.style.height = Height * 5 + "px";
+    for (let i = 0; i < box.length; i++) {
+        box[i].style.height = Height + "px";
         arr.push(box[i].offsetTop)
     }
-    mouseWheel(bigBox,function(){
-        if(flag1){
-            flag1=false;
+    mouseWheel(bigBox, function () {
+        if (flag1) {
+            flag1 = false;
             num--;
-            if(num==-1){
-                num=0;
+            if (num == -1) {
+                num = 0;
             }
-            animate(bigBox,{marginTop:-arr[num]},500,function(){
-                flag1=true;
-                flag=true;
+            animate(bigBox, {marginTop: -arr[num]}, 500, function () {
+                flag1 = true;
+                flag = true;
             })
         }
-    },function(){
-        if(flag){
-            flag=false;
+    }, function () {
+        if (flag) {
+            flag = false;
             num++;
-            if(num>=box.length){
-                num=box.length-1;
+            if (num >= box.length) {
+                num = box.length - 1;
             }
-            animate(bigBox,{marginTop:-arr[num]},500,function(){
-                flag=true;
-                flag1=true;
+            animate(bigBox, {marginTop: -arr[num]}, 500, function () {
+                flag = true;
+                flag1 = true;
             })
         }
     });
-    for(var j=0;j<btn.length;j++){
-        btn[j].index=j;
-        btn[j].onclick=function(){
-            var numl=this.index;
-            animate(bigBox,{marginTop:-arr[this.index]},function(){
-                num=numl;
+    for (let j = 0; j < btn.length; j++) {
+        btn[j].index = j;
+        btn[j].onclick = function () {
+            var numl = this.index;
+            animate(bigBox, {marginTop: -arr[this.index]}, function () {
+                num = numl;
             })
         }
     }

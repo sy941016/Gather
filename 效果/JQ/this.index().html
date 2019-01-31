@@ -18,21 +18,22 @@
       width: 100%;
       height:20%;
       border-bottom:1px solid red;
+      line-height: 50px;
     }
   </style>
   <body>
   <ul>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
   </ul>
   </body>
 <script>
-  var json_data=["aa","bb","cc","dd","ee"];
+  let data=["1","2","3","4","5"];
    $("ul>li").click(function(){
-       alert(json_data[$(this).index()])
+       alert(data[$(this).index()])
    })
 </script>
 </html>
