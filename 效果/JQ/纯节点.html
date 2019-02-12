@@ -48,6 +48,7 @@
                     if(num=0){
                         num++
                     }
+                    //$(selector).animate(styles,speed,easing,callback)   speed,easing,callback可选
                     box.animate({marginLeft:-500},1000,function(){
                         $(".box-inner").first().appendTo(box);
                         $(".box").css({marginLeft:0});
