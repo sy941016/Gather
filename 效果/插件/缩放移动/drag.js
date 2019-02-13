@@ -1,7 +1,3 @@
-/**
- * author levi
- * url http://levi.cg.am
- */
 $(function() {
 	$(document).mousemove(function(e) {
 		if (!!this.move) {

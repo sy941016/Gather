@@ -2,42 +2,42 @@
 <html>
 
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>日期选择</title>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/daterangepicker.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>日期选择</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/daterangepicker.css">
 </head>
 <body>
 <div class="form-group">
-		<div class="input-group">
-			<button type="button" class="btn btn-default pull-left" id="daterange-btn">
+    <div class="input-group">
+        <button type="button" class="btn btn-default pull-left" id="daterange-btn">
 				<span>
 				  <i class="fa fa-calendar"></i> 日期选择
 				</span>
-				<i class="fa fa-caret-down"></i>
-			  </button>
-		</div>
+            <i class="fa fa-caret-down"></i>
+        </button>
+    </div>
 </div>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/moment.js"></script>
 <script type="text/javascript" src="js/daterangepicker.js"></script>
 <script type="text/javascript">
-	$('#daterange-btn').daterangepicker({
-			ranges: {
-				'今天': [moment(), moment()],
-				'本周': [moment().startOf('week'), moment().endOf('week')],
-				'本月': [moment().startOf('month'), moment().endOf('month')],
-				'今年': [moment().startOf('year'), moment().endOf('year')]
-			},
-			startDate: moment(),
-			endDate: moment().endOf('month')
-		},
-		function(start, end) {
-			$('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-		}
-	);
+    $('#daterange-btn').daterangepicker({
+            ranges: {
+                '今天': [moment(), moment()],
+                '本周': [moment().startOf('week'), moment().endOf('week')],
+                '本月': [moment().startOf('month'), moment().endOf('month')],
+                '今年': [moment().startOf('year'), moment().endOf('year')]
+            },
+            startDate: moment(),
+            endDate: moment().endOf('month')
+        },
+        function (start, end) {
+            $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        }
+    );
 </script>
 </body>
 </html>
