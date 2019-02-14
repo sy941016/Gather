@@ -9,6 +9,7 @@
     width: 740px;
     height: 350px;
     position: absolute;
+    cursor: pointer;
 }
 .box>img{
     width: 100%;
