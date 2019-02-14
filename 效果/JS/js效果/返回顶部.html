@@ -7,14 +7,15 @@
     <script src="js/animate.js"></script>
 </head>
 <style>
-    body{
+    body {
         margin: 0;
         height: 3000px;
     }
-    .box{
+
+    .box {
         width: 100px;
         height: 100px;
-        position:fixed;
+        position: fixed;
         bottom: 0;
         right: 0;
         background: red;
@@ -25,18 +26,18 @@
 <div class="box"></div>
 </body>
 <script>
-    window.onscroll=function(){
-        let box=getClass("box")[0];
-        let obj=document.documentElement.scrollTop!=0?document.documentElement:document.body;
-        let top=obj.scrollTop;
-        if(top>=800){
-            box.style.display="block";
+    window.onscroll = function () {
+        let box = getClass("box")[0];
+        let obj = document.documentElement.scrollTop != 0 ? document.documentElement : document.body;
+        let top = obj.scrollTop;
+        if (top >= 800) {
+            box.style.display = "block";
         }
-        if(top<800){
-            box.style.display="none";
+        if (top < 800) {
+            box.style.display = "none";
         }
-        box.onclick= function () {
-            animate(obj,{scrollTop:0},500)
+        box.onclick = function () {
+            animate(obj, {scrollTop: 0}, 500)
         }
     }
 </script>

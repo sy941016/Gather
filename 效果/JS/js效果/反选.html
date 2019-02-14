@@ -4,38 +4,45 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
+<style>
+    form input:nth-child(5),form input:nth-child(6),form input:nth-child(7){
+        display: block;
+        margin-top:15px;
+    }
+</style>
 <body>
-<form action=""name="myform">
+<form action="" name="myform">
     <input type="checkbox" value="basketball" name="ball">篮球
     <input type="checkbox" value="baseball" name="ball">棒球
     <input type="checkbox" value="tennis" name="ball">乒乓球
     <input type="checkbox" value="football" name="ball">足球
+
     <input type="button" name="All" value="全选">
     <input type="button" name="None" value="反选">
     <input type="button" name="NotAll" value="全不选">
 </form>
 </body>
 <script>
-    var aa=document.myform.ball;
-    var bb=document.myform.All;
-    var cc=document.myform.None;
-    var dd=document.myform.NotAll;
-    bb.onclick=function(){
-        for(var i=0;i<aa.length;i++){
-            aa[i].checked="checked";
+    let aa = document.myform.ball;
+    let bb = document.myform.All;
+    let cc = document.myform.None;
+    let dd = document.myform.NotAll;
+    bb.onclick = function () {
+        for (var i = 0; i < aa.length; i++) {
+            aa[i].checked = "checked";
         }
     };
-    dd.onclick=function(){
-        for(var i=0;i<aa.length;i++){
-            aa[i].checked=false;
+    dd.onclick = function () {
+        for (var i = 0; i < aa.length; i++) {
+            aa[i].checked = false;
         }
     };
-    cc.onclick=function(){
-        for(var i=0;i<aa.length;i++){
-            if(aa[i].checked==false){
-                aa[i].checked=true;
-            }else{
-                aa[i].checked=false;
+    cc.onclick = function () {
+        for (var i = 0; i < aa.length; i++) {
+            if (aa[i].checked == false) {
+                aa[i].checked = true;
+            } else {
+                aa[i].checked = false;
             }
         }
     }
