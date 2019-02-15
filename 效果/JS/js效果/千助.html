@@ -6,120 +6,154 @@
     <script src="js/function.js"></script>
 </head>
 <style>
-    body,ul,li{
+    body, ul, li {
         margin: 0;
         padding: 0;
         list-style: none;
     }
-    .list{
+
+    .list {
         width: 1150px;
         height: 300px;
         /*border:1px solid #ccc;*/
         margin: 100px auto;
         position: relative;
     }
-    li{
+
+    li {
         width: 230px;
         height: 150px;
         float: left;
-        transition:  all 0.5s;
+        transition: all 0.5s;
     }
-    ul.list>li:nth-of-type(1){
+
+    ul.list > li:nth-of-type(1) {
         background-image: url(img/clients.png);
         background-position: 0 0;
     }
-    ul.list>li:nth-of-type(2){
+
+    ul.list > li:nth-of-type(2) {
         background-image: url(img/clients.png);
         background-position: -230px 0;
     }
-    ul.list>li:nth-of-type(3){
+
+    ul.list > li:nth-of-type(3) {
         background-image: url(img/clients.png);
         background-position: -460px 0;
     }
-    ul.list>li:nth-of-type(4){
+
+    ul.list > li:nth-of-type(4) {
         background-image: url(img/clients.png);
         background-position: -690px 0;
     }
-    ul.list>li:nth-of-type(5){
+
+    ul.list > li:nth-of-type(5) {
         background-image: url(img/clients.png);
         background-position: -920px 0;
     }
-    ul.list>li:nth-of-type(6){
+
+    ul.list > li:nth-of-type(6) {
         background-image: url(img/clients.png);
         background-position: -1150px 0;
     }
 
-    ul.list>li:nth-of-type(7){
+    ul.list > li:nth-of-type(7) {
         background-image: url(img/clients.png);
         background-position: -1380px 0;
     }
-    ul.list>li:nth-of-type(8){
+
+    ul.list > li:nth-of-type(8) {
         background-image: url(img/clients.png);
         background-position: -1610px 0;
     }
-    ul.list>li:nth-of-type(9){
+
+    ul.list > li:nth-of-type(9) {
         background-image: url(img/clients.png);
         background-position: -1840px 0;
     }
-    ul.list>li:nth-of-type(10){
+
+    ul.list > li:nth-of-type(10) {
         background-image: url(img/clients.png);
         background-position: -2070px 0;
     }
-    ul.list>li:hover{
-        background-position-y:-150px;
+
+    ul.list > li:hover {
+        background-position-y: -150px;
     }
-    .box{
+
+    .box {
         position: absolute;
         z-index: 1;
         width: 230px;
         height: 150px;
     }
-    .mask{
+
+    .mask {
         width: 230px;
         height: 150px;
-        background-color: rgba(0,0,0,0.5);
+        background-color: rgba(0, 0, 0, 0.5);
         position: absolute;
-        transition:  all 0.5s;
+        transition: all 0.5s;
         z-index: 0;
     }
 </style>
 <body>
-    <ul class="list">
-        <li><div class="box"></div></li>
-        <li><div class="box"></div></li>
-        <li><div class="box"></div></li>
-        <li><div class="box"></div></li>
-        <li><div class="box"></div></li>
-        <li><div class="box"></div></li>
-        <li><div class="box"></div></li>
-        <li><div class="box"></div></li>
-        <li><div class="box"></div></li>
-        <li><div class="box"></div></li>
-    </ul>
+<ul class="list">
+    <li>
+        <div class="box"></div>
+    </li>
+    <li>
+        <div class="box"></div>
+    </li>
+    <li>
+        <div class="box"></div>
+    </li>
+    <li>
+        <div class="box"></div>
+    </li>
+    <li>
+        <div class="box"></div>
+    </li>
+    <li>
+        <div class="box"></div>
+    </li>
+    <li>
+        <div class="box"></div>
+    </li>
+    <li>
+        <div class="box"></div>
+    </li>
+    <li>
+        <div class="box"></div>
+    </li>
+    <li>
+        <div class="box"></div>
+    </li>
+</ul>
 </body>
 <script>
-    var ul=getClass("list")[0];
-    var mask;
-    var Obj;
-    ul.onmouseover= function (e) {  //onmoueenter
-        if(!Obj){
-            mask=document.createElement("div");
-            mask.className="mask";
+    let ul = getClass("list")[0];
+    let mask;
+    let Obj;
+    ul.onmouseover = function (e) {
+        if (!Obj) {
+            mask = document.createElement("div");
+            mask.className = "mask";
             ul.appendChild(mask);
         }
-        var ev=e||window.event;
-        var nowPosition=ev.target||ev.srcElement;
-        Obj=nowPosition;
-        if(nowPosition.parentElement.nodeName.toLowerCase()==="li"){
-            var Left=nowPosition.parentElement.offsetLeft;
-            var Top=nowPosition.parentElement.offsetTop;
-            mask.style.left=Left+"px";
-            mask.style.top=Top+"px";
+        let ev = e || window.event;
+        let nowPosition = ev.target || ev.srcElement;
+        Obj = nowPosition;
+        if (nowPosition.parentElement.nodeName.toLowerCase() === "li") {
+            let Left = nowPosition.parentElement.offsetLeft;
+            let Top = nowPosition.parentElement.offsetTop;
+            mask.style.left = Left + "px";
+            mask.style.top = Top + "px";
         }
     };
-    ul.onmouseleave= function () {
+    ul.onmouseleave = function () {
         mask.remove();
-        Obj="";
+        Obj = "";
     }
 </script>
 </html>
