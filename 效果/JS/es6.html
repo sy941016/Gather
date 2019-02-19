@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <title id="title">ES6</title>
+    <title id="title"></title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body>
@@ -15,7 +14,7 @@
     })
     $('.click').unbind()
 
-    //class 继承
+//class 继承
     class Student {
         constructor(name) {
             this.name = name;
@@ -25,6 +24,7 @@
             alert('Hello,' + this.name + '!');
         }
     }
+
     let xiaoming = new Student('小明')
     xiaoming.hello()
 
@@ -38,6 +38,7 @@
             alert('I am at grade ' + this.grade);
         }
     }
+
     //继承了谁?
     console.log(Object.getPrototypeOf(PrimaryStudent))
     //实类化
@@ -50,7 +51,7 @@
         console.log(index)
     })
 
-    //解构赋值
+//解构赋值
     const [a, b, c, d, e] = 'hello';
     console.log(a);
 
@@ -80,7 +81,7 @@
         console.log(key + " is " + value);
     }
 
-    //symbol
+//symbol
     let mySymbol = Symbol();
     // 第一种写法
     let ss = {};
@@ -92,10 +93,9 @@
     // 第三种写法
     let ssss = {};
     Object.defineProperty(ssss, mySymbol, {value: 'Hello!'});
-
     console.log(ssss[mySymbol]); //hello
 
-    //promise
+//promise
     //做饭
     function cook() {
         console.log('开始做饭。');
@@ -143,29 +143,21 @@
             console.log(data);
         });
 
-    //generator函数
+//generator函数
     function* gen() {
         yield  123 + 456;
     }
+
     var gen = gen();
     console.log(gen.next());
 
-    //indexOf
+//indexOf
     let a1 = 'abcd';
     let a2 = [1, 2, 3];
     console.log(a2.lastIndexOf(3)) //2
     console.log(a1.indexOf('a'))  //0
 
-    //取交集
-    let aaa = [1, 2, 3, 4, 5]
-    let bbb = [2, 3, 8, 9, 7]
-    //去重
-    aaa = new Set(aaa)
-    bbb = new Set(bbb)
-    let arr3 = Array.from(new Set([...aaa].filter(x => bbb.has(x))))
-    console.log(arr3) // 2,3
-
-    //本地接口调用
+//node接口调用
     $.ajax({
         type: 'get',
         url: 'http://localhost:3002/api',
