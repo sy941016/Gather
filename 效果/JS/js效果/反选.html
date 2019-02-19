@@ -27,24 +27,27 @@
     let bb = document.myform.All;
     let cc = document.myform.None;
     let dd = document.myform.NotAll;
+    //全選
     bb.onclick = function () {
-        for (var i = 0; i < aa.length; i++) {
-            aa[i].checked = "checked";
+        for (let i = 0; i < aa.length; i++) {
+            aa[i].checked = true;
         }
     };
-    dd.onclick = function () {
-        for (var i = 0; i < aa.length; i++) {
-            aa[i].checked = false;
-        }
-    };
+    //反選true
     cc.onclick = function () {
-        for (var i = 0; i < aa.length; i++) {
+        for (let i = 0; i < aa.length; i++) {
             if (aa[i].checked == false) {
                 aa[i].checked = true;
             } else {
                 aa[i].checked = false;
             }
         }
-    }
+    };
+    //全不選
+    dd.onclick = function () {
+        for (let i = 0; i < aa.length; i++) {
+            aa[i].checked = false;
+        }
+    };
 </script>
 </html>
