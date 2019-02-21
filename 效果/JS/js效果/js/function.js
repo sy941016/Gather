@@ -8,8 +8,7 @@
  * 7.兼容的获取下一个兄弟元素的元素节点
  * 8.兼容的获取上一个兄弟元素的元素节点
  * 9.兼容的事件绑定函数
- * 10.插入某个元素之后
- * 11.兼容滚轮下拉函数
+ * 10.兼容滚轮下拉函数
  **/
 //1.
 function getClass(a) {
@@ -167,17 +166,6 @@ function addEvent(obj, types, fn) {
 }
 
 //10.
-function insertAfter(newObj, obj) {
-    var parent = obj.parentNode;
-    var next = getNext(obj);
-    if (!next) {
-        parent.appendChild(newObj);
-    } else {
-        parent.insertBefore(newObj, next);
-    }
-}
-
-//11.
 function mouseWheel(obj, upfun, downfun) {
     function wheel(e) {
         let ev = e || window.event;
