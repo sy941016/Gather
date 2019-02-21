@@ -149,10 +149,12 @@
                 Spot(num);
             }
         }
+
         //默认的状态
         function autoPlay() {
             move(true);
         }
+
         //hover效果
         hov.hover(function () {
             clearInterval(t);
@@ -189,6 +191,7 @@
             }
             num = Index;
         });
+
         //处理spot颜色
         function Spot(num) {
             spot.eq(num).css({"background": "orange"}).siblings().css({"background": "#ccc"});
