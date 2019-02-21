@@ -134,6 +134,7 @@
     let ul = getClass("list")[0];
     let mask;
     let Obj;
+    //鼠标移入时的状态
     ul.onmouseover = function (e) {
         if (!Obj) {
             mask = document.createElement("div");
@@ -142,14 +143,18 @@
         }
         let ev = e || window.event;
         let nowPosition = ev.target || ev.srcElement;
-        Obj = nowPosition;
+
+        Obj = nowPosition;   //点击的为box
+        //父节点的nodeNameq为LI时
         if (nowPosition.parentElement.nodeName.toLowerCase() === "li") {
             let Left = nowPosition.parentElement.offsetLeft;
             let Top = nowPosition.parentElement.offsetTop;
+            //mask的位置变化
             mask.style.left = Left + "px";
             mask.style.top = Top + "px";
         }
     };
+    //鼠标离开时的状态
     ul.onmouseleave = function () {
         mask.remove();
         Obj = "";

@@ -101,12 +101,14 @@
     let flag1 = false;
     let arr = [];
     let num = 0;
+    //元素的高度
     let Height = document.documentElement.clientHeight;
     bigBox.style.height = Height * 5 + "px";
     for (let i = 0; i < box.length; i++) {
         box[i].style.height = Height + "px";
         arr.push(box[i].offsetTop)
     }
+    //滚轮事件  function封装
     mouseWheel(bigBox, function () {
         if (flag1) {
             flag1 = false;
@@ -132,10 +134,11 @@
             })
         }
     });
+    //点击楼层跳转的处理
     for (let j = 0; j < btn.length; j++) {
         btn[j].index = j;
         btn[j].onclick = function () {
-            var numl = this.index;
+            let numl = this.index;
             animate(bigBox, {marginTop: -arr[this.index]}, function () {
                 num = numl;
             })
