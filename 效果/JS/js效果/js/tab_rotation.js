@@ -7,7 +7,6 @@ window.onload = function () {
     let t = setInterval(move, 2000);
     let num = 0;
 
-
     function move() {
         num >= box.length - 1 ? num = 0 : num++;
         for (let i = 0; i < box.length; i++) {
@@ -15,9 +14,10 @@ window.onload = function () {
                 box[j].style.zIndex = 0;
                 btn[j].style.backgroundColor = "#000";
             }
-          Btn(num)
+            Btn(num)
         }
     }
+
     //btn交互的处理函数
     for (let i = 0; i < btn.length; i++) {
         btn[i].index = i;
@@ -27,8 +27,8 @@ window.onload = function () {
                 box[j].style.zIndex = 0;
                 btn[j].style.backgroundColor = "#000";
             }
-           Btn(this.index);
-           num = this.index;
+            Btn(this.index);
+            num = this.index;
         };
     }
     //左右点击的处理函数
@@ -42,7 +42,7 @@ window.onload = function () {
         }
         move();
     };
-   //鼠标移入移出的处理函数
+    //鼠标移入移出的处理函数
     leftbtn.onmouseover = rightbtn.onmouseover = function () {
         clearTimeout(t);
     };
@@ -51,7 +51,7 @@ window.onload = function () {
     };
 
     //处理btn颜色
-    function Btn(num){
+    function Btn(num) {
         box[num].style.zIndex = 1;
         btn[num].style.backgroundColor = "orange";
     }

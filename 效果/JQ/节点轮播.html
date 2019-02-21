@@ -153,17 +153,16 @@
         function autoPlay() {
             move(true);
         }
-        //hover 效果
+        //hover效果
         hov.hover(function () {
             clearInterval(t);
         }, function () {
             t = setInterval(move, 2000);
         });
-        //右点击
+        //左右点击的处理函数
         right.click(function () {
             move(true);
         });
-        //左点击
         left.click(function () {
             move(false);
         });
