@@ -210,6 +210,7 @@
             clearTimeout(t)
             next = this.index;     //当前下标值
             let numl = next - num;
+            console.log(numl)
             if (flag) {
                 flag = false;
                 if (numl >= 0) {
@@ -240,9 +241,6 @@
                 }
                 libtn[this.index].style.backgroundColor = "orange";
             }
-        }
-        libtn[i].onmouseout = function () {
-            t = setInterval(move, 2000);
         }
     }
 </script>
