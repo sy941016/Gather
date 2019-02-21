@@ -7,20 +7,24 @@
     <script src="js/animate.js"></script>
 </head>
 <style>
-    body{margin: 0;
+    body {
+        margin: 0;
     }
-    .bigbox{
+
+    .bigbox {
         width: 500px;
         height: 300px;
-        border:10px solid #ccc;
+        border: 10px solid #ccc;
         margin: 100px auto;
         overflow: hidden;
     }
-    .innerbox{
+
+    .innerbox {
         width: 2500px;
         height: 100%;
     }
-    .box{
+
+    .box {
         float: left;
         width: 500px;
         height: 100%;
@@ -28,21 +32,26 @@
         line-height: 300px;
         font-size: 64px;
         font-weight: bolder;
-        color:#fff;
+        color: #fff;
     }
-    .one{
+
+    .one {
         background-color: red;
     }
-    .two{
+
+    .two {
         background-color: orange;
     }
-    .three{
+
+    .three {
         background-color: purple;
     }
-    .four{
+
+    .four {
         background-color: blue;
     }
-    .five{
+
+    .five {
         background-color: green;
     }
 </style>
@@ -58,33 +67,35 @@
 </div>
 </body>
 <script>
-    var innerbox=getClass("innerbox")[0];
-    var box=getClass("box");
-    var num=0;
-    var flag=true,flag1=true;
-    document.onkeydown=document.onkeyup= function (e) {
-        var ev=e||window.event;
-        if(ev.keyCode==37){
-            if(flag){
-                flag=false;
+    var innerbox = document.getElementsByClassName("innerbox")[0];
+    var box = document.getElementsByClassName("box");
+    var num = 0;
+    var flag = true, flag1 = true;
+    document.onkeydown = document.onkeyup = function (e) {
+        var ev = e || window.event;
+        if (ev.keyCode == 39) {
+            if (flag) {
+                flag = false;
                 num++;
-                if(num>=box.length){
-                    num=box.length-1;
+                if (num >= box.length) {
+                    num = box.length - 1;
                 }
-                animate(innerbox,{marginLeft:-500*num},500, function () {
-                    flag=true;flag1=true;
+                animate(innerbox, {marginLeft: -500 * num}, 500, function () {
+                    flag = true;
+                    flag1 = true;
                 })
             }
         }
-        if(ev.keyCode==39){
-            if(flag1){
-                flag1=false;
+        if (ev.keyCode == 37) {
+            if (flag1) {
+                flag1 = false;
                 num--;
-                if(num<0){
-                    num=0;
+                if (num < 0) {
+                    num = 0;
                 }
-                animate(innerbox,{marginLeft:-500*num},500, function () {
-                    flag1 = true;flag=true;
+                animate(innerbox, {marginLeft: -500 * num}, 500, function () {
+                    flag1 = true;
+                    flag = true;
                 });
             }
         }

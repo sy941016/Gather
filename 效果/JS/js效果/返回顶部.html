@@ -26,8 +26,9 @@
 <div class="box"></div>
 </body>
 <script>
+    //获取滚动距离
     window.onscroll = function () {
-        let box = getClass("box")[0];
+        let box = document.getElementsByClassName("box")[0];
         let obj = document.documentElement.scrollTop != 0 ? document.documentElement : document.body;
         let top = obj.scrollTop;
         if (top >= 800) {

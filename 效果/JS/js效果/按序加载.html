@@ -88,10 +88,9 @@
 <div class="aa"></div>
 </body>
 <script>
-    var box = getClass("box");
+    var box = document.getElementsByClassName("box");
     var img = document.getElementsByTagName("img");
     var Height = document.documentElement.clientHeight;
-    console.log(Height)
     //清除所有img的路径并且加载首屏
     for (var i = 0; i < img.length; i++) {
         img[i].Src = img[i].src;

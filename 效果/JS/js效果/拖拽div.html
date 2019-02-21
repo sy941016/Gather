@@ -8,9 +8,9 @@
 <input type="submit" value="按钮" id="btn">
 </body>
 <script>
-    var btn=document.getElementById("btn");
-    var num=0;
-    btn.onclick=function() {
+    var btn = document.getElementById("btn");
+    var num = 0;
+    btn.onclick = function () {
         if (num == 0) {
             var div = document.createElement("div");
             div.style.width = "286px";
@@ -19,16 +19,16 @@
             div.style.position = "absolute";
             div.style.top = "200px";
             div.style.left = "350px";
-            div.style.cursor="pointer";
+            div.style.cursor = "pointer";
             document.body.appendChild(div);
             var close = document.createElement("input");
             close.type = "button";
             close.value = "关闭";
             div.appendChild(close);
             document.body.appendChild(div);
-            close.onclick=function(){
+            close.onclick = function () {
                 document.body.removeChild(div);
-                num=0;
+                num = 0;
             };
             //鼠标按下
             div.onmousedown = function (e) {
@@ -38,6 +38,7 @@
                 var oy = ev.offsetY || ev.layerY;
                 this.onmousemove = move;   //鼠标移动
                 console.log(e)
+
                 function move(e) {
                     var ev = e || window.event;
                     //鼠标相对于浏览器窗口可视区域的X，Y坐标（窗口坐标），可视区域不包括工具栏和滚动条

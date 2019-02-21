@@ -6,27 +6,31 @@
     <script src="js/function.js"></script>
 </head>
 <style>
-    body,ul,li{
+    body, ul, li {
         margin: 0;
         padding: 0;
-        list-style:none
+        list-style: none
     }
-    .bigbox{
+
+    .bigbox {
         width: 800px;
         margin: auto;
     }
-    .box{
-        background-color:green;
+
+    .box {
+        background-color: green;
         padding-left: 30px;
         color: #fff;
         font-size: 24px;
     }
-    .bigbox>li:last-child>ul{
-        background-color:skyblue;
+
+    .bigbox > li:last-child > ul {
+        background-color: skyblue;
         color: #000;
         font-size: 24px;
     }
-    .bigbox>li:last-child{
+
+    .bigbox > li:last-child {
         display: none;
     }
 </style>
@@ -34,17 +38,17 @@
 <!--ul>li.list{$$}*3>ul>li{$$}*3-->
 <ul class="bigbox">
     <li class="box">01</li>
-    <li >
+    <li>
         <ul>
             <li>01</li>
             <li>02</li>
             <li>03</li>
         </ul>
-        </li>
+    </li>
 </ul>
 <ul class="bigbox">
     <li class="box">02</li>
-    <li >
+    <li>
         <ul>
             <li>01</li>
             <li>02</li>
@@ -54,7 +58,7 @@
 </ul>
 <ul class="bigbox">
     <li class="box">03</li>
-    <li >
+    <li>
         <ul>
             <li>01</li>
             <li>02</li>
@@ -64,40 +68,40 @@
 </ul>
 </body>
 <script>
-//    var box=getClass("box");
-//    var num=0;
-//    var flag=true;
-//    for(var i=0;i<box.length;i++){
-//        box[i].index=i;
-//        box[i].onclick=function(){
-//            if(num==this.index){
-//                if(flag){
-//                    getNextSibling(box[this.index]).style.display="block";
-//                    flag=false;
-//                }else{
-//                    getNextSibling(box[this.index]).style.display="none";
-//                    flag=true;
-//                }
-//            }else{
-//                flag=false;
-//                getNextSibling(box[this.index]).style.display="block";
-//                getNextSibling(box[num]).style.display="none";
-//            }
-//            num=this.index;
-//        }
-//    }
+    // var box = document.getElementsByClassName("box");
+    // var num = 0;
+    // var flag = true;
+    // for (var i = 0; i < box.length; i++) {
+    //     box[i].index = i;
+    //     box[i].onclick = function () {
+    //         if (num == this.index) {
+    //             if (flag) {
+    //                 getNextSibling(box[this.index]).style.display = "block";
+    //                 flag = false;
+    //             } else {
+    //                 getNextSibling(box[this.index]).style.display = "none";
+    //                 flag = true;
+    //             }
+    //         } else {
+    //             flag = false;
+    //             getNextSibling(box[this.index]).style.display = "block";
+    //             getNextSibling(box[num]).style.display = "none";
+    //         }
+    //         num = this.index;
+    //     }
+    // }
     //第二种方法
-    var box=getClass("box");
-    for(var i=0;i<box.length;i++){
-        box[i].index=i;
-        box[i].onclick=function(){
-            if(getNextSibling(box[this.index]).style.display=="block"){
-                getNextSibling(box[this.index]).style.display="none";
-            }else{
-                for(j=0;j<box.length;j++){
-                    getNextSibling(box[j]).style.display="none";
+    var box = document.getElementsByClassName("box");
+    for (var i = 0; i < box.length; i++) {
+        box[i].index = i;
+        box[i].onclick = function () {
+            if (getNextSibling(box[this.index]).style.display == "block") {
+                getNextSibling(box[this.index]).style.display = "none";
+            } else {
+                for (j = 0; j < box.length; j++) {
+                    getNextSibling(box[j]).style.display = "none";
                 }
-                getNextSibling(box[this.index]).style.display="block";
+                getNextSibling(box[this.index]).style.display = "block";
             }
         }
     }

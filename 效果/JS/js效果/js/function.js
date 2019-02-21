@@ -1,5 +1,4 @@
 /**                               函数库
- * 1.兼容的通过类名获取元素
  * 2.兼容的获取或修改文本内容
  * 3.兼容获取元素的样式 obj 指定获取样式的元素 arr 获取指定的元素
  * 4.兼容地获取父元素中所有的子元素中的元素节点
@@ -10,34 +9,6 @@
  * 9.兼容的事件绑定函数
  * 10.兼容滚轮下拉函数
  **/
-//1.
-function getClass(a) {
-    if (document.getElementsByClassName) {
-        return document.getElementsByClassName(a);
-    } else {
-        var tags = document.getElementsByTagName("*");
-        var arr = [];
-        //var num=0;
-        for (var i = 0; i < tags.length; i++) {
-            if (check(tags[i].className, a)) {//
-                //arr[num]=tags[i];
-                //num++;
-                arr.push(tags[i])
-            }
-        }
-        return arr;
-    }
-}
-
-function check(tagClassName, a) {
-    var arr = tagClassName.split(" ");
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i] == a) {
-            return true;
-        }
-    }
-    return false;
-}
 
 //2.
 function getText(obj, val) {

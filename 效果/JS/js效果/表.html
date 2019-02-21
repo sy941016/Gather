@@ -29,7 +29,7 @@
     <div class="biaopan"></div>
 </div>
 <script>
-    let biaopan=getClass("biaopan")[0];
+    let biaopan=document.getElementsByClassName("biaopan")[0];
     let len;
     //刻度
     function drawKe(){
@@ -56,9 +56,9 @@
     drawZhen(2,120,"red","mz");
 
     //当前
-    let sz=getClass("sz")[0];
-    let fz=getClass("fz")[0];
-    let mz=getClass("mz")[0];
+    let sz=document.getElementsByClassName("sz")[0];
+    let fz=document.getElementsByClassName("fz")[0];
+    let mz=document.getElementsByClassName("mz")[0];
     yd();
     setInterval(yd,1000);
     function yd(){
