@@ -137,56 +137,22 @@
 </body>
 <script>
     let innerbox = document.getElementsByClassName('innerbox')[0];
-    let leftbtn =  document.getElementsByClassName("leftbtn")[0];
-    let rightbtn =  document.getElementsByClassName("rightbtn")[0];
+    let leftbtn = document.getElementsByClassName("leftbtn")[0];
+    let rightbtn = document.getElementsByClassName("rightbtn")[0];
     let libtn = document.getElementsByClassName("libtn");
-    let t = setInterval(move, 2000);
-    let flag = true;   //move函数开关
-    let flag1 = true;
+    let t = setInterval(autoPlay, 2000);
     let num = 0;
-    let next;
 
-    function move() {
+    function move(flag) {
         if (flag) {
-            flag = false;
-            num++;
-            if (num >= libtn.length) {
-                num = 0
-            }
-            //处理libtn的颜色
-            for (let i = 0; i < libtn.length; i++) {
-                for (let index of libtn) {
-                    index.style.background = '#ccc'
-                }
-                libtn[num].style.background = 'orange'
-            }
+            num >= libtn.length - 1 ? num = 0 : num++;
             animate(innerbox, {marginLeft: -600}, 500, function () {
                 let first = getFirstChild(this);
                 this.appendChild(first);
                 this.style.marginLeft = 0;
-                flag = true;
             })
-        }
-    }
-    // 鼠标移入移出的处理函数
-    leftbtn.onmouseover = rightbtn.onmouseover = innerbox.onmouseover = function () {
-        clearTimeout(t)
-    };
-    leftbtn.onmouseout = rightbtn.onmouseout = innerbox.onmouseout = function () {
-        t = setInterval(move, 2000);
-    };
-    //点击
-    rightbtn.onclick = function () {
-        move()
-    };
-    leftbtn.onclick = function () {
-        if (flag1) {
-            flag1 = false;
-            flag = true;
-            num--;
-            if (num == -1) {
-                num =libtn.length - 1
-            }
+        } else {
+            num == 0 ? num = libtn.length - 1 : num--;
             let first = getFirstChild(innerbox);//当前innerboxd的第一个box
             let last = getLastChild(innerbox); //当前innerboxd的最后一个box
             innerbox.insertBefore(last, first);
@@ -198,49 +164,67 @@
                 }
                 libtn[num].style.background = 'orange'
             }
-            animate(innerbox, {marginLeft: 0}, 500, function () {
-                flag1 = true;
-            })
+            animate(innerbox, {marginLeft: 0}, 500)
         }
+        Libtn(num)
     }
-    //libtn
+
+    // 鼠标移入移出的处理函数
+    leftbtn.onmouseover = rightbtn.onmouseover = innerbox.onmouseover = function () {
+        clearTimeout(t)
+    };
+    leftbtn.onmouseout = rightbtn.onmouseout = innerbox.onmouseout = function () {
+        t = setInterval(autoPlay, 2000);
+    };
+
+    //默认的状态
+    function autoPlay() {
+        move(true);
+    }
+
+    //左右点击的处理函数
+    rightbtn.onclick = function () {
+        move(true)
+    };
+    leftbtn.onclick = function () {
+        move(false)
+    };
+    //libtn交互的处理函数
     for (let i = 0; i < libtn.length; i++) {
         libtn[i].index = i;
         libtn[i].onmouseover = function () {
+            let Index = this.index;     //当前下标值
             clearTimeout(t)
-            next = this.index;     //当前下标值
-            let numl = next - num;
-            console.log(numl)
-            if (flag) {
-                flag = false;
-                if (numl >= 0) {
-                    animate(innerbox, {marginLeft: numl * (-600)}, 300, function () {
-                        for (let i = 0; i < numl; i++) {
-                            let first = getFirstChild(this);
-                            this.appendChild(first);
-                        }
-                        this.style.marginLeft = 0;
-                        num = next;
-                        flag = true;
-                    })
-                } else {
-                    flag = false;
-                    innerbox.style.marginLeft = numl * 600 + "px";
-                    for (let i = 0; i < -numl; i++) {
-                        let first = getFirstChild(innerbox);
-                        let last = getLastChild(innerbox);
-                        innerbox.insertBefore(last, first);
+            let numl = Index - num;
+            if (numl >= 0) {
+                animate(innerbox, {marginLeft: numl * (-600)}, 300, function () {
+                    for (let i = 0; i < numl; i++) {
+                        let first = getFirstChild(this);
+                        this.appendChild(first);
                     }
-                    animate(innerbox, {marginLeft: 0}, 300, function () {
-                        num = next;
-                        flag = true;
-                    })
+                    this.style.marginLeft = 0;
+                })
+            } else {
+                innerbox.style.marginLeft = numl * 600 + "px";
+                for (let i = 0; i < -numl; i++) {
+                    let first = getFirstChild(innerbox);
+                    let last = getLastChild(innerbox);
+                    innerbox.insertBefore(last, first);
                 }
-                for (let j = 0; j < libtn.length; j++) {
-                    libtn[j].style.backgroundColor = "#ccc";
-                }
-                libtn[this.index].style.backgroundColor = "orange";
+                animate(innerbox, {marginLeft: 0}, 300)
             }
+            Libtn(Index)
+            num = Index;
+        }
+    }
+
+    //处理libtn的颜色
+    function Libtn(num) {
+        for (let i = 0; i < libtn.length; i++) {
+            for (let index of libtn) {
+                index.style.background = '#ccc'
+            }
+            libtn[num].style.background = 'orange'
         }
     }
 </script>
