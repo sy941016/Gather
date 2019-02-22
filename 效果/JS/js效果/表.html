@@ -6,15 +6,16 @@
     <script src="js/function.js"></script>
 </head>
 <style>
-    .wai{
+    .wai {
         width: 400px;
         height: 400px;
         border-radius: 50%;
         background: #b2dba1;
-        margin:80px auto;
+        margin: 80px auto;
         overflow: hidden;
     }
-    .biaopan{
+
+    .biaopan {
         width: 380px;
         height: 380px;
         border-radius: 50%;
@@ -29,46 +30,51 @@
     <div class="biaopan"></div>
 </div>
 <script>
-    let biaopan=document.getElementsByClassName("biaopan")[0];
+    let biaopan = document.getElementsByClassName("biaopan")[0];
     let len;
+
     //刻度
-    function drawKe(){
-        for(let i=0;i<60;i++){
-            let newDiv=document.createElement("div");
-            i%5==0?len=16:len=8;
-            newDiv.style.cssText="width:4px;height:"+len+"px;background:#000;position:absolute;"+
-                   "left:50%;margin-left:-2px;"+
-                    "top:0;transform:rotate("+i*6+"deg);transform-origin:50% 190px;";
+    function drawKe() {
+        for (let i = 0; i < 60; i++) {
+            let newDiv = document.createElement("div");
+            i % 5 == 0 ? len = 16 : len = 8;
+            newDiv.style.cssText = "width:4px;height:" + len + "px;background:#000;position:absolute;" +
+                "left:50%;margin-left:-2px;" +
+                "top:0;transform:rotate(" + i * 6 + "deg);transform-origin:50% 190px;";
             biaopan.appendChild(newDiv);
         }
     }
+
     drawKe();
+
     //表针
-    function drawZhen(zw,zh,zc,zclass){
-        let newDiv=document.createElement("div");
-        newDiv.style.cssText="width:"+zw+"px;height:"+zh+"px;background:"+zc+";position:absolute;left:50%;"+
-               "margin-left:-"+(zw/2)+"px;bottom:50%;transform-origin:50% 100%;";
+    function drawZhen(zw, zh, zc, zclass) {
+        let newDiv = document.createElement("div");
+        newDiv.style.cssText = "width:" + zw + "px;height:" + zh + "px;background:" + zc + ";position:absolute;left:50%;" +
+            "margin-left:-" + (zw / 2) + "px;bottom:50%;transform-origin:50% 100%;";
         biaopan.appendChild(newDiv);
-        newDiv.className=zclass;
+        newDiv.className = zclass;
     }
-    drawZhen(8,60,"#000","sz");
-    drawZhen(4,80,"gray","fz");
-    drawZhen(2,120,"red","mz");
+
+    drawZhen(8, 60, "#000", "sz");
+    drawZhen(4, 80, "gray", "fz");
+    drawZhen(2, 120, "red", "mz");
 
     //当前
-    let sz=document.getElementsByClassName("sz")[0];
-    let fz=document.getElementsByClassName("fz")[0];
-    let mz=document.getElementsByClassName("mz")[0];
+    let sz = document.getElementsByClassName("sz")[0];
+    let fz = document.getElementsByClassName("fz")[0];
+    let mz = document.getElementsByClassName("mz")[0];
     yd();
-    setInterval(yd,1000);
-    function yd(){
-        let now=new Date();
-        let hours=now.getHours();//10
-        let min=now.getMinutes();
-        let sec=now.getSeconds();
-        mz.style.transform="rotate("+sec*6+"deg)";
-        fz.style.transform="rotate("+min*6+"deg)";
-        sz.style.transform="rotate("+(hours+min/60)*30+"deg)";
+    setInterval(yd, 1000);
+
+    function yd() {
+        let now = new Date();
+        let hours = now.getHours();//10
+        let min = now.getMinutes();
+        let sec = now.getSeconds();
+        mz.style.transform = "rotate(" + sec * 6 + "deg)";
+        fz.style.transform = "rotate(" + min * 6 + "deg)";
+        sz.style.transform = "rotate(" + (hours + min / 60) * 30 + "deg)";
     }
 </script>
 </body>

@@ -88,11 +88,11 @@
 <div class="aa"></div>
 </body>
 <script>
-    var box = document.getElementsByClassName("box");
-    var img = document.getElementsByTagName("img");
-    var Height = document.documentElement.clientHeight;
+    let box = document.getElementsByClassName("box");
+    let img = document.getElementsByTagName("img");
+    let Height = document.documentElement.clientHeight;
     //清除所有img的路径并且加载首屏
-    for (var i = 0; i < img.length; i++) {
+    for (let i = 0; i < img.length; i++) {
         img[i].Src = img[i].src;
         img[i].src = "";
         if (box[i].offsetTop < Height) {
@@ -103,12 +103,11 @@
     window.onscroll = function () {
         //页面具有 DTD，或者说指定了 DOCTYPE 时，使用 document.documentElement
         //页面不具有 DTD，或者说没有指定了 DOCTYPE 时，使用 document.body
-        var obj = document.documentElement.scrollTop != 0 ? document
-            .documentElement : document.body;
-        var top = obj.scrollTop;
-        for (var i = 0; i < box.length; i++) {
-            var imgs = box[i].getElementsByTagName("img");
-            for (var j = 0; j < imgs.length; j++) {
+        let obj = document.documentElement.scrollTop != 0 ? document.documentElement : document.body;
+        let top = obj.scrollTop;
+        for (let i = 0; i < box.length; i++) {
+            let imgs = box[i].getElementsByTagName("img");
+            for (let j = 0; j < imgs.length; j++) {
                 if (top + Height / 2 >= box[i].offsetTop) {
                     imgs[j].src = imgs[j].Src;
                 }

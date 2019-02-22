@@ -73,12 +73,12 @@
 </div>
 </body>
 <script>
-    var bth = document.getElementsByClassName("bth");
-    var innerbox = document.getElementsByClassName("innerbox");
-    for (var i = 0; i < bth.length; i++) {
+    let bth = document.getElementsByClassName("bth");
+    let innerbox = document.getElementsByClassName("innerbox");
+    for (let i = 0; i < bth.length; i++) {
         bth[i].index = i;
         bth[i].onmouseover = function () {
-            for (var j = 0; j < bth.length; j++) {
+            for (let j = 0; j < bth.length; j++) {
                 innerbox[j].style.zIndex = 0;
             }
             innerbox[this.index].style.zIndex = 1;
