@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="js/vue.js"></script>
-    <script src="js/jquery-3.1.1.js"></script>
 </head>
 <body>
 <div id="app">
@@ -13,29 +12,29 @@
 </body>
 <script>
     new Vue({
-        el:"#app",
-        beforeCreate:function(){
+        el: "#app",
+        beforeCreate: function () {
             console.log('beforeCreate')
         },
-        created:function(){
+        created: function () {
             console.log('created')
         },
-        beforeMount:function(){
+        beforeMount: function () {
             console.log('beforeMount')
         },
-        mounted:function(){
+        mounted: function () {
             console.log(mounted)
         },
-        beforeUpdate:function(){
+        beforeUpdate: function () {
             console.log('beforeUpdate')
         },
-        updated:function(){
+        updated: function () {
             console.log('updated')
         },
-        beforeDestroy:function(){
+        beforeDestroy: function () {
             console.log('beforeDestroy')
         },
-        destroyed:function(){
+        destroyed: function () {
             console.log('destroyed')
         }
     })

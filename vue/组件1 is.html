@@ -1,59 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<script src="js/vue.js"></script>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
 </head>
 <body>
-	<div id="app">
-		<table is="aaa">
+<div id="app">
+    <div is="aaa">
 
-		</table>
-	</div>
-	<script>
-		Vue.component("aaa",{
-			template:"<table><tr> <td>年龄</td> <td>{{num}}</td> </tr></table>",
-			data:function(){//data必须是函数
-				return	{
-					num:18
-				}
-			}
-		});
+    </div>
+</div>
+<script>
+    Vue.component("aaa", {
+        template: "<table><tr> <td>年龄</td> <td>{{num}}</td> </tr></table>",
+        data: function () {
+            return {
+                num: 25
+            }
+        }
+    });
 
-		new Vue({
-			el:"#app",
-			data:{
-				msg:"111"
-			},
-			methods:{
-
-			},
-			computed:{
-
-			},
-			filters:{
-
-			},
-			created:function(){
-
-			},
-			beforeCreate:function(){
-
-			},
-			mounted:function(){
-
-			},
-			beforeMount:function(){
-
-			},
-			updated:function(){
-
-			},
-			beforeUpdate:function(){
-
-			}
-		})
-	</script>
+    new Vue({
+        el: "#app"
+    })
+</script>
 </body>
 </html>

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="js/vue.js"></script>
-    <script src="js/jquery-3.1.1.js"></script>
 </head>
 <body>
 <div id="app">
@@ -15,8 +14,8 @@
 </div>
 </body>
 <script>
-    Vue.component("child",{//\换行符
-        template:'\
+    Vue.component("child", {
+        template: '\
         <div>\
         <header ><slot name="header">这是头部</slot></header>\
         <slot>默认是空的</slot>\
@@ -25,7 +24,7 @@
         '
     });
     new Vue({
-        el:"#app"
+        el: "#app"
     })
 </script>
 </html>

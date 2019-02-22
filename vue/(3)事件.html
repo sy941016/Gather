@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>事件</title>
     <script src="js/vue.js"></script>
-    <script src="js/jquery-3.1.1.js"></script>
 </head>
 <body>
 <div id="box">
@@ -27,41 +26,37 @@
 </div>
 </body>
 <script>
-   var box=new Vue({
-        el:"#box",
-        data:{
-
-        },
-        methods:{
-            show:function(ev){
+    var box = new Vue({
+        el: "#box",
+        data: {},
+        methods: {
+            show: function (ev) {
                 alert(1);
-                ev.cancelBubble=true;//JS阻止冒泡
+                ev.cancelBubble = true;//JS阻止冒泡
             },
-            show2:function(){
+            show2: function () {
                 alert(2)
             }
         }
     });
-   var b1=new Vue({
-       el:"#b1",
-       data:{
-       },
-       methods:{
-           mr:function(ev){
-               alert(1);
-               ev.preventDefault();//JS阻止默认行为
-           }
-       }
-   });
-   var b2=new Vue({
-       el:"#b2",
-       data:{
-       },
-       methods:{
-           jp:function(ev){
-               alert(ev.keyCode);
-           }
-       }
-   })
+    var b1 = new Vue({
+        el: "#b1",
+        data: {},
+        methods: {
+            mr: function (ev) {
+                alert(1);
+                ev.preventDefault();//JS阻止默认行为
+            }
+        }
+    });
+    var b2 = new Vue({
+        el: "#b2",
+        data: {},
+        methods: {
+            jp: function (ev) {
+                alert(ev.keyCode);
+            }
+        }
+    })
 </script>
 </html>

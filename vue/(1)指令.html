@@ -4,42 +4,41 @@
     <meta charset="UTF-8">
     <title>指令</title>
     <script src="js/vue.js"></script>
-    <script src="js/jquery-3.1.1.js"></script>
 </head>
 <body>
- <div id="app" v-show="true">
-     <p v-text="msg"></p>
-     <input type="text" v-model="msg">
-     <br>
-     <button v-on:click="add">添加</button>
-     <ul>
-         <li v-for="(aa,index) in adda" v-if="boolearn">
-             <span v-text="aa+index"></span>
-         </li>
-     </ul>
-     <button id="xs">消失</button>
-     <img v-bind:src="cat" alt="">
- </div>
+<div id="app" v-show="true">
+    <p v-text="msg"></p>
+    <input type="text" v-model="msg">
+    <br>
+    <button v-on:click="add">添加</button>
+    <ul>
+        <li v-for="(aa,index) in adda" v-if="boolearn">
+            <span v-text="aa+index"></span>
+        </li>
+    </ul>
+    <button id="xs">消失</button>
+    <img v-bind:src="cat" alt="">
+</div>
 </body>
 <script>
     //Vue.config.silent = true;
     //移除报错提示
-  var app= new Vue({
-       el:"#app",
-       data:{
-           msg:"hello,world",
-           adda:["a1","a2","a3"],
-           boolearn:true,
-           cat:"img/cat.jpg"
-       },
-       methods:{
-           add:function(){
-               this.adda.push("a4")
-           }
-       }
-   });
-    $("#xs").click(function(){
-        app.boolearn=false
+    var app = new Vue({
+        el: "#app",
+        data: {
+            msg: "hello,world",
+            adda: ["a1", "a2", "a3"],
+            boolearn: true,
+            cat: "img/cat.jpg"
+        },
+        methods: {
+            add: function () {
+                this.adda.push("a4")
+            }
+        }
+    });
+    $("#xs").click(function () {
+        app.boolearn = false
     })
 </script>
 </html>

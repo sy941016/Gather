@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="js/vue.js"></script>
-    <script src="js/jquery-3.1.1.js"></script>
 </head>
 <body>
 <div id="app">
@@ -32,36 +31,36 @@
 </body>
 <script>
     new Vue({
-        el:"#app",
-        data:{
-            stars:[],
-            star:"",
-            value:"",
-            index:"",
-            isshow:false
+        el: "#app",
+        data: {
+            stars: [],
+            star: "",
+            value: "",
+            index: "",
+            isshow: false
         },
-        methods:{
+        methods: {
             //添加
-            add:function(){
-                if(this.star!="") {
-                   this.stars.push(this.star);
-                   this.star = ""
+            add: function () {
+                if (this.star != "") {
+                    this.stars.push(this.star);
+                    this.star = ""
                 }
             },
             //保存
-            save:function(){
-                this.$set(this.stars,this.index,this.value);
-                this.isshow=false
+            save: function () {
+                this.$set(this.stars, this.index, this.value);
+                this.isshow = false
             },
             //删除
-            del:function(index){
-               this.stars.splice(index,1)
+            del: function (index) {
+                this.stars.splice(index, 1)
             },
             //修改
-            edit:function(index,value){
-                this.isshow=true;//显示save
-                this.index=index;
-                this.value=value
+            edit: function (index, value) {
+                this.isshow = true;//显示save
+                this.index = index;
+                this.value = value
             }
         }
     })

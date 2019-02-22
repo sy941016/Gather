@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="js/vue.js"></script>
-    <script src="js/jquery-3.1.1.js"></script>
     <script src="js/props.js"></script>
 </head>
 <body>
@@ -15,16 +14,16 @@
 </div>
 </body>
 <script>
-    var vm1 = new Vue({
-        el:"#app",
-        data:{
-            stars:[],
-            star:''
+    new Vue({
+        el: "#app",
+        data: {
+            stars: [],
+            star: ''
         },
-        methods:{
-            add:function(){
-               this.stars.push(this.star)
-           }
+        methods: {
+            add: function () {
+                this.stars.push(this.star)
+            }
         }
     })
 </script>

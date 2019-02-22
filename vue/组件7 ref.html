@@ -4,28 +4,27 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="js/vue.js"></script>
-    <script src="js/jquery-3.1.1.js"></script>
 </head>
 <body>
 <div id="app">
-    <button id="go1" v-on:click="add" ref="sy">父</button>
+    <button id="parent" v-on:click="parent_id" ref="child">父</button>
     <child></child>
 </div>
 </body>
 <script>
     Vue.component("child",{
-        template:'<button id="go2" v-on:click="ass" ref="sy">子</button>',
+        template:'<button id="child" v-on:click="child_id" ref="child">子</button>',
         methods:{
-            ass:function(){
-                console.log(this.$refs.sy.id)
+            child_id:function(){
+                console.log(this.$refs.child.id)
             }
         }
     });
     new Vue({
         el:"#app",
         methods:{
-            add:function(){
-                console.log(this.$refs.sy.id)
+            parent_id:function(){
+                console.log(this.$refs.child.id)
             }
         }
     })

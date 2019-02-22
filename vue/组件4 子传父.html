@@ -4,27 +4,25 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="js/vue.js"></script>
-    <script src="js/jquery-3.1.1.js"></script>
 </head>
 <body>
 <div id="app">
-    <p>{{ a }}</p>
-    <aaa v-on:zadd="fadd"></aaa>
-    <aaa v-on:zadd="fadd"></aaa>
+    <p>parent:{{ a }}</p>
+    child:<child v-on:child_add="parent_add"></child>
 </div>
 </body>
 <script>
-    Vue.component('aaa', {
-        template: '<button v-on:click="zadd">{{ b }}</button>',
+    Vue.component('child', {
+        template: '<button v-on:click="child_add">{{ b }}</button>',
         data: function () {
             return {
                 b: 0
             }
         },
         methods: {
-            zadd: function () {
+            child_add: function () {
                 this.b += 1;
-                this.$emit('zadd')//触发当前实例上的事件
+                this.$emit('child_add')//触发当前实例上的事件
             }
         }
     });
@@ -34,7 +32,7 @@
             a: 0
         },
         methods: {
-            fadd: function () {
+            parent_add: function () {
                 this.a += 1
             }
         }
