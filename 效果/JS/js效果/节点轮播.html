@@ -157,13 +157,6 @@
             let last = getLastChild(innerbox); //当前innerboxd的最后一个box
             innerbox.insertBefore(last, first);
             innerbox.style.marginLeft = "-600px";
-            //处理libtn的颜色
-            for (let i = 0; i < libtn.length; i++) {
-                for (let index of libtn) {
-                    index.style.background = '#ccc'
-                }
-                libtn[num].style.background = 'orange'
-            }
             animate(innerbox, {marginLeft: 0}, 500)
         }
         Libtn(num)
