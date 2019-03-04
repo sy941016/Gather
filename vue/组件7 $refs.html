@@ -12,18 +12,18 @@
 </div>
 </body>
 <script>
-    Vue.component("child",{
-        template:'<button id="child" v-on:click="child_id" ref="child">子</button>',
-        methods:{
-            child_id:function(){
+    Vue.component("child", {
+        template: '<button id="child" v-on:click="child_id" ref="child">子</button>',
+        methods: {
+            child_id: function () {
                 console.log(this.$refs.child.id)
             }
         }
     });
     new Vue({
-        el:"#app",
-        methods:{
-            parent_id:function(){
+        el: "#app",
+        methods: {
+            parent_id: function () {
                 console.log(this.$refs.child.id)
             }
         }

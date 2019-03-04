@@ -13,20 +13,11 @@
 <script>
     Vue.component("child", {
         template: "<p>{{add}}</p>",
-        props: ["childmsg"],
+        props: ["childmsg"],//使用 props 向子组件传递数据
         computed: {
             add: function () {
                 return this.childmsg + "我的世界"
             }
-        },
-        watch: {
-            childmsg: function (ne, old) {
-                console.log(ne);
-                console.log(old);
-            }
-        },
-        filters: {
-
         }
     });
     new Vue({

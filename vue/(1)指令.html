@@ -23,7 +23,7 @@
 <script>
     //Vue.config.silent = true;
     //移除报错提示
-    var app = new Vue({
+    let app = new Vue({
         el: "#app",
         data: {
             msg: "hello,world",
@@ -37,8 +37,10 @@
             }
         }
     });
-    $("#xs").click(function () {
+    let xs = document.getElementById('xs');
+    xs.onclick = function () {
         app.boolearn = false
-    })
+        console.log(app.boolearn)
+    }
 </script>
 </html>
