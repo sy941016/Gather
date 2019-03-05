@@ -71,18 +71,14 @@
         function move(flag) {
             if (!box.is(":animated")) {
                 if (flag) {
-                    if (num = 0) {
-                        num++
-                    }
+                    num >= $('.box-inner').length - 1 ? num = 0 : num++;
                     //$(selector).animate(styles,speed,easing,callback)   speed,easing,callback可选
                     box.animate({marginLeft: -500}, 1000, function () {
                         $(".box-inner").first().appendTo(box);
                         $(".box").css({marginLeft: 0});
                     });
                 } else {
-                    if (num < 0) {
-                        num--
-                    }
+                    num == 0 ? num = $('.box-inner').length - 1 : num--;
                     $(".box-inner").last().prependTo(box);
                     $(".box").css({marginLeft: -500});
                     box.animate({marginLeft: 0}, 1000);

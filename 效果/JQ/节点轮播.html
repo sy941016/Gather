@@ -141,7 +141,7 @@
                         $(".box").css({marginLeft: 0});
                     });
                 } else {
-                    num < 0 ? num = spot.length - 2 : num--;
+                    num == 0 ? num = spot.length - 1 : num--;
                     $(".box-inner").last().prependTo(box);
                     $(".box").css({marginLeft: -500});
                     box.animate({marginLeft: 0}, 1000);
@@ -152,7 +152,7 @@
 
         //默认的状态
         function autoPlay() {
-            move(true);
+            move(false);
         }
 
         //hover效果
@@ -172,7 +172,6 @@
         spot.click(function () {
             let Index = $(this).index();//当前下标
             let cha = Index - num;
-            Spot(Index);
             if (cha >= 0) {
                 //当前的下标和点击的下标的差值 就滑动几屏 每屏幕为500
                 box.animate({marginLeft: -500 * cha}, 500, function () {
@@ -189,6 +188,7 @@
                 }
                 box.animate({marginLeft: 0}, 500);
             }
+            Spot(Index);
             num = Index;
         });
 
