@@ -54,10 +54,7 @@
         }
 
         function move() {
-            num++;
-            if (num >= $(".innerbox").length) {
-                num = 0;
-            }
+            num >= $(".innerbox").length-1 ? num = 0 : num++
             $(".innerbox").eq(num).fadeIn(1000).siblings().fadeOut(1000);
         }
     })
