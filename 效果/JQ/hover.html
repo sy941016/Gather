@@ -6,12 +6,13 @@
     <script src="js/jquery-3.1.1.js"></script>
 </head>
 <style>
-    body{
+    body {
         text-align: center;
         font-family: 微软雅黑;
         color: #ffffff;
     }
-    table{
+
+    table {
         width: 900px;
         height: auto;
         border-left: 1px solid #000;
@@ -19,10 +20,11 @@
         border-collapse: collapse;
         margin: 100px auto;
     }
-    td{
-        border-top:1px solid #000;
+
+    td {
+        border-top: 1px solid #000;
         border-right: 1px solid #000;
-        padding:10px;
+        padding: 10px;
     }
 
 </style>
@@ -56,16 +58,15 @@
 </table>
 </body>
 <script>
-    $(function(){
-        $("tr>td:nth-child(even)").css({background:"green"});
-        $("tr>td:nth-child(odd)").css({background:"skyblue"});
-        $("tr").hover(function(){
-                    $("tr").eq($(this).index()).css({color:"red"}).siblings().css({color:"#fff"})
-                },function(){
-                    $("tr").eq($(this).index()).css({color:"#fff"});
-                }
+    $(function () {
+        $("tr>td:nth-child(odd)").css({background: "skyblue"});
+        $("tr>td:nth-child(even)").css({background: "green"});
+        $("tr").hover(function () {
+                $("tr").eq($(this).index()).css({color: "red"}).siblings().css({color: "#fff"})
+            }, function () {
+                $("tr").eq($(this).index()).css({color: "#fff"});
+            }
         )
     })
-
 </script>
 </html>
