@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <title></title>
+    <style>
+        table {
+            width: 800px;
+            height: 300px;
+            border-collapse: collapse;
+        }
+
+        table th {
+            border: 1px solid black;
+        }
+
+        h1 {
+            color: darkred;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+<script>
+    document.write("<table>");
+    let str = "乘法表";
+    document.write("<h1>" + str + "</h1>");
+    let color;
+    for (let x = 1; x <= 9; x++) {
+        document.write("<tr>");
+        for (let y = 1; y <= x; y++) {
+            if (y % 2 == 0 && x % 2 == 0) {
+                color = "red";
+            } else if (y % 2 == 1 && x % 2 == 1) {
+                color = "skyblue";
+            } else if (y % 2 == 1 && x % 2 == 0) {
+                color = "purple";
+            } else if (y % 2 == 0 && x % 2 == 1) {
+                color = "green";
+            }
+            document.write("<th bgcolor=" + color + " >" + y + "*" + x + "=" + (x * y) + "</th>");
+        }
+        document.write("</tr>");
+    }
+    document.write("</table>");
+</script>
+</html>
