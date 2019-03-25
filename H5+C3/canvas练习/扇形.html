@@ -1,138 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-	#canvas{
-		background: #ccc;
-	}
-	</style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #canvas {
+            background: #ccc;
+        }
+    </style>
 </head>
 <body>
-	<canvas id="canvas" width="500" height="500"></canvas>
+<canvas id="canvas" width="500" height="500"></canvas>
 </body>
 </html>
 <script>
-	var canvas=document.getElementById('canvas');
-	var cobj=canvas.getContext('2d');
-	// cobj.lineWidth='40';
-	// cobj.lineCap='butt';
-	// cobj.lineCap='square';
-	/*cobj.lineCap='round';
-	cobj.lineJoin='miter';
-	cobj.miterLimit='1';
-	cobj.moveTo(100,100);
-	cobj.lineTo(200,300);
-	cobj.lineTo(100,300);
-	cobj.stroke();*/
+    var canvas = document.getElementById('canvas');
+    var cobj = canvas.getContext('2d');
 
-/*❤	cobj.moveTo(200,120);
-	cobj.quadraticCurveTo(30,40,200,250);
-	cobj.quadraticCurveTo(380,40,200,120);
-	cobj.fillStyle='red';
-	cobj.fill();*/
-
-/*绘制曲线画板*/
-	/*canvas.onmousedown=function(e){
-		var startx=e.clientX;
-		var starty=e.clientY;
-		canvas.onmouseup=function(e){
-			var endx=e.clientX;
-			var endy=e.clientY;
-			canvas.onmousemove=function(e){
-				cobj.clearRect(0,0,1340,600)
-				var movex=e.clientX;
-				var movey=e.clientY;
-				cobj.beginPath();
-				cobj.moveTo(startx,starty);
-				cobj.quadraticCurveTo(movex,movey,endx,endy);
-				cobj.stroke();
-			}
-		}
-	}*/
-
-/*三次贝塞尔曲线*/
-	/*cobj.moveTo(100,100);
-	cobj.bezierCurveTo(200,0,300,200,400,100);
-	cobj.stroke();*/
-
-/*切线之间的弧度*/
-
-	// cobj.moveTo(400,400);
- //    cobj.arc(400,400,100,0,2*Math.PI,false);//圆
- //    cobj.fillStyle='red';
- //    cobj.fill();
- //    cobj.beginPath();
-
- //扇形 cobj.arc(x,y,r,开始角度,结束角度,顺时针或逆时针)
-cobj.moveTo(120,130);
-    cobj.arc(120,130,100,0,Math.PI/4,false);
-    cobj.fillStyle='blue';
+    cobj.moveTo(120, 130);
+    cobj.arc(120, 130, 100, 0, Math.PI / 4, false);
+    cobj.fillStyle = 'blue';
     cobj.fill();
     cobj.beginPath();
 
-    cobj.moveTo(120,130);
-    cobj.arc(120,130,100,Math.PI/4,Math.PI/2,false);
-    cobj.fillStyle='red';
+    cobj.moveTo(120, 130);
+    cobj.arc(120, 130, 100, Math.PI / 4, Math.PI / 2, false);
+    cobj.fillStyle = 'red';
     cobj.fill();
     cobj.beginPath();
 
-    cobj.moveTo(120,130);
-    cobj.arc(120,130,100,Math.PI/2,Math.PI*0.75,false);
-    cobj.fillStyle='yellow';
+    cobj.moveTo(120, 130);
+    cobj.arc(120, 130, 100, Math.PI / 2, Math.PI * 0.75, false);
+    cobj.fillStyle = 'yellow';
     cobj.fill();
     cobj.beginPath();
 
-    cobj.moveTo(120,130);
-    cobj.arc(120,130,100,Math.PI*0.75,Math.PI,false);
-    cobj.fillStyle='gold';
+    cobj.moveTo(120, 130);
+    cobj.arc(120, 130, 100, Math.PI * 0.75, Math.PI, false);
+    cobj.fillStyle = 'gold';
     cobj.fill();
     cobj.beginPath();
 
-    cobj.moveTo(120,130);
-    cobj.arc(120,130,100,Math.PI,Math.PI*1.25,false);
-    cobj.fillStyle='green';
+    cobj.moveTo(120, 130);
+    cobj.arc(120, 130, 100, Math.PI, Math.PI * 1.25, false);
+    cobj.fillStyle = 'green';
     cobj.fill();
     cobj.beginPath();
 
-    cobj.moveTo(120,130);
-    cobj.arc(120,130,100,Math.PI*1.25,Math.PI*1.5,false);
-    cobj.fillStyle='darkgray';
+    cobj.moveTo(120, 130);
+    cobj.arc(120, 130, 100, Math.PI * 1.25, Math.PI * 1.5, false);
+    cobj.fillStyle = 'darkgray';
     cobj.fill();
     cobj.beginPath();
 
-    cobj.moveTo(120,130);
-    cobj.arc(120,130,100,Math.PI*1.5,Math.PI*1.75,false);
-    cobj.fillStyle='skyblue';
+    cobj.moveTo(120, 130);
+    cobj.arc(120, 130, 100, Math.PI * 1.5, Math.PI * 1.75, false);
+    cobj.fillStyle = 'skyblue';
     cobj.fill();
     cobj.beginPath();
 
-    cobj.moveTo(120,130);
-    cobj.arc(120,130,100,Math.PI*1.75,Math.PI*2,false);
-    cobj.fillStyle='black';
+    cobj.moveTo(120, 130);
+    cobj.arc(120, 130, 100, Math.PI * 1.75, Math.PI * 2, false);
+    cobj.fillStyle = 'black';
     cobj.fill();
     cobj.beginPath();
 
-//裁剪
-canvas.onmousedown=function(e){
-	    cobj.restore();
-	    cobj.save();
-	    cobj.clearRect(0,0,500,500);
-    	var cx=e.offsetX;
-    	var cy=e.offsetY;
-    	canvas.onmouseup=function(e){
-    		var w=e.offsetX-cx;
-    		var h=e.offsetY-cy;
-    		cobj.beginPath();
-    		cobj.rect(cx,cy,w,h)
-    		cobj.stroke();
-    		cobj.clip();
-    		var img=new Image();
-    		img.onload=function(){
-    			cobj.drawImage(img,0,0,500,500);
-    		}
-    		img.src="img/4.jpg";
-    	}
+    //裁剪
+    canvas.onmousedown = function (e) {
+        cobj.restore();
+        cobj.save();
+        cobj.clearRect(0, 0, 500, 500);
+        var cx = e.offsetX;
+        var cy = e.offsetY;
+        canvas.onmouseup = function (e) {
+            var w = e.offsetX - cx;
+            var h = e.offsetY - cy;
+            cobj.beginPath();
+            cobj.rect(cx, cy, w, h)
+            cobj.stroke();
+            cobj.clip();
+            var img = new Image();
+            img.onload = function () {
+                cobj.drawImage(img, 0, 0, 500, 500);
+            }
+            img.src = "img/4.jpg";
+        }
     }
 </script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<canvas id="canvas" width=400 height=400 style="background:#ccc"></canvas>
+<script>
+    var canvas = document.getElementById('canvas');
+    var cobj = canvas.getContext("2d");
+    cobj.beginPath();
+    cobj.moveTo(100, 60);
+    cobj.bezierCurveTo(50, 0, 0, 100, 100, 150);
+    cobj.fillStyle = "red";
+    cobj.fill();
+    cobj.lineTo(100, 60);
+    cobj.bezierCurveTo(150, 0, 200, 100, 100, 150);
+    cobj.fillStyle = "red";
+    cobj.fill();
+    var va = 0;
+    num = 0;
+    canvas.onclick = function (e) {
+        var ex = e.offsetX;
+        var ey = e.offsetY;
+        if (cobj.isPointInPath(ex, ey)) {
+            setInterval(function () {
+                cobj.clearRect(0, 0, 1200, 600);
+                va += 0.01;
+                num = 20 * Math.sin(va);
+                if (va >= 3.14) {
+                    va = 0;
+                }
+                cobj.beginPath();
+                cobj.moveTo(100, 60 - num / 2);
+                cobj.bezierCurveTo(50 - num, 0 + num / 2, 0 - num, 100 + num / 2, 100, 150 + num / 2);
+                cobj.fillStyle = "red";
+                cobj.fill();
+                cobj.lineTo(100, 60 - num / 2);
+                cobj.bezierCurveTo(150 + num, 0 + num / 2, 200 + num, 100 + num / 2, 100, 150 + num / 2);
+                cobj.fillStyle = "red";
+                cobj.fill()
+            }, 0.5)
+        }
+    }
+</script>
+</body>
+</html>

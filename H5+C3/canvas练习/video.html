@@ -4,43 +4,44 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-    #canvas{
-        background: #ccc;
-    }
-    #canvas1{
-        background: #ccc;
-    }
+        #canvas {
+            background: #ccc;
+        }
+
+        #canvas1 {
+            background: #ccc;
+        }
     </style>
 </head>
 <body>
-    <canvas id="canvas" width="640" height="640"></canvas>
-    <canvas id="canvas1" width="640" height="640"></canvas>
-    <video src="iceage4.mp4" controls=controls hidden id="video"></video>
+<canvas id="canvas" width="640" height="640"></canvas>
+<canvas id="canvas1" width="640" height="640"></canvas>
+<video src="video/iceage4.mp4" controls=controls hidden id="video"></video>
 </body>
 </html>
 <script>
-    var canvas=document.getElementById('canvas');
-    var canvas1=document.getElementById('canvas1');
-    var video=document.getElementById('video');
-    var cobj=canvas.getContext('2d');
-    var cobj1=canvas1.getContext('2d');
-    var img=new Image();
-    img.src='img/11.jpg';
-    img.onload=function(){
-        cobj.drawImage(img,0,0,640,640);
-};
-    cobj.strokeStyle='rgba(0,0,0,0)';
-    cobj.rect(0,0,640,640);
+    var canvas = document.getElementById('canvas');
+    var canvas1 = document.getElementById('canvas1');
+    var video = document.getElementById('video');
+    var cobj = canvas.getContext('2d');
+    var cobj1 = canvas1.getContext('2d');
+    var img = new Image();
+    img.src = 'img/4.jpg';
+    img.onload = function () {
+        cobj.drawImage(img, 0, 0, 640, 640);
+    };
+    cobj.strokeStyle = 'rgba(0,0,0,0)';
+    cobj.rect(0, 0, 640, 640);
     cobj.stroke();
-    canvas.onclick=function(e){
-        var ox=e.offsetX;
-        var oy=e.offsetY;
-        if (cobj.isPointInPath(ox,oy)) {
+    canvas.onclick = function (e) {
+        var ox = e.offsetX;
+        var oy = e.offsetY;
+        if (cobj.isPointInPath(ox, oy)) {
             video.play();
-            setInterval(function(){
-                cobj.drawImage(video,0,0,640,640);
-                cobj1.drawImage(video,0,0,640,640)
-            },20)
+            setInterval(function () {
+                cobj.drawImage(video, 0, 0, 640, 640);
+                cobj1.drawImage(video, 0, 0, 640, 640)
+            }, 20)
         }
     }
 </script>

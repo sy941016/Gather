@@ -1,115 +1,117 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <style>
-    #canvas{
+    #canvas {
         background: #ccc;
     }
 </style>
 <body>
 <canvas id="canvas" width="500" height="500"></canvas>
-<audio src="1.wav" id="audio"></audio>
+<audio src="video/1.wav" id="audio"></audio>
 </body>
 <script>
-    var canvas=document.getElementById("canvas");
-    var audio=document.getElementById("audio");
-    var cobj=canvas.getContext("2d");
-    var cx=200;
-    var cy=200;
-    var r=100;
-    audio.ontimeupdate=function(){
+    var canvas = document.getElementById("canvas");
+    var audio = document.getElementById("audio");
+    var cobj = canvas.getContext("2d");
+    var cx = 200;
+    var cy = 200;
+    var r = 100;
+    audio.ontimeupdate = function () {
         //截取第一声
-        if(audio.currentTime>=0.1){
-        //播完第一声，让音乐暂停
+        if (audio.currentTime >= 0.1) {
+            //播完第一声，让音乐暂停
             audio.pause();
         }
     };
- //14.让指针循坏动起来
- setInterval(function(){
-    //播完了第一声回到最初播放位置
-    audio.currentTime=0;
-    audio.play();
-    cobj.clearRect(0,0,500,500);
-    //2.添加阴影
-    cobj.shadowColor="#000";
-    cobj.shadowOffsetX=1;
-    cobj.shadowOffsetY=1;
-    cobj.shadowBlur=3;
-    //3.添加背景渐变
-    var colorobj=cobj.createRadialGradient(cx,cy,1,cx,cy,100);
-    colorobj.addColorStop(0,"#efefef");
-    colorobj.addColorStop(0.5,"#ccc");
-    colorobj.addColorStop(1,"#aaa");
-    cobj.fillStyle=colorobj;
-    //4.设置边框粗细与颜色
-    cobj.strokeStyle="#aaa";
-    cobj.lineWidth=4;
-    //1.画表盘
-    cobj.beginPath();
-    cobj.arc(cx,cy,r,0,2*Math.PI);
-    cobj.stroke();//绘制
-    cobj.fill();//填充
-    cobj.lineWidth=2;//刻度的大小
-    //7.去刻度阴影
-    cobj.shadowColor="#000";
-    cobj.shadowOffsetX=0;
-    cobj.shadowOffsetY=0;
-    cobj.shadowBlur=0;
-    drawMark();
-    //9.画默认零度的表针
-    //13.指针指向正确的时间
-    var date=new Date();
-    var hour=date.getHours();
-    var min=date.getMinutes();
-    var sec=date.getSeconds();
-   //11.画出三种指针
-    //时针
-    drawPointer(50,4,"red",hour*30+min*6/12-90);
-    //分针
-    drawPointer(60,3,"#444",min*6-90);
-    //秒针
-    drawPointer(80,2,"#000",sec*6-90);
-    //12.在指针上画小圆，加阴影
-    cobj.fillStyle="#666";
-    cobj.shadowColor="#000";
-    cobj.shadowOffsetX=1;
-    cobj.shadowOffsetY=1;
-    cobj.shadowBlur=3;
-    cobj.beginPath();
-    cobj.arc(cx,cy,4,0,Math.PI*2);
-    cobj.stroke();
-    cobj.fill();
- },1000);
-    //10.写指针的函数
-    function drawPointer(r,w,color,angle){
-        var angle1=Math.PI/180*angle;
-        cobj.strokeStyle=color;
-        cobj.lineWidth=w;
+    //14.让指针循坏动起来
+    setInterval(function () {
+        //播完了第一声回到最初播放位置
+        audio.currentTime = 0;
+        audio.play();
+        cobj.clearRect(0, 0, 500, 500);
+        //2.添加阴影
+        cobj.shadowColor = "#000";
+        cobj.shadowOffsetX = 1;
+        cobj.shadowOffsetY = 1;
+        cobj.shadowBlur = 3;
+        //3.添加背景渐变
+        var colorobj = cobj.createRadialGradient(cx, cy, 1, cx, cy, 100);
+        colorobj.addColorStop(0, "#efefef");
+        colorobj.addColorStop(0.5, "#ccc");
+        colorobj.addColorStop(1, "#aaa");
+        cobj.fillStyle = colorobj;
+        //4.设置边框粗细与颜色
+        cobj.strokeStyle = "#aaa";
+        cobj.lineWidth = 4;
+        //1.画表盘
         cobj.beginPath();
-        cobj.moveTo(cx,cy);
-        cobj.lineTo(cx+r*Math.cos(angle1),cy+r*Math.sin(angle1));
+        cobj.arc(cx, cy, r, 0, 2 * Math.PI);
+        cobj.stroke();//绘制
+        cobj.fill();//填充
+        cobj.lineWidth = 2;//刻度的大小
+        //7.去刻度阴影
+        cobj.shadowColor = "#000";
+        cobj.shadowOffsetX = 0;
+        cobj.shadowOffsetY = 0;
+        cobj.shadowBlur = 0;
+        drawMark();
+        //9.画默认零度的表针
+        //13.指针指向正确的时间
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        var sec = date.getSeconds();
+        //11.画出三种指针
+        //时针
+        drawPointer(50, 4, "red", hour * 30 + min * 6 / 12 - 90);
+        //分针
+        drawPointer(60, 3, "#444", min * 6 - 90);
+        //秒针
+        drawPointer(80, 2, "#000", sec * 6 - 90);
+        //12.在指针上画小圆，加阴影
+        cobj.fillStyle = "#666";
+        cobj.shadowColor = "#000";
+        cobj.shadowOffsetX = 1;
+        cobj.shadowOffsetY = 1;
+        cobj.shadowBlur = 3;
+        cobj.beginPath();
+        cobj.arc(cx, cy, 4, 0, Math.PI * 2);
+        cobj.stroke();
+        cobj.fill();
+    }, 1000);
+
+    //10.写指针的函数
+    function drawPointer(r, w, color, angle) {
+        var angle1 = Math.PI / 180 * angle;
+        cobj.strokeStyle = color;
+        cobj.lineWidth = w;
+        cobj.beginPath();
+        cobj.moveTo(cx, cy);
+        cobj.lineTo(cx + r * Math.cos(angle1), cy + r * Math.sin(angle1));
         cobj.stroke();
     }
+
     //6.写刻度的函数
-    function drawMark(){
-        for(var i=0;i<60;i++){
-            var angle=i*6*Math.PI/180;
-            cobj.lineWidth=2;
-            cobj.strokeStyle="#ddd";
-            var r1=r-4;
+    function drawMark() {
+        for (var i = 0; i < 60; i++) {
+            var angle = i * 6 * Math.PI / 180;
+            cobj.lineWidth = 2;
+            cobj.strokeStyle = "#ddd";
+            var r1 = r - 4;
             //8.将5的倍数的表针单独设置
-            if(i%5==0){
-                cobj.lineWidth=4;
-                cobj.strokeStyle="#777";
-                r1=r-8
+            if (i % 5 == 0) {
+                cobj.lineWidth = 4;
+                cobj.strokeStyle = "#777";
+                r1 = r - 8
             }
             //5.画零度的刻度与大小
             cobj.beginPath();
-            cobj.moveTo(cx+r*Math.cos(angle),cy+r*Math.sin(angle));
-            cobj.lineTo(cx+(r1)*Math.cos(angle),cy+(r1)*Math.sin(angle));
+            cobj.moveTo(cx + r * Math.cos(angle), cy + r * Math.sin(angle));
+            cobj.lineTo(cx + (r1) * Math.cos(angle), cy + (r1) * Math.sin(angle));
             cobj.stroke();
         }
     }

@@ -4,22 +4,25 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-        *{
+        * {
             padding: 0;
             margin: 0;
         }
-        body{
+
+        body {
             perspective: 1000px;
         }
-        @keyframes rot{
-            0%{
+
+        @keyframes rot {
+            0% {
                 transform: rotateZ(0deg) rotateY(0deg) rotateZ(0deg);
             }
-            100%{
+            100% {
                 transform: rotateZ(360deg) rotateY(360deg) rotateZ(360deg);
             }
         }
-        .box{
+
+        .box {
             width: 200px;
             height: 200px;
             position: relative;
@@ -28,11 +31,13 @@
             transform-style: preserve-3d;
             animation: rot 5s ease;
         }
-        .box1{
+
+        .box1 {
             transform-style: preserve-3d;
             animation: rot 5s ease 10s infinite;
         }
-        .inner{
+
+        .inner {
             width: 200px;
             height: 200px;
             transform-style: preserve-3d;
@@ -40,67 +45,79 @@
             opacity: 0.5;
             transition: all 2s;
         }
-        @keyframes in1{
-            100%{
+
+        @keyframes in1 {
+            100% {
                 transform: translateZ(100px);
             }
         }
-        .inner1{
+
+        .inner1 {
             background: pink;
             transform: rotateY(0deg) translateZ(173.2px);
             animation: in1 5s ease 5s;
             animation-fill-mode: forwards;
         }
-        @keyframes in2{
-            100%{
+
+        @keyframes in2 {
+            100% {
                 transform: rotateY(90deg) translateZ(100px);
             }
         }
-        .inner2{
+
+        .inner2 {
             background: purple;
             transform: rotateY(60deg) translateZ(173.2px);
             animation: in2 5s ease 5s;
             animation-fill-mode: forwards;
         }
-        @keyframes in3{
-            100%{
+
+        @keyframes in3 {
+            100% {
                 transform: rotateX(90deg) translateZ(100px);
             }
         }
-        .inner3{
+
+        .inner3 {
             background: orange;
             transform: rotateY(120deg) translateZ(173.2px);
             animation: in3 5s ease 5s;
             animation-fill-mode: forwards;
         }
-        @keyframes in4{
-            100%{
+
+        @keyframes in4 {
+            100% {
                 transform: translateZ(-100px);
             }
         }
-        .inner4{
+
+        .inner4 {
             background: red;
             transform: rotateY(180deg) translateZ(173.2px);
             animation: in4 5s ease 5s;
             animation-fill-mode: forwards;
         }
-        @keyframes in5{
-            100%{
+
+        @keyframes in5 {
+            100% {
                 transform: rotateY(90deg) translateZ(-100px);
             }
         }
-        .inner5{
+
+        .inner5 {
             background: yellow;
             transform: rotateY(240deg) translateZ(173.2px);
             animation: in5 5s ease 5s;
             animation-fill-mode: forwards;
         }
-        @keyframes in6{
-            100%{
+
+        @keyframes in6 {
+            100% {
                 transform: rotateX(90deg) translateZ(-100px);
             }
         }
-        .inner6{
+
+        .inner6 {
             background: lime;
             transform: rotateY(300deg) translateZ(173.2px);
             animation: in6 5s ease 5s;

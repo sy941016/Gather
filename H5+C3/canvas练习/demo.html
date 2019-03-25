@@ -2,7 +2,7 @@
 	<head>
 	    <!---->
 		<title>canvas基础</title>
-		<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+		<script src="js/jquery-3.1.1.js"></script>
 		<style>
 		    canvas{
 			    background:#ccc;
@@ -19,14 +19,14 @@
 			 //创建context对象,画布的2d环境,封装了所有的方法和属性
 			 var context=canvas.getContext("2d");
 			 //react()绘制矩形,看不到矩形,涉及到路径问题
-			 //context.react(0,0,100,100); 
-	         
+			 //context.react(0,0,100,100);
+
 			 context.fillStyle="#ff0000";//填充绘画的颜色
              context.strokeStyle="green";//图画边框颜色
              context.shadowColor="rgb(11,25,9)";//阴影颜色
              context.shadowOffsetX=3;//阴影偏移量
              context.shadowOffsetY=3;
-             context.shadowBlur =5;//设置模糊级别	
+             context.shadowBlur =5;//设置模糊级别
              //var color=context.createLinearGradient(0,0,100,0);//设置渐变颜色,线性渐变,返回一个color对象
              //var img=context.createPattern(document.getElementById("img"),"repeat-y")//以元素代替颜色,repeat repeat-x,repeat-y
 			 var color=context.createRadialGradient(50,50,10,50,50,50);//创建放射性渐变,两个圆,圆心坐标与半径参数
@@ -34,7 +34,7 @@
 			 color.addColorStop(0.5,"blue");//从0.5处开始渐变
 			 color.addColorStop(1,"green");//从1处开始渐变
 			 context.fillStyle=color;//填充颜色
-             context.fillRect(0,0,100,100);//绘制填充矩形			 
+             context.fillRect(0,0,100,100);//绘制填充矩形
              context.strokeRect(100,100,100,100);//绘制无填充矩形
 		  })
 		</script>

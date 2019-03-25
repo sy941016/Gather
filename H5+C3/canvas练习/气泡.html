@@ -5,14 +5,16 @@
     <title>Title</title>
 </head>
 <style>
-    *{
+    * {
         margin: 0;
         padding: 0;
     }
-    body{
+
+    body {
         overflow: hidden;
     }
-    #canvas{
+
+    #canvas {
         background: #000;
     }
 </style>
@@ -20,65 +22,69 @@
 <canvas id="canvas"></canvas>
 </body>
 <script>
-    var canvas=document.getElementById("canvas");
-    var cobj=canvas.getContext("2d");
-    var h=document.documentElement.clientHeight;
-    var w=document.documentElement.clientWidth;
-    var colors=["red","green","skyblue","purple","yellow"];
-    var balls=[];
+    var canvas = document.getElementById("canvas");
+    var cobj = canvas.getContext("2d");
+    var h = document.documentElement.clientHeight;
+    var w = document.documentElement.clientWidth;
+    var colors = ["red", "green", "skyblue", "purple", "yellow"];
+    var balls = [];
     var timer;
-    var flag=true;
-    canvas.width=w;
-    canvas.height=h;
-    function draw(ball){
+    var flag = true;
+    canvas.width = w;
+    canvas.height = h;
+
+    function draw(ball) {
         cobj.beginPath();
-        cobj.arc(ball.x,ball.y,ball.r,0,Math.PI*2);
-        cobj.globalCompositeOperation="lighter";
-        cobj.fillStyle=ball.color;
+        cobj.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
+        cobj.globalCompositeOperation = "lighter";
+        cobj.fillStyle = ball.color;
         cobj.closePath();
         cobj.fill();
     }
-    function random(min,max){//random取值0-1
-        return Math.round(Math.random()*(max-min)+min);
+
+    function random(min, max) {//random取值0-1
+        return Math.round(Math.random() * (max - min) + min);
     }
-    canvas.onmousemove=function(e){
-        for(i=0;i<2;i++){
-            var ball={
-                r:random(10,45),
-                color:colors[random(0,colors.length-1)],
-                vx:Math.random()-0.5,
-                vy:Math.random()-0.5,
-                x:e.clientX+random(-5,5),
-                y:e.clientY+random(-5,5)
+
+    canvas.onmousemove = function (e) {
+        for (i = 0; i < 2; i++) {
+            var ball = {
+                r: random(10, 45),
+                color: colors[random(0, colors.length - 1)],
+                vx: Math.random() - 0.5,
+                vy: Math.random() - 0.5,
+                x: e.clientX + random(-5, 5),
+                y: e.clientY + random(-5, 5)
             };
             balls.push(ball);
-            if(balls.length>300){
-                   balls.shift()
+            if (balls.length > 300) {
+                balls.shift()
             }
         }
-        if(flag){
-            flag=false;
+        if (flag) {
+            flag = false;
             clearInterval(timer);
-            timer=setInterval(drawBall,50)
+            timer = setInterval(drawBall, 50)
         }
     };
+
     //真正实现小球
-    function drawBall(){
-        cobj.clearRect(0,0,canvas.width,canvas.height);
-        for(i=0;i<balls.length;i++){
-            balls[i].x+=balls[i].vx*8;
-            balls[i].y+=balls[i].vy*8;
-            balls[i].r=balls[i].r*0.94;
-            balls[i].index=i;
-            if(balls[i].r<1){
-                balls.splice(balls[i].index,1);
+    function drawBall() {
+        cobj.clearRect(0, 0, canvas.width, canvas.height);
+        for (i = 0; i < balls.length; i++) {
+            balls[i].x += balls[i].vx * 8;
+            balls[i].y += balls[i].vy * 8;
+            balls[i].r = balls[i].r * 0.94;
+            balls[i].index = i;
+            if (balls[i].r < 1) {
+                balls.splice(balls[i].index, 1);
                 continue;
             }
             draw(balls[i]);
         }
-        if(!balls.length){
+        if (!balls.length) {
             clearInterval(timer);
-            flag=true;
+            flag = true;
         }
     }
 </script>

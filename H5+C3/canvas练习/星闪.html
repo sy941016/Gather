@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        canvas {
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+<canvas id='canvas' width=500 height=500></canvas>
+<script>
+    var canvas = document.getElementById('canvas');
+    var cobj = canvas.getContext('2d');
+    var angle = 0;
+    var starsarr = [];
+    for (var j = 0; j < 30; j++) {
+        var stars = {
+            r1: Math.random() * 10 + 20,
+            r2: Math.random() * 7 + 8,
+            x: 30 + Math.random() * (canvas.width - 60),
+            y: 30 + Math.random() * (canvas.height - 60),
+            num: Math.round(Math.random() * 3 + 5),
+            color: 'rgb(' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ')',
+            angle1: Math.random() * 360,
+            changeAngle: Math.random() * 10 - 5
+        }
+        starsarr.push(stars)
+    }
+
+    // 动态闪烁的星星
+    setInterval(function () {
+        cobj.clearRect(0, 0, 500, 500);
+        for (var i = 0; i < starsarr.length; i++) {
+            starsarr[i].angle1 += starsarr[i].changeAngle;
+            cobj.save();
+            cobj.beginPath();
+            cobj.translate(starsarr[i].x, starsarr[i].y);
+            cobj.rotate(starsarr[i].angle1 * Math.PI / 180);
+            cobj.scale(Math.abs(Math.sin(starsarr[i].angle1 * Math.PI / 180)), Math.abs(Math.sin(starsarr[i].angle1 * Math.PI / 180)))
+            cobj.globalAlpha = Math.abs(Math.sin(starsarr[i].angle1 * Math.PI / 180));
+            star(0, 0, starsarr[i].r1, starsarr[i].r2, starsarr[i].num, 'fill', starsarr[i].color)
+            cobj.restore();
+        }
+    }, 100)
+
+
+    // 画星的函数
+    function star(x, y, r1, r2, num, starType, color) {
+        var stararr = [];
+        angle = 360 / (2 * num);
+        for (var i = 0; i < 2 * num; i++) {
+            var starobj = {};
+            if (i % 2 == 0) {
+                starobj.x = x + r1 * Math.cos(i * Math.PI / 180 * angle);
+                starobj.y = y + r1 * Math.sin(i * Math.PI / 180 * angle)
+            } else {
+                starobj.x = x + r2 * Math.cos(i * Math.PI / 180 * angle);
+                starobj.y = y + r2 * Math.sin(i * Math.PI / 180 * angle)
+            }
+            stararr.push(starobj);
+        }
+        cobj.beginPath();
+
+        var colorobj = cobj.createRadialGradient(x, y, r1, x, y, r2);
+        colorobj.addColorStop(0, color);
+        colorobj.addColorStop(1, '#fff');
+
+        cobj.fillStyle = colorobj;
+        cobj.strokeStyle = colorobj;
+        cobj.moveTo(stararr[0].x, stararr[0].y);
+        for (var i = 1; i < stararr.length; i++) {
+            cobj.lineTo(stararr[i].x, stararr[i].y);
+        }
+        cobj.closePath();
+        if (starType == 'fill') {
+            cobj.fill();
+        } else {
+            cobj.stroke();
+        }
+    }
+
+</script>
+</body>
+</html>

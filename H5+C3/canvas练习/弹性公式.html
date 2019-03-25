@@ -4,44 +4,34 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-    #canvas{
-        background: #ccc;
-    }
+        #canvas {
+            background: #ccc;
+        }
     </style>
 </head>
 <body>
-    <canvas id="canvas" width="400" height="300"></canvas>
+<canvas id="canvas" width="400" height="300"></canvas>
 </body>
 </html>
 <script>
-/*vxy:速度
-targetX/targetY:目标位置
-spriteX/sprite
-Y:变化中的位置
-spring:弹性系数
-friction:摩擦力*/
-/*vx += (targetX – spriteX) * spring;
-vy += (targetY – spriteY) * spring;
-spriteX += (vx *= friction);
-spriteY += (vy *= friction)*/
-    var canvas=document.getElementById('canvas');
-    var cobj=canvas.getContext('2d');
-    var vx=0,vy=0,targetX=100,targetY=100,startX=100,startY=-100,spring=0.8,friction=0.6;
-    var spriteX=startX,spriteY=startY;
-    var img=new Image();
-    img.src='img/4.jpg';
-    setInterval(function(){
-        cobj.clearRect(0,0,400,300);
+    var canvas = document.getElementById('canvas');
+    var cobj = canvas.getContext('2d');
+    var vx = 0, vy = 0, targetX = 100, targetY = 100, startX = 100, startY = -100, spring = 0.8, friction = 0.6;
+    var spriteX = startX, spriteY = startY;
+    var img = new Image();
+    img.src = 'img/4.jpg';
+    setInterval(function () {
+        cobj.clearRect(0, 0, 400, 300);
         cobj.beginPath();
-        cobj.lineWidth=8;
-        cobj.strokeStyle='#000';
-        vx+=(targetX-spriteX)*spring;
-        vy+=(targetY-spriteY)*spring;
-        spriteX+=(vx*=friction);
-        spriteY+=(vy*=friction);
-        cobj.moveTo(startX,startY);
-        cobj.lineTo(spriteX,spriteY);
+        cobj.lineWidth = 8;
+        cobj.strokeStyle = '#000';
+        vx += (targetX - spriteX) * spring;
+        vy += (targetY - spriteY) * spring;
+        spriteX += (vx *= friction);
+        spriteY += (vy *= friction);
+        cobj.moveTo(startX, startY);
+        cobj.lineTo(spriteX, spriteY);
         cobj.stroke();
-        cobj.drawImage(img,spriteX-75,spriteY,150,100)
-    },100)
+        cobj.drawImage(img, spriteX - 75, spriteY, 150, 100)
+    }, 100)
 </script>

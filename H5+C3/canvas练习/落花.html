@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-        #canvas{
+        #canvas {
             background: lightgreen;
         }
     </style>
@@ -12,41 +12,41 @@
 <body>
 <canvas id='canvas' width='1200' height='600'></canvas>
 <script>
-    window.onload=function(){
-        var canvas=document.getElementById('canvas');
-        var cobj=canvas.getContext('2d');
-        var arr=[];
-        var t=setInterval(function(){
-            cobj.clearRect(0,0,1200,600);
-            for(var i=0;i<arr.length;i++){
-                arr[i].angle+=4;
-                arr[i].r-=0.5;
-                arr[i].scale-=0.002;
-                if(arr[i].scale<=0.2){
-                    arr[i].scale=0.2
+    window.onload = function () {
+        var canvas = document.getElementById('canvas');
+        var cobj = canvas.getContext('2d');
+        var arr = [];
+        var t = setInterval(function () {
+            cobj.clearRect(0, 0, 1200, 600);
+            for (var i = 0; i < arr.length; i++) {
+                arr[i].angle += 4;
+                arr[i].r -= 0.5;
+                arr[i].scale -= 0.002;
+                if (arr[i].scale <= 0.2) {
+                    arr[i].scale = 0.2
                 }
-                if(arr[i].r<=0){
+                if (arr[i].r <= 0) {
                     arr.shift()
                 }
                 cobj.save();
-                cobj.translate(300,300);
-                cobj.rotate(Math.PI/180*arr[i].angle)
-                cobj.scale(arr[i].scale,arr[i].scale);
+                cobj.translate(300, 300);
+                cobj.rotate(Math.PI / 180 * arr[i].angle)
+                cobj.scale(arr[i].scale, arr[i].scale);
                 cobj.beginPath();
-                cobj.fillStyle=arr[i].color;
-                cobj.fillRect(arr[i].r,arr[i].r,50,50);
+                cobj.fillStyle = arr[i].color;
+                cobj.fillRect(arr[i].r, arr[i].r, 50, 50);
                 cobj.restore();
             }
-        },100)
-        setInterval(function(){
-            var rect={
-                angle:0,
-                r:150,
-                scale:1,
-                color:'rgb('+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+','+Math.floor(Math.random()*255)+')'
+        }, 100)
+        setInterval(function () {
+            var rect = {
+                angle: 0,
+                r: 150,
+                scale: 1,
+                color: 'rgb(' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ')'
             };
             arr.push(rect);
-        },600)
+        }, 600)
     }
 </script>
 </body>

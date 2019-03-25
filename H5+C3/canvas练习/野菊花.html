@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-	#canvas{
-		background: #ccc;
-	}
-	</style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #canvas {
+            background: #ccc;
+        }
+    </style>
 </head>
 <body>
-	<canvas id="canvas" width="1340" height="600"></canvas>
+<canvas id="canvas" width="400" height="400"></canvas>
 </body>
 </html>
 <script>
-	var canvas=document.getElementById('canvas');
-	var cobj=canvas.getContext('2d');
-	var cx=150;
-	var cy=150;
-	var r=100;
-	var deg=Math.PI/15*11;
-	cobj.fillStyle='pink';
-	cobj.strokeStyle='purple';
-	cobj.beginPath();
-	for (var i = 0; i < 30; i++) {
-		var x=Math.cos(i*deg);
-		var y=Math.sin(i*deg);
-		cobj.bezierCurveTo(cx+r*x,cy+r*y,cx+r*x,cy+r*y,cx+r*x,cy+r*y);
-	}
-	cobj.closePath();
-	cobj.fill();
-	cobj.stroke();
+    var canvas = document.getElementById('canvas');
+    var cobj = canvas.getContext('2d');
+    var cx = 150;
+    var cy = 150;
+    var r = 100;
+    var deg = Math.PI / 15 * 11;
+    cobj.fillStyle = 'pink';
+    cobj.strokeStyle = 'purple';
+    cobj.beginPath();
+    for (var i = 0; i < 30; i++) {
+        var x = Math.cos(i * deg);
+        var y = Math.sin(i * deg);
+        cobj.bezierCurveTo(cx + r * x, cy + r * y, cx + r * x, cy + r * y, cx + r * x, cy + r * y);
+    }
+    cobj.closePath();
+    cobj.fill();
+    cobj.stroke();
 </script>
