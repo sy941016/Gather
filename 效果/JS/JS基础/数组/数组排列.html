@@ -9,41 +9,42 @@
 </body>
 <script>
     //数组去重
-    var arr=[1,1,2,2,3,3,1,4,4,5,5,6,6];
-    var arr1=[];
-    var num=0;
-    function qc(arr1){
-        for (var i = 0; i < arr.length; i++) {
-            if (check(arr1, arr[i])){
-                arr1[num] = arr[i];
-                num++;
+    function uniq(array){
+        let temp = [];
+        for(let i = 0; i < array.length; i++){
+            if(temp.indexOf(array[i]) == -1){
+                temp.push(array[i]);
             }
         }
-        return arr1;
+        return temp;
     }
-    console.log(qc(arr1));
-    function check(arr1,arrI){
-        for(var i=0;i< arr1.length;i++){
-            if(arr1[i]==arrI){
-                return false;
-            }
-        }
-        return true;
+
+    let aa = [1,2,2,4,9,6,7,5,2,3,5,6,5];
+    console.log(uniq(aa));
+
+    let bb = [1, 1, 2]
+    let arraySet = function(array) {
+        array = new Set(array);
+        array = Array.from(array)
+        return array
     }
+    console.log(arraySet(bb));
+
     //数组冒泡排序 封装
-    var arr=[45,1,99,20];
-    function sy(arr,n){
+    var arr = [45, 1, 99, 20];
+
+    function sy(arr, n) {
         var temp;
         for (var i = 0; i < arr.length; i++) {
             for (var j = 0; j < arr.length; j++) {
-                if(n==1){
-                if (arr[i] >= arr[j]) {
-                    temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
-            }else if(n==-1){
-                    if (arr[i]<= arr[j]) {
+                if (n == 1) {
+                    if (arr[i] >= arr[j]) {
+                        temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                } else if (n == -1) {
+                    if (arr[i] <= arr[j]) {
                         temp = arr[i];
                         arr[i] = arr[j];
                         arr[j] = temp;
@@ -53,19 +54,20 @@
         }
         return arr;
     }
-    console.log(sy(arr,1));
+
+    console.log(sy(arr, 1));
     //数组选择排序
-    var arr=[6,7,5,3,4,1,8];
-    for(var i=0;i<arr.length;i++){
-        var min=i;
-        for(var j=i+1;j<arr.length;j++){
-            if(arr[j]<arr[min]){
-                min=j;
+    var arr = [6, 7, 5, 3, 4, 1, 8];
+    for (var i = 0; i < arr.length; i++) {
+        var min = i;
+        for (var j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[min]) {
+                min = j;
             }
         }
-        var temp=arr[i];
-        arr[i]=arr[min];
-        arr[min]=temp;
+        var temp = arr[i];
+        arr[i] = arr[min];
+        arr[min] = temp;
     }
     console.log(arr);
 </script>
