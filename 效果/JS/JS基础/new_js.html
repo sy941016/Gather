@@ -156,6 +156,26 @@
     let a2 = [1, 2, 3];
     console.log(a2.lastIndexOf(3)) //2
     console.log(a1.indexOf('a'))  //0
+//
+    console.log(['a', 'b', 'c', 'd'].includes('b'))       // true
+    console.log(['a', 'b', 'c', 'd'].includes('b', 1))    // true
+    console.log(['a', 'b', 'c', 'd'].includes('b', 2))    // false
+
+//async await
+    function doubleAfter2seconds(num) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(2 * num)
+            }, 2000);
+        } )
+    }
+    async function testResult() {
+        let first = await doubleAfter2seconds(30);
+        let second = await doubleAfter2seconds(50);
+        let third = await doubleAfter2seconds(30);
+        console.log(first + second + third);
+    }
+    testResult();
 
 //node接口调用
     $.ajax({
