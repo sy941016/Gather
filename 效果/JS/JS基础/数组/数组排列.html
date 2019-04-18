@@ -9,34 +9,34 @@
 </body>
 <script>
     //数组去重
-    function uniq(array){
+    function uniq(array) {
         let temp = [];
-        for(let i = 0; i < array.length; i++){
-            if(temp.indexOf(array[i]) == -1){
+        for (let i = 0; i < array.length; i++) {
+            if (temp.indexOf(array[i]) == -1) {
                 temp.push(array[i]);
             }
         }
         return temp;
     }
 
-    let aa = [1,2,2,4,9,6,7,5,2,3,5,6,5];
+    let aa = [1, 1, 2];
     console.log(uniq(aa));
-
+    //Set去重
     let bb = [1, 1, 2]
-    let arraySet = function(array) {
-        array = new Set(array);
-        array = Array.from(array)
-        return array
+    let arraySet = (arr) => {
+        arr = new Set(arr);
+        arr = Array.from(arr)
+        return arr
     }
     console.log(arraySet(bb));
 
-    //数组冒泡排序 封装
-    var arr = [45, 1, 99, 20];
+    //数组冒泡排序
+    let arr = [45, 1, 99, 20];
 
-    function sy(arr, n) {
-        var temp;
-        for (var i = 0; i < arr.length; i++) {
-            for (var j = 0; j < arr.length; j++) {
+    function Sort(arr, n) {
+        let temp;
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr.length; j++) {
                 if (n == 1) {
                     if (arr[i] >= arr[j]) {
                         temp = arr[i];
@@ -55,20 +55,20 @@
         return arr;
     }
 
-    console.log(sy(arr, 1));
-    //数组选择排序
-    var arr = [6, 7, 5, 3, 4, 1, 8];
-    for (var i = 0; i < arr.length; i++) {
-        var min = i;
-        for (var j = i + 1; j < arr.length; j++) {
-            if (arr[j] < arr[min]) {
-                min = j;
+    console.log(Sort(arr, 1));
+    //数组排序
+    let arrSort = [6, 7, 5, 3, 4, 1, 8];
+    arrSort.forEach((item, index) => {
+        let min = index;
+        for (let j = index + 1; j < arrSort.length; j++) {
+            if (arrSort[j] < arrSort[min]) {
+                min = j
             }
         }
-        var temp = arr[i];
-        arr[i] = arr[min];
-        arr[min] = temp;
-    }
-    console.log(arr);
+        let temp = arrSort[index];
+        arrSort[index] = arrSort[min]
+        arrSort[min] = temp
+    })
+    console.log(arrSort);
 </script>
 </html>
