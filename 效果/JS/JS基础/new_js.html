@@ -12,9 +12,10 @@
     $('.click').click(function () {
         alert(1)
     })
+    //移除方法
     $('.click').unbind()
 
-//class 继承
+    //class 继承
     class Student {
         constructor(name) {
             this.name = name;
@@ -51,7 +52,7 @@
         console.log(index)
     })
 
-//解构赋值
+    //解构赋值
     const [a, b, c, d, e] = 'hello';
     console.log(a);
 
@@ -61,18 +62,9 @@
 
     move({x: 3, y: 8}); // [3, 8]
     move({x: 3}); // [3, 0]
-    move({}); // [0, 0]
     move(); // [0, 0]
 
-    function move1({x, y} = {x: 0, y: 0}) {
-        return [x, y];
-    }
-
-    move1({x: 3, y: 8}); // [3, 8]
-    move1({x: 3}); // [3, undefined]
-    move1({}); // [undefined, undefined]
-    move1(); // [0, 0]
-
+    //map
     const map = new Map();
     map.set('first', 'hello');
     map.set('second', 'world');
@@ -81,21 +73,7 @@
         console.log(key + " is " + value);
     }
 
-//symbol
-    let mySymbol = Symbol();
-    // 第一种写法
-    let ss = {};
-    ss[mySymbol] = 'Hello!';
-    // 第二种写法
-    let sss = {
-        [mySymbol]: 'Hello!'
-    };
-    // 第三种写法
-    let ssss = {};
-    Object.defineProperty(ssss, mySymbol, {value: 'Hello!'});
-    console.log(ssss[mySymbol]); //hello
-
-//promise
+    //promise
     //做饭
     function cook() {
         console.log('开始做饭。');
@@ -143,7 +121,7 @@
             console.log(data);
         });
 
-//generator函数
+    //generator函数
     function* gen() {
         yield  123 + 456;
     }
@@ -151,33 +129,49 @@
     var gen = gen();
     console.log(gen.next());
 
-//indexOf
+    //indexOf
     let a1 = 'abcd';
     let a2 = [1, 2, 3];
     console.log(a2.lastIndexOf(3)) //2
     console.log(a1.indexOf('a'))  //0
-//
+    //includes
     console.log(['a', 'b', 'c', 'd'].includes('b'))       // true
     console.log(['a', 'b', 'c', 'd'].includes('b', 1))    // true
     console.log(['a', 'b', 'c', 'd'].includes('b', 2))    // false
 
-//async await
+    //filter
+    let arr1 = [1, 2, 3], arr2 = [3, 5, 2]
+    let aSet = new Set(arr1), bSet = new Set(arr2);
+    // 并集
+    let unionSet = new Set([...arr1, ...arr2])
+    // 交集
+    let intersectionSet = new Set([...aSet].filter(x => bSet.has(x)))
+    let intersection = arr1.filter((x) => {
+        return arr2.indexOf(x) > -1
+    })
+    console.log(unionSet) // {1,2,3,5}
+    console.log(intersectionSet) // {2.3}
+    console.log(intersection)    // [2.3]
+
+    //async await
     function doubleAfter2seconds(num) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(2 * num)
             }, 2000);
-        } )
+        })
     }
+
     async function testResult() {
         let first = await doubleAfter2seconds(30);
         let second = await doubleAfter2seconds(50);
         let third = await doubleAfter2seconds(30);
         console.log(first + second + third);
     }
+
     testResult();
 
-//node接口调用
+    //node接口调用
     $.ajax({
         type: 'get',
         url: 'http://localhost:3002/api',
