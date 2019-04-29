@@ -2,37 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>transition</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <style>
-    .box{
-        width:200px ;
-        height:200px;
+    ul, li {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    body {
+        background: #f6f9fe
+    }
+
+    ul {
+        padding:10px;
         overflow: hidden;
-        border:1px solid #000;
+        margin: 50px;
     }
-    .index,.index1{
+
+    ul > li {
         width: 200px;
-        height:200px;
-        background: #CCCCCC;
+        height: 140px;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 0 14px 0 rgba(0, 0, 0, .08);
+        margin-top: 20px;
+        background: #fff;
+    }
+
+    .sub, .detail {
+        width: 100%;
+        height: 100%;
         text-align: center;
-        line-height: 200px;
-        color: red;
-        font-weight: 900;
+        line-height: 140px;
+        color: #000000;
+        font-weight: 800;
     }
-    .index{
-        margin-top:0;
-        transition:margin-top 1s ease-in-out;
+
+    .sub {
+        transition: margin-top 1s ease-in-out;
     }
-    .box:hover .index{
-        margin-top:-200px;
+
+    ul > li:hover .sub {
+        margin-top: -140px;
     }
 </style>
 <body>
-<div class="box">
-    <div class="index">上去</div>
-    <div class="index1">出来</div>
-</div>
+<ul>
+    <li>
+        <div class="sub">上去</div>
+        <div class="detail">出来</div>
+    </li>
+    <li>
+        <div class="sub">上去</div>
+        <div class="detail">出来</div>
+    </li>
+    <li>
+        <div class="sub">上去</div>
+        <div class="detail">出来</div>
+    </li>
+</ul>
 </body>
 </html>
