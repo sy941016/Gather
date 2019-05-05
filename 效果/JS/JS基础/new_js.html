@@ -31,7 +31,10 @@
 
     class PrimaryStudent extends Student {//extends   继承Student的所有方法
         constructor(name, grade) {
-            super(name);//创建子类的this对象
+            //用在构造函数中，必须在this之前调用
+            //通过super(name)来调用父类的构造函数，否则父类的name属性无法正常初始化
+            //相当于PrimaryStudent.call(this,name)
+            super(name);
             this.grade = grade;
         }
 
