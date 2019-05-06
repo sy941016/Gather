@@ -31,30 +31,41 @@
     console.log(arraySet(bb));
 
     //数组冒泡排序
-    // 原理:每一次对比相邻两个数据的大小，小的排在前面，如果前面的数比后面的大就交换这两个数的位置
-    let arr = [6, 7, 5, 3, 4, 1, 8];
+    // 原理:每一次比较相邻两个数的大小，小的排在前面，如果前面的数比后面的大就交换这两个数的位置
 
-    function Sort(arr) {
+    let arr1 = [6, 7, 5, 3, 4, 8, 1];
+    let Sort = function (arr) {
         let temp;
         for (let i = 0; i < arr.length; i++) {
             for (let j = i + 1; j < arr.length; j++) {
                 if (arr[i] >= arr[j]) {
-                    temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
+                    //互换位置
+                    [arr[i], arr[j]] = [arr[j], arr[i]]
                 }
             }
         }
         return arr;
     }
+    console.log(Sort(arr1));
 
-    console.log(Sort(arr));
+    let arr2 = [6, 7, 5, 3, 4, 8, 1];
+    let sortarr = function (arr) {
+        for (let i = 0; i < arr.length - 1; i++) {
+            for (let j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    //互换位置
+                    [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+                }
+            }
+        }
+        return arr;
+    }
+    console.log(sortarr(arr2));
 
     //数组快速排序
-    //原理: 先找到一个基准点（一般指数组的中部），然后数组被该基准点分为两部分，依次与该基准点数据比较，如果比它小，放左边；反之，放右边。
-    // 左右分别用一个空数组去存储比较后的数据。最后递归执行上述操作，直到数组长度<=1
-    let arr2 = [5, 8, 9, 7];
-    let times = 0;
+    //原理: 找到一个基准点（一般指数组的中部），然后数组被该基准点分为两部分，依次与该基准点数据比较，如果比它小，放左边；反之，放右边
+    //左右分别用一个空数组去存储比较后的数据。最后递归执行上述操作，直到数组长度<=1
+    let arr3 = [6, 7, 5, 3, 4, 8, 1];
     let quickSort = function (arr) {
         //如果数组长度小于等于1无需判断直接返回即可
         if (arr.length <= 1) {
@@ -71,12 +82,10 @@
             } else {
                 right.push(arr[i]);//比基准点大的放在右边数组
             }
-            console.log("第" + (++times) + "次排序后：" + arr);
         }
         //递归执行以上操作,对左右两个数组进行操作，直到数组长度为<=1；
         return quickSort(left).concat(midIndexVal, quickSort(right));
     };
-
-    console.log(quickSort(arr2));
+    console.log(quickSort(arr3));
 </script>
 </html>
