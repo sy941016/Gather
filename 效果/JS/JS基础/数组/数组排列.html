@@ -36,44 +36,22 @@
     // 2.对每一对相邻元素做同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数
     // 3.针对所有的元素重复以上的步骤，除了最后一个
     // 4.持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较
-    let arr = [45, 1, 99, 20];
+    let arr = [6, 7, 5, 3, 4, 1, 8];
 
-    function Sort(arr, n) {
+    function Sort(arr) {
         let temp;
         for (let i = 0; i < arr.length; i++) {
-            for (let j = 0; j < arr.length; j++) {
-                if (n == 1) {
-                    if (arr[i] >= arr[j]) {
-                        temp = arr[i];
-                        arr[i] = arr[j];
-                        arr[j] = temp;
-                    }
-                } else if (n == -1) {
-                    if (arr[i] <= arr[j]) {
-                        temp = arr[i];
-                        arr[i] = arr[j];
-                        arr[j] = temp;
-                    }
+            for (let j = i + 1; j < arr.length; j++) {
+                if (arr[i] >= arr[j]) {
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
                 }
             }
         }
         return arr;
     }
 
-    console.log(Sort(arr, 1));
-    //数组排序
-    let arrSort = [6, 7, 5, 3, 4, 1, 8];
-    arrSort.forEach((item, index) => {
-        let min = index;
-        for (let j = index + 1; j < arrSort.length; j++) {
-            if (arrSort[j] < arrSort[min]) {
-                min = j
-            }
-        }
-        let temp = arrSort[index];
-        arrSort[index] = arrSort[min]
-        arrSort[min] = temp
-    })
-    console.log(arrSort);
+    console.log(Sort(arr));
 </script>
 </html>
