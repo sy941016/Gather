@@ -30,12 +30,9 @@
     }
     console.log(arraySet(bb));
 
-    //数组冒泡排序
-    // 原理:每一次比较相邻两个数的大小，小的排在前面，如果前面的数比后面的大就交换这两个数的位置
-
+    //选择排序
     let arr1 = [6, 7, 5, 3, 4, 8, 1];
     let Sort = function (arr) {
-        let temp;
         for (let i = 0; i < arr.length; i++) {
             for (let j = i + 1; j < arr.length; j++) {
                 if (arr[i] >= arr[j]) {
@@ -48,6 +45,8 @@
     }
     console.log(Sort(arr1));
 
+    //冒泡排序
+    // 原理:每一次比较相邻两个数的大小，小的排在前面，如果前面的数比后面的大就交换这两个数的位置
     let arr2 = [6, 7, 5, 3, 4, 8, 1];
     let sortarr = function (arr) {
         for (let i = 0; i < arr.length - 1; i++) {
@@ -62,7 +61,7 @@
     }
     console.log(sortarr(arr2));
 
-    //数组快速排序
+    //快速排序
     //原理: 找到一个基准点（一般指数组的中部），然后数组被该基准点分为两部分，依次与该基准点数据比较，如果比它小，放左边；反之，放右边
     //左右分别用一个空数组去存储比较后的数据。最后递归执行上述操作，直到数组长度<=1
     let arr3 = [6, 7, 5, 3, 4, 8, 1];
