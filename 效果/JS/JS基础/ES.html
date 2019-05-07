@@ -2,19 +2,13 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title id="title"></title>
+    <title id="title">ES</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body>
-<button class="click">点击</button>
+
 </body>
 <script>
-    $('.click').click(function () {
-        alert(1)
-    })
-    //移除方法
-    $('.click').unbind()
-
     //class 继承
     class Student {
         constructor(name) {
@@ -80,11 +74,11 @@
     //做饭
     function cook() {
         console.log('开始做饭。');
-        var p = new Promise(function (resolve, reject) {        //做一些异步操作
+        var p = new Promise(function (resolve, reject) {
             setTimeout(function () {
                 console.log('做饭完毕！');
                 resolve('鸡蛋炒饭');
-            }, 1000);
+            }, 2000);
         });
         return p;
     }
@@ -124,14 +118,6 @@
             console.log(data);
         });
 
-    //generator函数
-    function* gen() {
-        yield  123 + 456;
-    }
-
-    var gen = gen();
-    console.log(gen.next());
-
     //indexOf
     let a1 = 'abcd';
     let a2 = [1, 2, 3];
@@ -155,24 +141,6 @@
     console.log(unionSet)        // {1,2,3,5}
     console.log(intersectionSet) // {2.3}
     console.log(intersection)    // [2.3]
-
-    //async await
-    function doubleAfter2seconds(num) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(2 * num)
-            }, 2000);
-        })
-    }
-
-    async function testResult() {
-        let first = await doubleAfter2seconds(30);
-        let second = await doubleAfter2seconds(50);
-        let third = await doubleAfter2seconds(30);
-        console.log(first + second + third);
-    }
-
-    testResult();
 
     //node接口调用
     $.ajax({
