@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>carousel</title>
     <script src="js/jquery-3.1.1.js"></script>
 </head>
 <style>
     body {
-        margin: 0;;
+        margin: 0;
+        padding:0;
     }
 
     .container {
@@ -78,12 +79,13 @@
 </div>
 </body>
 <script>
-    var item = $(".item");
-    var container = $(".container");
+    let item = $(".item");
+    console.log(item.length)
+    let container = $(".container");
     item.each(function () {
         $(this).click(function () {
-            var index = $(this).index();
-            var cha = index - 3;
+            let index = $(this).index();
+            let cha = index - 3;
             if (cha > 0) {
                 $(".item").slice(0, cha).appendTo(container);
             } else {
@@ -91,7 +93,7 @@
             }
         });
     });
-    var t = setInterval(move, 2000);
+    let t = setInterval(move, 2000);
 
     function move() {
         $(".item").slice(0, 1).appendTo(container);
