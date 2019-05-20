@@ -228,9 +228,9 @@
         },
         legend: {
             orient: 'vertical',
-            y: 'bottom',
-            x:'right',
-            data:['aa'],
+            y: 'top',
+            x:'left',
+            data:['圈圈'],
             textStyle: {
                 color: '#fff'
             }
@@ -270,7 +270,7 @@
         },
         series: [
             {
-                name: 'aa',
+                name: '圈圈',
                 type: 'scatter',
                 coordinateSystem: 'geo',
                 data: convertData([
@@ -465,6 +465,7 @@
                     {name: "武汉", value: 273},
                     {name: "大庆", value: 279}
                 ]),
+                symbol:'',//可自定义图片
                 symbolSize: 12,
                 label: {
                     normal: {
@@ -476,7 +477,7 @@
                 },
                 itemStyle: {
                     normal:{
-                        color:"green"
+                        color:"red"
                     },
                     emphasis: {
                         borderColor: '#fff',

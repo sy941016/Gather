@@ -457,7 +457,9 @@
             {
                 type:'scatter',
                 coordinateSystem: 'geo',
+                //data数组项     name:地图坐标+value
                 data: convertData(data),
+                symbol:'circle',//可自定义图片
                 symbolSize: function (val) {
                     return val[2] / 10;
                 },
@@ -465,7 +467,7 @@
                     normal: {
                         formatter: '{b}',
                         position: 'right',
-                        show: false
+                        show: false//不显示文本标签
                     },
                     emphasis: {
                         show: true
