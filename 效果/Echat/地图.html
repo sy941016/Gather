@@ -11,12 +11,6 @@
 </body>
 <script>
     var myChart = echarts.init(document.getElementById('main'));
-    myChart.setOption({
-        series: [{
-            type: 'map',
-            map: 'china'
-        }]
-    });
     function randomData() {
         return Math.round(Math.random() * 1000);
     }
