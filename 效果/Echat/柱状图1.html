@@ -9,8 +9,8 @@
 <div id="main" style="width:600px;height:600px"></div>
 </body>
 <script>
-    var myChart=echarts.init(document.getElementById("main"));
-    var dataAxis = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11','12'];
+    var myChart = echarts.init(document.getElementById("main"));
+    var dataAxis = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
     var data = [220, 182, 191, 234, 290, 330, 310, 123, 442, 321, 90, 149];
     var yMax = 500;
     var dataShadow = [];
@@ -64,13 +64,14 @@
             }
         ],
         series: [
-            { // For shadow
+            //shadow
+            {
                 type: 'bar',
                 itemStyle: {
                     normal: {color: 'rgba(0,0,0,0.05)'}
                 },
-                barGap:'-100%',
-                barCategoryGap:'40%',
+                barGap: '-100%',
+                barCategoryGap: '40%',
                 data: dataShadow,
                 animation: false
             },

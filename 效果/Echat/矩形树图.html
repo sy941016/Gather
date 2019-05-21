@@ -11,7 +11,7 @@
 <script>
     var myChart = echarts.init(document.getElementById('main'));
     option = {
-        tooltip : {
+        tooltip: {
             trigger: 'item',
             formatter: "{b}"
         },
@@ -20,35 +20,35 @@
                 saveAsImage: {}
             }
         },
-        series : [
+        series: [
             {
-                type:'treemap',
-                width:'100%',
-                height:'100%',
-                roam:false,
-                nodeClick:false,
-                levels:[{
+                type: 'treemap',
+                width: '100%',
+                height: '100%',
+                roam: false,
+                nodeClick: false,
+                levels: [{
                     itemStyle: {
                         normal: {
-                            gapWidth:1
+                            gapWidth: 1
                         }
                     }
                 }],
-                breadcrumb:{
-                    show:false
+                breadcrumb: {
+                    show: false
                 },
-                label:{
-                    normal:{
-                        show:true,
-                        position:[10,10]
+                label: {
+                    normal: {
+                        show: true,
+                        position: [10, 10]
                     }
                 },
                 itemStyle: {
                     normal: {
                         show: true,
-                        textStyle:{
-                            color:'#fff',
-                            fontSize:16
+                        textStyle: {
+                            color: '#fff',
+                            fontSize: 16
                         },
                         borderWidth: 1,
                         borderColor: '#fff'
@@ -59,12 +59,12 @@
                         }
                     }
                 },
-                data:[
+                data: [
                     {
                         value: 8,
                         children: [{
                             name: 'aa\n\n30%',
-                            value:10,
+                            value: 10,
                             itemStyle: {
                                 normal: {
                                     color: '#80cbc4'
@@ -86,7 +86,7 @@
                                     color: '#80cbc4'
                                 }
                             }
-                        },{
+                        }, {
                             name: 'dd\n30%',
                             value: 5,
                             itemStyle: {
@@ -94,7 +94,7 @@
                                     color: '#80cbc4'
                                 }
                             }
-                        },{
+                        }, {
                             name: 'ee\n30%',
                             value: 4,
                             itemStyle: {
@@ -102,7 +102,7 @@
                                     color: '#80cbc4'
                                 }
                             }
-                        },{
+                        }, {
                             name: 'ff\n30%',
                             value: 4,
                             itemStyle: {
@@ -198,7 +198,7 @@
                                     color: '#81e7cf'
                                 }
                             }
-                        },{
+                        }, {
                             name: 'pp\n\n30%',
                             value: 10,
                             itemStyle: {

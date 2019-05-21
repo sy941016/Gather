@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>饼图</title>
     <script src="js/echarts.js"></script>
 </head>
 <body>
@@ -11,26 +11,31 @@
 <script>
     var myChart = echarts.init(document.getElementById('main'));
     var tips = 0;
+
     function loading() {
-        return [{
-            value: tips,
-            itemStyle: {
-                normal: {
-                    color: 'green'
+        return [
+            {
+                value: tips,
+                itemStyle: {
+                    normal: {
+                        color: 'red'
+                    }
                 }
+            },
+            {
+                value: 100 - tips
             }
-        }, {
-            value: 100 - tips
-        }];
+        ];
     }
+
     option = {
-        backgroundColor:"#000000",
+        backgroundColor: "#000000",
         title: {
             text: (tips * 1) + '%',
             x: 'center',
             y: 'center',
             textStyle: {
-                color: 'red',
+                color: '#fff',
                 fontSize: 40
             }
         },
@@ -47,10 +52,15 @@
                     show: false
                 }
             },
+            itemStyle: {
+                normal: {
+                    color: '#fff'
+                }
+            },
             data: loading()
         }]
     };
-    setInterval(function() {
+    setInterval(function () {
         if (tips == 80) {
             tips = 80;
         } else {

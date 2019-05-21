@@ -7,8 +7,8 @@
     <script src="js/china.js"></script>
 </head>
 <style>
-    #main{
-        width:900px;
+    #main {
+        width: 900px;
         height: 800px;
     }
 </style>
@@ -16,7 +16,7 @@
 <div id="main"></div>
 </body>
 <script>
-    var myChart=echarts.init(document.getElementById("main"));
+    var myChart = echarts.init(document.getElementById("main"));
     option = {
         tooltip: {
             trigger: 'item',
@@ -25,7 +25,7 @@
         legend: {
             orient: 'vertical',//排列方式
             x: 'left',//对齐方式
-            data:['论坛','报刊','客户端','微信','网页','微博']
+            data: ['论坛', '报刊', '客户端', '微信', '网页', '微博']
         },
         toolbox: {
             feature: {
@@ -34,8 +34,8 @@
         },
         series: [
             {
-                name:'访问来源',
-                type:'pie',
+                name: '访问来源',
+                type: 'pie',
                 selectedMode: 'single',//单一选中模式
                 radius: [0, '30%'], //饼图的半径 [内半径，外半径]
                 label: {
@@ -45,18 +45,18 @@
                 },
                 labelLine: {
                     normal: {
-                        show:false   //不需要设置引导线
+                        show: false   //不需要设置引导线
                     }
                 },
-                data:[
-                    {value:335, name:'a1', selected:true},
-                    {value:679, name:'a2'},
-                    {value:1548, name:'a3'}
+                data: [
+                    {value: 335, name: 'a1', selected: true},
+                    {value: 679, name: 'a2'},
+                    {value: 1548, name: 'a3'}
                 ]
             },
             {
-                name:'访问来源',
-                type:'pie',
+                name: '访问来源',
+                type: 'pie',
                 radius: ['40%', '55%'],
                 label: {
                     normal: {
@@ -65,7 +65,7 @@
                         borderColor: '#aaa',
                         borderWidth: 1,
                         borderRadius: 4,
-                        shadowBlur:3,
+                        shadowBlur: 3,
                         shadowOffsetX: 2,
                         shadowOffsetY: 2,
                         shadowColor: '#999',
@@ -76,13 +76,13 @@
                                 lineHeight: 22,
                                 align: 'center'
                             },
-                             abg: {
-                                 backgroundColor: '#333',
-                                 width: '100%',
-                                 align: 'right',
-                                 height: 22,
-                                 borderRadius: [4, 4, 0, 0]
-                             },
+                            abg: {
+                                backgroundColor: '#333',
+                                width: '100%',
+                                align: 'right',
+                                height: 22,
+                                borderRadius: [4, 4, 0, 0]
+                            },
                             hr: {
                                 borderColor: '#aaa',
                                 width: '100%',
@@ -102,15 +102,15 @@
                         }
                     }
                 },
-                data:[
-                    {value:200, name:'论坛'},
-                    {value:310, name:'报刊'},
-                    {value:234, name:'客户端'},
-                    {value:135, name:'微信'},
-                    {value:1048, name:'网页'},
-                    {value:251, name:'微博'}
+                data: [
+                    {value: 200, name: '论坛'},
+                    {value: 310, name: '报刊'},
+                    {value: 234, name: '客户端'},
+                    {value: 135, name: '微信'},
+                    {value: 1048, name: '网页'},
+                    {value: 251, name: '微博'}
                 ],
-                color:["red","green","#000","purple","skyblue","orange"]
+                color: ["red", "green", "#000", "purple", "skyblue", "orange"]
             }
         ]
     };
