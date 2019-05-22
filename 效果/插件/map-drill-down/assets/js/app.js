@@ -205,9 +205,8 @@ function renderMap(map, data) {
         }
     ];
     let option1 = {...option};
-    if (map == 'china') {
-        option1.series.push({
-
+    option1.series.push(
+        {
             type: 'scatter',
             coordinateSystem: 'geo',
             data: convertData(data), //data数组项     name:地图坐标+value数据值
@@ -222,8 +221,12 @@ function renderMap(map, data) {
                 }
             }
         }
-        )
-    }
+    )
+
     //渲染地图
-    chart.setOption(option1);
+    if (map == 'china') {
+        chart.setOption(option1);
+    } else {
+        chart.setOption(option);
+    }
 }
