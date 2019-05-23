@@ -6,27 +6,28 @@
     <script src="js/vis.min.js"></script>
 </head>
 <body>
-<div id="mynetwork" style="width:600px;height:600px;border:1px solid #000"></div>
+<div id="mynetwork" style="width:800px;height:800px;border:1px solid #000;margin:auto"></div>
 </body>
 <script>
     // create an array with nodes
     var nodes = [
-        {id: 1, label: 'Node 1'},
-        {id: 2, label: 'Node 2'},
-        {id: 3, label: 'Node 3:\nLeft-Aligned', font: {'face': 'Monospace', align: 'left'}},
-        {id: 4, label: 'Node 4'},
-        {
-            id: 5, label: 'Node 5\nLeft-Aligned box', shape: 'box',
-            font: {'face': 'Monospace', align: 'left'}
-        }
+        {id: 1, label: '范闲\n张若昀', shape: 'box', font: {align: 'left'}},
+        {id: 2, label: '庆帝\n陈道明'},
+        {id: 3, label: '林婉儿\n李沁'},
+        {id: 4, label: '海棠朵朵'},
+        {id: 5, label: '范建'},
+        {id: 6, label: '叶灵儿'},
+        {id: 7, label: '林若普'}
     ];
 
     // create an array with edges
     var edges = [
-        {from: 1, to: 2, label: 'middle', font: {align: 'middle'}},
-        {from: 1, to: 3, label: 'top', font: {align: 'top'}},
-        {from: 2, to: 4, label: 'horizontal', font: {align: 'horizontal'}},
-        {from: 2, to: 5, label: 'bottom', font: {align: 'bottom'}}
+        {from: 1, to: 2, label: '生父', font: {align: 'middle'}},
+        {from: 1, to: 3, label: '夫妻', font: {align: 'top'}},
+        {from: 1, to: 4, label: '知己', font: {align: 'horizontal'}},
+        {from: 1, to: 5, label: '养父', font: {align: 'bottom'}},
+        {from: 1, to: 6, label: '徒弟', font: {align: 'bottom'}},
+        {from: 3, to: 7, label: '父亲', font: {align: 'bottom'}}
     ];
 
     // create a network
@@ -35,7 +36,46 @@
         nodes: nodes,
         edges: edges
     };
-    var options = {physics: false};
+    var options = {
+        physics: {
+            // stabilization: false,
+            barnesHut: {
+                centralGravity: 8, // 中心重力吸引器将整个网络拉回中心
+                springLength: 80, // 边缘被建模为弹簧。这个弹簧长度是弹簧的剩余长度
+                gravitationalConstant: -80000, // 重力吸引,负数，排斥力越大
+                avoidOverlap: 0.2, // 接受范围：[0 .. 1]。当大于0时，会考虑节点的大小。该距离将由重力模型的节点的包围圆的半径计算。值1是最大重叠避免。
+                damping: 0.3,
+                springConstant: 0.5
+            },
+            minVelocity: 16 // 一旦达到所有节点的最小速度，我们假设网络已经稳定，仿真停止
+        },
+        nodes: {
+            shape: 'box',
+            size: 10,
+            font: {
+                size: 30, //节点大小
+                color: "#fff",
+                align: 'center',
+                'face': 'Monospace',
+            },
+            color: {
+                border: '#000',//节点边框颜色
+                background: 'red',//节点背景颜色
+                highlight: {//节点选中时状态颜色
+                    border: 'red',
+                    background: '#000'
+                },
+                borderWidth: 4,//节点边框
+                shadow: true //是否显示阴影
+            }
+        },
+        edges: {
+            shadow: true,//连接线阴影配置
+            smooth: true,//是否显示方向箭头
+            arrows: {to: true},//箭头指向from节点
+            color: "red", // 线条颜色
+        }
+    };
     var network = new vis.Network(container, data, options);
 </script>
 </html>
