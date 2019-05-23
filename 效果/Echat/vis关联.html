@@ -49,20 +49,27 @@
             },
             minVelocity: 16 // 一旦达到所有节点的最小速度，我们假设网络已经稳定，仿真停止
         },
+        interaction: {
+            hover: true  //开启hover的颜色触发，默认false
+        },
         nodes: {
-            shape: 'box',
+            shape: 'circle',//type:box circle
             size: 10,
+            margin: 10,
             font: {
                 size: 30, //节点大小
                 color: "#fff",
                 align: 'center',
-                'face': 'Monospace',
+                face: 'Monospace'
             },
             color: {
                 border: '#000',//节点边框颜色
                 background: 'red',//节点背景颜色
                 highlight: {//节点选中时状态颜色
                     border: 'red',
+                    background: '#000'
+                },
+                hover:{
                     background: '#000'
                 },
                 borderWidth: 4,//节点边框
