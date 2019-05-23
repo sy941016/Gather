@@ -38,16 +38,7 @@
     };
     var options = {
         physics: {
-            // stabilization: false,
-            barnesHut: {
-                centralGravity: 8, // 中心重力吸引器将整个网络拉回中心
-                springLength: 80, // 边缘被建模为弹簧。这个弹簧长度是弹簧的剩余长度
-                gravitationalConstant: -80000, // 重力吸引,负数，排斥力越大
-                avoidOverlap: 0.2, // 接受范围：[0 .. 1]。当大于0时，会考虑节点的大小。该距离将由重力模型的节点的包围圆的半径计算。值1是最大重叠避免。
-                damping: 0.3,
-                springConstant: 0.5
-            },
-            minVelocity: 16 // 一旦达到所有节点的最小速度，我们假设网络已经稳定，仿真停止
+            enabled:false,
         },
         interaction: {
             hover: true  //开启hover的颜色触发，默认false
