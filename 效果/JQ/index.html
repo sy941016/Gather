@@ -12,8 +12,10 @@
         margin: 0;
         padding: 0;
     }
-
-    ul > li {
+    .week{
+        overflow: hidden;
+    }
+    .week > li {
         height: 50px;
         padding: 10px 40px;
         line-height: 50px;
@@ -22,17 +24,55 @@
         margin-left: 20px;
         color: red;
     }
-
     .active {
         background: #000000;
     }
+
+
+    #p-num{
+        overflow: hidden;
+        margin-top:10px;
+    }
+    #p-num>li{
+        float: left;
+        width: 56px;
+        height: 56px;
+        line-height: 56px;
+        text-align: center;
+        border-radius: 5px;
+        margin-left:20px;
+        font-size: 40px;
+    }
+    #p-num>li:nth-child(1){
+        margin-left: 0px;
+    }
+    #p-num>li:nth-child(2),#p-num>li:nth-child(6),#p-num>li:nth-child(10){
+        width: 10px;
+        border:0;
+        background: none;
+    }
 </style>
 <body>
-<ul>
+<ul class="week">
     <li class="test">周一</li>
     <li class="test">周二</li>
     <li class="test">周三</li>
     <li class="test">周四</li>
+</ul>
+<ul id="p-num">
+    <li style="background-image: linear-gradient(90deg, #FF7200 0%, #FF6717 98%)">0</li>
+    <li data-replace="false">,</li>
+    <li style="background-image: linear-gradient(-85deg, #FF962A 0%, #FF6D4F 100%);">0</li>
+    <li style="background-image: linear-gradient(-90deg, #FF724A 6%, #FF563C 100%);">0</li>
+    <li style="background-image: linear-gradient(90deg, #F84A43 5%, #F6403C 99%);">0</li>
+    <li data-replace="false">,</li>
+    <li style="background-image: linear-gradient(90deg, #F84843 5%, #E72B43 99%);">0</li>
+    <li style="background-image: linear-gradient(90deg, #EE2D2C 0%, #F54343 100%);">0</li>
+    <li style="background-image: linear-gradient(-90deg, #EF302F 0%, #E01D1D 100%);">0</li>
+    <li data-replace="false">,</li>
+    <li style="background-image: linear-gradient(90deg, #E21F1F 14%, #DD1616 98%);">0</li>
+    <li style="background-image: linear-gradient(-90deg, #E21F1F 0%, #FF0C0C 100%);">0</li>
+    <li style="background-image: linear-gradient(-90deg, #FE0C0C 0%, #C90D09 100%);">0</li>
 </ul>
 <script>
     $('ul>li').click(function () {
@@ -49,6 +89,22 @@
     //         this.classList.add("active")
     //     }
     // }
+    let data='1114692763';
+    let objArray = new Array();
+    $("#p-num li").each(function () {
+        objArray.push($(this));
+    });
+    objArray = objArray.reverse(); //颠倒顺序
+    let viewIndex = 0;
+    for (let index = data.length - 1; index >= 0; index--) {
+        let num = data.charAt(index);
+        let isReplace = $(objArray[viewIndex]).data("replace");
+        if (isReplace == false) {
+            viewIndex += 1;
+        }
+        $(objArray[viewIndex]).html(num);
+        viewIndex++;
+    }
 </script>
 </body>
 </html>
