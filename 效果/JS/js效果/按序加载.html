@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>按序加载</title>
+    <title>懒加载</title>
     <script src="js/function.js"></script>
 </head>
 <style>
@@ -90,19 +90,19 @@
 <script>
     let box = document.getElementsByClassName("box");
     let img = document.getElementsByTagName("img");
-    let Height = document.documentElement.clientHeight;
+    let Height = document.documentElement.clientHeight;//可见区域高度
     //清除所有img的路径并且加载首屏
     for (let i = 0; i < img.length; i++) {
         img[i].Src = img[i].src;
         img[i].src = "";
-        if (box[i].offsetTop < Height) {
+        if (box[i].offsetTop < Height) { //box 距上的高度
             img[i].src = img[i].Src;
         }
     }
     //按序加载
     window.onscroll = function () {
-        //页面具有 DTD，或者说指定了 DOCTYPE 时，使用 document.documentElement
-        //页面不具有 DTD，或者说没有指定了 DOCTYPE 时，使用 document.body
+        //页面具有 DTD，或指定了 DOCTYPE 时，使用 document.documentElement
+        //反之，则使用 document.body
         let obj = document.documentElement.scrollTop != 0 ? document.documentElement : document.body;
         let top = obj.scrollTop;
         for (let i = 0; i < box.length; i++) {
