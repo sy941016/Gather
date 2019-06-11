@@ -144,8 +144,8 @@
         let ev = e || window.event;
         let nowPosition = ev.target || ev.srcElement;
 
-        Obj = nowPosition;   //点击的为box
-        //父节点的nodeNameq为LI时
+        Obj = nowPosition;   //hover的为box
+        //nowPosition.parentElement.nodeName--LI
         if (nowPosition.parentElement.nodeName.toLowerCase() === "li") {
             let Left = nowPosition.parentElement.offsetLeft;
             let Top = nowPosition.parentElement.offsetTop;
