@@ -2,28 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>父->子</title>
     <script src="js/vue.js"></script>
 </head>
 <body>
 <div id="app">
-    <child v-bind:childmsg="message"></child>
+    <child :who="who"></child>
 </div>
 </body>
 <script>
     Vue.component("child", {
-        template: "<p>{{add}}</p>",
-        props: ["childmsg"],//使用 props 向子组件传递数据
-        computed: {
-            add: function () {
-                return this.childmsg + "我的世界"
-            }
-        }
+        template: "<p>父组件传来的信息：{{who}}</p>",
+        props: ["who"],
     });
     new Vue({
         el: "#app",
         data: {
-            message: "hello"
+            who: "我是你爸爸"
         }
     })
 </script>

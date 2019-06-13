@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <button id="father" @click="father_id" ref="idName">父亲</button>
+    <p>{{id}}</p>
+    <child></child>
+</div>
+</body>
+<script>
+    Vue.component("child", {
+        template: '<div><button id="child" @click="child_id" ref="idName">儿子</button> <p>{{id}}</p></div>',
+        data:()=>{
+            return{
+                id:''
+            }
+        },
+        methods: {
+            child_id: function () {
+                this.id=this.$refs.idName.id
+            }
+        }
+    });
+    new Vue({
+        el: "#app",
+        data:{
+          id:''
+        },
+        methods: {
+            father_id: function () {
+                this.id=this.$refs.idName.id
+            }
+        }
+    })
+</script>
+</html>

@@ -3,12 +3,12 @@ Vue.component('child', {
         <div>\
          <table>\
         <tr><th>明星</th><th>删除操作</th><th>修改操作</th></tr>\
-        <tr v-for="(item,key) in stars"><td>{{item}}</td><td v-on:click="del(key)">删除</td><td v-on:click="getvalue(key,item)">修改</td>\
+        <tr v-for="(item,key) in stars"><td>{{item}}</td><td @click="del(key)">删除</td><td @click="getvalue(key,item)">修改</td>\
         </tr>\
         </table>\
         <div v-show="isShow">\
         <input type="text" v-model="star">\
-        <button v-on:click="setValue">save</button><button v-on:click="hid">cancle</button>\
+        <button @click="setValue">save</button><button @click="hid">cancle</button>\
         </div>\
         </div>\
         ',
