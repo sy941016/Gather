@@ -32,6 +32,7 @@ Vue.component('child', {
             this.isShow = false
         },
         setValue: function (val) {
+            //$set新增属性,触发视图更新
             this.$set(this.stars, this.key, this.star)
             this.isShow = false
         },
