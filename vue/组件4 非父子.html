@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>子子传递</title>
     <script src="js/vue.js"></script>
 </head>
 <body>
@@ -15,19 +15,29 @@
 <script>
     var bus = new Vue();
     Vue.component("child1", {
-        template: "<button v-on:click='add'>child1</button>",
+        template: "<button v-on:click='add'>子->子</button>",
+        data: function () {
+            return {
+                msg: '我是你兄弟'
+            }
+        },
         methods: {
             add: function () {
-                console.log("我是child1的hello");
-                bus.$emit("add", "hello")
+                bus.$emit("by_child1", this.msg);
             }
         }
     });
     Vue.component("child2", {
-        template: "<button>child2</button>",
-        created: function () {
-            bus.$on("add", function (val) {
-                console.log("信息来自child1:" + "hello")
+        template: "<div>兄弟组件传来的信息：{{answer}}</div>",
+        data: function () {
+            return {
+                answer: ''
+            }
+        },
+        mounted: function () {
+            bus.$on("by_child1", (msg) => {
+                console.log(msg)
+                this.answer = msg
             })
         }
     });
