@@ -131,18 +131,16 @@
     //filter
     let arr1 = [1, 2, 3], arr2 = [3, 5, 2]
     // 并集
-    let unionSet = Array.from(new Set([...arr1, ...arr2]))
+    let union = Array.from(new Set([...arr1, ...arr2]))
     // 交集
     let intersection = arr1.filter((x) => {
         return arr2.indexOf(x) > -1
     })
     // 差集
-    let difference = arr1.filter(function (v) {
-        return arr2.indexOf(v) === -1
-    })
-    console.log(unionSet)        // [1,2,3,5]
+    let difference = arr1.concat(arr2).filter(v => !arr1.includes(v) || !arr2.includes(v))
+    console.log(union)        // [1,2,3,5]
     console.log(intersection)    // [2,3]
-    console.log(difference)      // [1]
+    console.log(difference)      // [1,5]
 
     //node接口调用
     $.ajax({
