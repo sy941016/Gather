@@ -9,31 +9,31 @@
 
 </body>
 <script>
-    //class 继承
     class Student {
         constructor(name) {
             this.name = name;
         }
 
         hello() {
-            alert('Hello,' + this.name + '!');
+            console.log('Hello,' + this.name + '!');
         }
     }
 
     let xiaoming = new Student('小明')
     xiaoming.hello()
 
-    class PrimaryStudent extends Student {//extends   继承Student的所有方法
+    //extends   继承Student的所有方法
+    class PrimaryStudent extends Student {
         constructor(name, grade) {
-            //用在构造函数中，必须在this之前调用
-            //通过super(name)来调用父类的构造函数，否则父类的name属性无法正常初始化
-            //相当于PrimaryStudent.call(this,name)
+            // 使用 super(...) 调用父构造函数(仅在constructor函数中)
+            // 使用 super.method(...) 调用父类方法
+            // 在子类的constructor中,只有调用super之后,才能使用this关键字,否则会报错
             super(name);
             this.grade = grade;
         }
 
         myGrade() {
-            alert('I am at grade ' + this.grade);
+            console.log('I am at grade ' + this.grade);
         }
     }
 
@@ -41,34 +41,11 @@
     console.log(Object.getPrototypeOf(PrimaryStudent))
     //实类化
     let jay = new PrimaryStudent('jay', '100')
-    jay.hello()
-
-    let arr = [1, 2, 3, 4]
-    arr.forEach((item, index) => {
-        console.log(item)
-        console.log(index)
-    })
+    jay.myGrade()
 
     //解构赋值
     const [a, b, c, d, e] = 'hello';
     console.log(a);
-
-    function move({x = 0, y = 0} = {}) {
-        return [x, y];
-    }
-
-    move({x: 3, y: 8}); // [3, 8]
-    move({x: 3}); // [3, 0]
-    move(); // [0, 0]
-
-    //map
-    const map = new Map();
-    map.set('first', 'hello');
-    map.set('second', 'world');
-
-    for (let [key, value] of map) {
-        console.log(key + " is " + value);
-    }
 
     //promise
     //做饭
@@ -117,30 +94,6 @@
         .catch((data) => {
             console.log(data);
         });
-
-    //indexOf
-    let a1 = 'abcd';
-    let a2 = [1, 2, 3];
-    console.log(a2.lastIndexOf(3)) //2
-    console.log(a1.indexOf('a'))  //0
-    //includes
-    console.log(['a', 'b', 'c', 'd'].includes('b'))       // true
-    console.log(['a', 'b', 'c', 'd'].includes('b', 1))    // true
-    console.log(['a', 'b', 'c', 'd'].includes('b', 2))    // false
-
-    //filter
-    let arr1 = [1, 2, 3], arr2 = [3, 5, 2]
-    // 并集
-    let union = Array.from(new Set([...arr1, ...arr2]))
-    // 交集
-    let intersection = arr1.filter((x) => {
-        return arr2.indexOf(x) > -1
-    })
-    // 差集
-    let difference = arr1.concat(arr2).filter(v => !arr1.includes(v) || !arr2.includes(v))
-    console.log(union)        // [1,2,3,5]
-    console.log(intersection)    // [2,3]
-    console.log(difference)      // [1,5]
 
     //node接口调用
     $.ajax({

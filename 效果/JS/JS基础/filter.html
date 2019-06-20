@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arr1 = [1, 3, 2, 1], arr2 = [3, 5, 2, 1]
+    // 使用方法
+    // 0 - 并
+    // 1 - 交
+    // -1 - 补
+    class deal_arr {
+        constructor(arr1, arr2, i) {
+            this.arr1 = arr1
+            this.arr2 = arr2
+            this.i = i
+            this.init()
+        }
+
+        init() {
+            let newArr
+            if (this.i == 0) {
+                newArr = this.uniq(this.union())
+            } else if (this.i == 1) {
+                newArr = this.uniq(this.intersection())
+            } else if (this.i == -1) {
+                newArr = this.difference()
+            }
+            console.log(newArr)
+        }
+
+        uniq(arr) {
+            arr = new Set(arr);
+            arr = Array.from(arr)
+            return arr
+        }
+
+        union() {
+            return this.arr1.concat(this.arr2)
+        }
+
+        intersection() {
+            return this.arr1.filter(x =>
+                //this.arr2.indexOf(x) > -1
+                this.arr2.includes(x)
+            )
+        }
+
+        difference() {
+            return this.union().filter(x => !this.arr1.includes(x) || !this.arr2.includes(x))
+        }
+
+    }
+
+    new deal_arr(arr1, arr2, 0)
+</script>
+</html>
