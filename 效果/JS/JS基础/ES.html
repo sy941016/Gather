@@ -130,17 +130,19 @@
 
     //filter
     let arr1 = [1, 2, 3], arr2 = [3, 5, 2]
-    let aSet = new Set(arr1), bSet = new Set(arr2);
     // 并集
-    let unionSet = new Set([...arr1, ...arr2])
+    let unionSet = Array.from(new Set([...arr1, ...arr2]))
     // 交集
-    let intersectionSet = new Set([...aSet].filter(x => bSet.has(x)))
     let intersection = arr1.filter((x) => {
         return arr2.indexOf(x) > -1
     })
-    console.log(unionSet)        // {1,2,3,5}
-    console.log(intersectionSet) // {2.3}
-    console.log(intersection)    // [2.3]
+    // 差集
+    let difference = arr1.filter(function (v) {
+        return arr2.indexOf(v) === -1
+    })
+    console.log(unionSet)        // [1,2,3,5]
+    console.log(intersection)    // [2,3]
+    console.log(difference)      // [1]
 
     //node接口调用
     $.ajax({
