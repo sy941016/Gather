@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>选项</title>
     <script src="js/vue.js"></script>
 </head>
 <body>
 <div id="app">
-    <p>a-新值：{{a}}</p>
-    <p>a-旧值：{{old_a}}</p>
-    <input type="text" v-model="a">
+    <p>new-num：{{num}}</p>
+    <p>old-num：{{old_a}}</p>
+    <input type="text" v-model="num">
     <br>
-    <button v-on:click="add">点击+1</button>
-    <p>a*4：{{js}}</p>
-    <p>{{msg|zh}}</p>
+    <button @click="add">add</button>
+    <p>num*4：{{count}}</p>
+    <p>{{msg|change}}</p>
     <input type="text" v-model="msg">
 </div>
 </body>
@@ -21,32 +21,28 @@
     new Vue({
         el: "#app",
         data: {
-            a: 1,
+            num: 1,
             old_a: "",
             msg: "hello,world"
         },
         methods: {
             add: function () {
-                this.a++
+                this.num++
             }
         },
         watch: {
-           a(new_a, old_a) {
+            num(new_a, old_a) {
                 this.old_a = old_a
             }
         },
         filters: {
-            zh: function (val) {
-                if (!val) {
-                    return
-                }
-                val = val.toString();
+            change: function (val) {
                 return val.toUpperCase()
             }
         },
         computed: {
-            js: function () {
-                return this.a * 4
+            count: function () {
+                return this.num * 4
             }
         }
     })

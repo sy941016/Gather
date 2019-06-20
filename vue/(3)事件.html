@@ -7,22 +7,13 @@
 </head>
 <body>
 <div id="box">
-    <div @click="show2()">
-        <!--事件对象-->
-        <input type="button" value="按钮" @click="show($event)">
+    <div @click="div_click">
         <!--Vue阻止事件冒泡-->
-        <!--<input type="button" value="按钮" @click.stop="show()">-->
+        <input type="button" value="按钮" @click.stop="button_click()">
     </div>
-</div>
-
-<div id="b1">
-    <input type="button" value="默认" @contextmenu="mr($event)">
     <!--Vue阻止默认行为-->
-    <!--<input type="button" value="按钮" @contextmenu.prevent="show()">-->
-</div>
-<!--键盘-->
-<div id="b2">
-    <input type="text" @keydown="jp($event)">
+    <input type="button" value="按钮" @contextmenu.prevent="show()">
+    <input type="text" @keydown="key($event)">
 </div>
 </body>
 <script>
@@ -30,33 +21,19 @@
         el: "#box",
         data: {},
         methods: {
-            show: function (ev) {
-                alert(1);
-                ev.cancelBubble = true;//JS阻止冒泡
+            div_click: function () {
+                alert(1)
             },
-            show2: function () {
-                alert(2)
-            }
-        }
-    });
-    var b1 = new Vue({
-        el: "#b1",
-        data: {},
-        methods: {
-            mr: function (ev) {
-                alert(1);
-                ev.preventDefault();//JS阻止默认行为
-            }
-        }
-    });
-    var b2 = new Vue({
-        el: "#b2",
-        data: {},
-        methods: {
-            jp: function (ev) {
+            button_click: function () {
+                alert(2);
+            },
+            show: function () {
+                alert(3);
+            },
+            key: function (ev) {
                 alert(ev.keyCode);
             }
         }
-    })
+    });
 </script>
 </html>
