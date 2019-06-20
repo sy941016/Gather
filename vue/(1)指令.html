@@ -12,12 +12,13 @@
     <br>
     <button v-on:click="add">添加</button>
     <ul>
-        <li v-for="(aa,index) in adda" v-if="boolearn">
-            <span v-text="aa+index"></span>
+        <li v-for="(item,index) in animal" :key="index">
+            <span>{{item}}</span>
         </li>
     </ul>
-    <button id="xs">消失</button>
-    <img v-bind:src="cat" alt="">
+    <button @click="hidden">消失</button>
+    <br>
+    <img v-bind:src="cat" alt="" v-show="show">
 </div>
 </body>
 <script>
@@ -27,20 +28,20 @@
         el: "#app",
         data: {
             msg: "hello,world",
-            adda: ["a1", "a2", "a3"],
-            boolearn: true,
+            animal: ["萨摩", "哈士奇", "拉布拉多"],
+            show: true,
             cat: "img/cat.jpg"
         },
         methods: {
             add: function () {
-                this.adda.push("a4")
+                if (!this.animal.includes('牧羊犬')) {
+                    this.animal.push("牧羊犬")
+                }
+            },
+            hidden: function () {
+                this.show ? this.show = false : this.show = true
             }
         }
     });
-    let xs = document.getElementById('xs');
-    xs.onclick = function () {
-        app.boolearn = false
-        console.log(app.boolearn)
-    }
 </script>
 </html>
