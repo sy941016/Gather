@@ -8,8 +8,27 @@
     <!-- 全国344个市、区、州对应的数字编号 -->
     <script type="text/javascript" src="assets/js/citymap.js"></script>
 </head>
+<style>
+    #main{
+        width: 100%;
+        height:800px;
+    }
+    .search{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom:20px;
+    }
+</style>
 <body>
-<div id="main" style="width: 100%;height:800px;"></div>
+<div class="search">
+    <select>
+        <option val="1">中国</option>
+        <option val="2">北京</option>
+        <option val="3">四川</option>
+    </select>
+    <button>返回</button>
+</div>
+<div id="main"></div>
 <script type="text/javascript" src="assets/js/jquery.min.js"></script>
 <script type="text/javascript" src="assets/js/app.js"></script>
 </body>

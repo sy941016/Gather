@@ -1,7 +1,7 @@
 //地图容器
-var chart = echarts.init(document.getElementById('main'));
+let chart = echarts.init(document.getElementById('main'));
 //34个省、市、自治区的名字拼音映射数组
-var provinces = {
+let provinces = {
     //23个省
     "台湾": "taiwan",
     "河北": "hebei",
@@ -41,77 +41,60 @@ var provinces = {
     "香港": "xianggang",
     "澳门": "aomen"
 };
-
+let mapdata = [];
 //直辖市和特别行政区-只有二级地图，没有三级地图
-var special = ["北京", "天津", "上海", "重庆", "香港", "澳门"];
-var mapdata = [];
+let special = ["北京", "天津", "上海", "重庆", "香港", "澳门"];
 //绘制全国地图
 $.getJSON('assets/map/china.json', function (data) {
-    d = [];
-    for (var i = 0; i < data.features.length; i++) {
-        d.push({
+    for (let i = 0; i < data.features.length; i++) {
+        mapdata.push({
             name: data.features[i].properties.name,
             value: Math.round(Math.random() * 1000)
         })
     }
-    mapdata = d;
     //注册地图
     echarts.registerMap('china', data);
     //绘制地图
-    renderMap('china', d);
+    renderMap('china', mapdata);
+    $("button").click(function () {
+        renderMap('china', mapdata);
+        // console.log($('select').value)
+        $('select').val(1)
+    })
 });
+
+//下拉切换
+$('select').change(function () {
+    if (this.value == '中国') {
+        renderMap('china', mapdata);
+    } else {
+        getCity(this.value, 0)
+    }
+})
 
 //地图点击事件
 chart.on('click', function (params) {
     console.log(params);
     if (params.name in provinces) {
-        //如果点击的是34个省、市、自治区，绘制选中地区的二级地图
-        $.getJSON('assets/map/province/' + provinces[params.name] + '.json', function (data) {
-            echarts.registerMap(params.name, data);
-            var d = [];
-            for (var i = 0; i < data.features.length; i++) {
-                d.push({
-                    name: data.features[i].properties.name,
-                    value: Math.round(Math.random() * 1000)
-                })
-            }
-            renderMap(params.name, d);
-        });
+        getCity(params.name, 0)
     } else if (params.seriesName in provinces) {
-        //如果是【直辖市/特别行政区】只有二级下钻
-        if (special.indexOf(params.seriesName) >= 0) {
-            renderMap('china', mapdata);
-        } else {
-            //显示县级地图
-            $.getJSON('assets/map/city/' + cityMap[params.name] + '.json', function (data) {
-                echarts.registerMap(params.name, data);
-                var d = [];
-                for (var i = 0; i < data.features.length; i++) {
-                    d.push({
-                        name: data.features[i].properties.name,
-                        value: Math.round(Math.random() * 1000)
-                    })
-                }
-                renderMap(params.name, d);
-            });
-        }
-    } else {
-        renderMap('china', mapdata);
+        getCity(params.name, 1)
     }
 });
 
-//处理data数据
-var geoCoordMap = {
+//城市坐标
+let geoCoordMap = {
     "上海": [121.48, 31.22],
     "重庆": [106.54, 29.59],
     "北京": [116.46, 39.92],
     "天津": [117.2, 39.13],
     "四川": [104.08038, 30.695528]
 };
-var convertData = function (data) {
-    var res = [];
-    for (var i = 0; i < data.length; i++) {
-        var geoCoord = geoCoordMap[data[i].name];
+//组装data用于scatter
+let convertData = function (data) {
+    let res = [];
+    for (let i = 0; i < data.length; i++) {
+        let geoCoord = geoCoordMap[data[i].name];
         if (geoCoord) {
             res.push({
                 name: data[i].name,
@@ -122,17 +105,17 @@ var convertData = function (data) {
     return res;
 };
 
-//初始化绘制全国地图配置
+//全国地图配置
 function renderMap(map, data) {
-    var option = {
+    let option = {
         backgroundColor: 'green',
         title: {
             subtext: '',
             left: 'center',
             subtextStyle: {
                 color: '#000',
-                fontSize: 13,
-                fontWeight: 'normal'
+                fontSize: 16,
+                fontWeight: 'bold'
             }
         },
         legend: {},
@@ -159,12 +142,11 @@ function renderMap(map, data) {
                 }
             }
         },
-        animationDuration: 1000,
-        animationEasing: 'cubicOut',
-        animationDurationUpdate: 1000
-
+        animationDuration: 1000,//初始动画的时长
+        animationEasing: 'cubicOut',//初始动画的缓动效果
+        animationDurationUpdate: 1000//数据更新动画的时长
     };
-    option.title.subtext = map;
+    option.title.subtext = map == 'china' ? '中国' : map;
     option.series = [
         {
             name: map,
@@ -229,4 +211,26 @@ function renderMap(map, data) {
     } else {
         chart.setOption(option);
     }
+}
+
+//获取城市json
+function getCity(name, i) {
+    let url
+    if (i == 0) {
+        url = 'assets/map/province/' + provinces[name] + '.json'
+    } else if (i == 1) {
+        url = 'assets/map/city/' + cityMap[name] + '.json'
+    }
+
+    $.getJSON(url, function (data) {
+        echarts.registerMap(name, data);
+        let d = [];
+        for (var i = 0; i < data.features.length; i++) {
+            d.push({
+                name: data.features[i].properties.name,
+                value: Math.round(Math.random() * 1000)
+            })
+        }
+        renderMap(name, d);
+    });
 }
