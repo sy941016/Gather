@@ -3,16 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <style>
-        #canvas {
-            background: lightgreen;
-        }
-    </style>
 </head>
 <body>
 <canvas id='canvas' width='600' height='400'></canvas>
 <script>
-    // 采用 window.requestAnimationFrame()实现动画效果。这个方法提供了更加平缓并更加有效的方式来执行动画，因为它只在系统准备好重绘时，才调用绘制动画帧。一般每秒钟回调函数执行60次，也有可能会被降低。
+// 采用 window.requestAnimationFrame()实现动画效果。这个方法提供了更加平缓并更加有效的方式来执行动画，因为它只在系统准备好重绘时，才调用绘制动画帧。一般每秒钟回调函数执行60次，也有可能会被降低。
     var canvas = document.getElementById('canvas');
     var cobj = canvas.getContext('2d');
     var x = 200, y = 200;
