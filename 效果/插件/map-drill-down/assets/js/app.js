@@ -42,8 +42,6 @@ let provinces = {
     "澳门": "aomen"
 };
 let mapdata = [];
-//直辖市和特别行政区-只有二级地图，没有三级地图
-let special = ["北京", "天津", "上海", "重庆", "香港", "澳门"];
 //绘制全国地图
 $.getJSON('assets/map/china.json', function (data) {
     for (let i = 0; i < data.features.length; i++) {
@@ -57,6 +55,7 @@ $.getJSON('assets/map/china.json', function (data) {
     //绘制地图
     renderMap('china', mapdata);
     $("button").click(function () {
+        //返回  重绘地图并修改select值
         renderMap('china', mapdata);
         $('select').val('china')
     })
@@ -104,7 +103,7 @@ let convertData = function (data) {
     return res;
 };
 
-//全国地图配置
+//地图配置
 function renderMap(map, data) {
     let option = {
         backgroundColor: 'green',
