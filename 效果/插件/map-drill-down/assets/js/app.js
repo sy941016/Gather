@@ -58,14 +58,13 @@ $.getJSON('assets/map/china.json', function (data) {
     renderMap('china', mapdata);
     $("button").click(function () {
         renderMap('china', mapdata);
-        // console.log($('select').value)
-        $('select').val(1)
+        $('select').val('china')
     })
 });
 
 //下拉切换
 $('select').change(function () {
-    if (this.value == '中国') {
+    if (this.value == 'china') {
         renderMap('china', mapdata);
     } else {
         getCity(this.value, 0)
