@@ -19,29 +19,31 @@
         }
     }
 
-    let xiaoming = new Student('小明')
-    xiaoming.hello()
+    //实类化
+    let karl = new Student('karl')
+    karl.hello()
 
     //extends   继承Student的所有方法
     class PrimaryStudent extends Student {
         constructor(name, grade) {
-            // 使用 super(...) 调用父构造函数(仅在constructor函数中)
-            // 使用 super.method(...) 调用父类方法
+            // 使用 super() 调用父类构造函数(仅在constructor函数中)
+            // 使用 super.methodName() 调用父类方法
             // 在子类的constructor中,只有调用super之后,才能使用this关键字,否则会报错
             super(name);
             this.grade = grade;
         }
 
         myGrade() {
+            super.hello()
             console.log('I am at grade ' + this.grade);
         }
     }
 
-    //继承了谁?
-    console.log(Object.getPrototypeOf(PrimaryStudent))
-    //实类化
     let jay = new PrimaryStudent('jay', '100')
     jay.myGrade()
+
+    //继承了谁?
+    console.log(Object.getPrototypeOf(PrimaryStudent) === Student)   //true
 
     //解构赋值
     const [a, b, c, d, e] = 'hello';
