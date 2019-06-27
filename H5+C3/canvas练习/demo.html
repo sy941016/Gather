@@ -20,8 +20,8 @@
             context.shadowOffsetX = 3;//阴影偏移量
             context.shadowOffsetY = 3;
             context.shadowBlur = 5;//设置模糊级别
-            //var color=context.createLinearGradient(0,0,100,0);//设置渐变颜色,线性渐变,返回一个color对象
-            //var img=context.createPattern(document.getElementById("img"),"repeat-y")//以元素代替颜色,repeat repeat-x,repeat-y
+            //var color = context.createLinearGradient(0,0,100,0);//设置渐变颜色,线性渐变,返回一个color对象
+            //var img = context.createPattern(document.getElementById("img"),"repeat-y")//以元素代替颜色
             var color = context.createRadialGradient(50, 50, 10, 50, 50, 50);//创建放射性渐变,两个圆,圆心坐标与半径参数
             color.addColorStop(0, "red");//介于 0.0 与 1.0 之间的值,从0处开始渐变
             color.addColorStop(0.5, "blue");//从0.5处开始渐变
@@ -29,6 +29,9 @@
             context.fillStyle = color;//填充颜色
             context.fillRect(0, 0, 100, 100);//绘制填充矩形
             context.strokeRect(100, 100, 100, 100);//绘制无填充矩形
+            //圆
+            context.arc(100,75,50,0,2*Math.PI);
+            context.stroke();
         })
     </script>
 </head>
