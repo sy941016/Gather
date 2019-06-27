@@ -2,45 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-    <style>
-        #canvas {
-            background: #ccc;
-        }
-
-        #canvas1 {
-            background: #ccc;
-        }
-    </style>
+    <title>canvas-video</title>
 </head>
 <body>
 <canvas id="canvas" width="640" height="640"></canvas>
-<canvas id="canvas1" width="640" height="640"></canvas>
 <video src="video/iceage4.mp4" controls=controls hidden id="video"></video>
 </body>
 </html>
 <script>
-    var canvas = document.getElementById('canvas');
-    var canvas1 = document.getElementById('canvas1');
-    var video = document.getElementById('video');
-    var cobj = canvas.getContext('2d');
-    var cobj1 = canvas1.getContext('2d');
-    var img = new Image();
+    let canvas = document.getElementById('canvas');
+    let video = document.getElementById('video');
+    let cobj = canvas.getContext('2d');
+    let img = new Image();
     img.src = 'img/4.jpg';
     img.onload = function () {
         cobj.drawImage(img, 0, 0, 640, 640);
     };
-    cobj.strokeStyle = 'rgba(0,0,0,0)';
+    //绘制矩形
     cobj.rect(0, 0, 640, 640);
     cobj.stroke();
     canvas.onclick = function (e) {
-        var ox = e.offsetX;
-        var oy = e.offsetY;
+        let ox = e.offsetX;
+        let oy = e.offsetY;
+        //isPointInPath() 如果指定的点位于当前路径中，返回true;否则返回false
         if (cobj.isPointInPath(ox, oy)) {
             video.play();
             setInterval(function () {
                 cobj.drawImage(video, 0, 0, 640, 640);
-                cobj1.drawImage(video, 0, 0, 640, 640)
             }, 20)
         }
     }
