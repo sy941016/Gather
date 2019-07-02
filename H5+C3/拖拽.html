@@ -13,29 +13,29 @@
     </style>
 </head>
 <body>
-<div id="div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 <!--元素可拖动--draggable="true"-->
-<img id='drag' draggable="true" ondragstart="drag(event)"
+<img id='drag' draggable="true" ondragstart="dragstart(event)"
      src="data:image/png;base64,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"
      alt="">
+<div id="div" ondrop="drop(event)" ondragover="dragover(event)"></div>
 </body>
 <script>
-    // 拖动 - ondragstart
-    function drag(ev) {
-        // dataTransfer.setData() 方法设置被拖数据的数据类型和值
+    //开始拖动
+    function dragstart(ev) {
+        //设置被拖数据的数据类型和值
         ev.dataTransfer.setData("img", ev.target.id);
     }
 
-    //放到何处 - ondragover
-    function allowDrop(ev) {
-        ev.preventDefault();//阻止默认行为
-    }
-
-    //进行放置 - ondrop
+    //进行放置
     function drop(ev) {
         ev.preventDefault();
         let data = ev.dataTransfer.getData("img");
         ev.target.appendChild(document.getElementById(data));
+    }
+
+    //拖动完成
+    function dragover(ev) {
+        ev.preventDefault();
     }
 </script>
 </html>
