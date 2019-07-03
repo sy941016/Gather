@@ -9,11 +9,11 @@
 <div id="box">
     <div @click="div_click">
         <!--Vue阻止事件冒泡-->
-        <input type="button" value="按钮" @click.stop="button_click()">
+        <input type="button" value="按钮" @click.stop="button_click">
     </div>
     <!--Vue阻止默认行为-->
-    <input type="button" value="按钮" @contextmenu.prevent="show()">
-    <input type="text" @keydown="key($event)">
+    <input type="button" value="按钮" @contextmenu.prevent="show">
+    <input type="text" @keydown="key">
 </div>
 </body>
 <script>
