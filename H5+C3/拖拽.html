@@ -23,13 +23,13 @@
     //开始拖动
     function dragstart(ev) {
         //设置被拖数据的数据类型和值
-        ev.dataTransfer.setData("img", ev.target.id);
+        ev.dataTransfer.setData("Text", ev.target.id);
     }
 
     //进行放置
     function drop(ev) {
         ev.preventDefault();
-        let data = ev.dataTransfer.getData("img");
+        let data = ev.dataTransfer.getData("Text");
         ev.target.appendChild(document.getElementById(data));
     }
 
