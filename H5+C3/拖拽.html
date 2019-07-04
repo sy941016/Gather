@@ -26,16 +26,16 @@
         ev.dataTransfer.setData("Text", ev.target.id);
     }
 
+    //拖动中
+    function dragover(ev) {
+        ev.preventDefault();
+    }
+
     //进行放置
     function drop(ev) {
         ev.preventDefault();
         let data = ev.dataTransfer.getData("Text");
         ev.target.appendChild(document.getElementById(data));
-    }
-
-    //拖动完成
-    function dragover(ev) {
-        ev.preventDefault();
     }
 </script>
 </html>
