@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>time-format</title>
+</head>
+<body>
+
+</body>
+<script>
+    function f(time) {
+        let _xiaoshi = 1000 * 60 * 60;
+        let _fenzhong = 1000 * 60;
+        let _miao = 1000;
+        let xiaoshi = format(time / _xiaoshi);
+        let fengzhong = format((time % _xiaoshi) / _fenzhong);
+        let miaoshu = format((time % _fenzhong) / _miao);
+        let haomiao = format((time % _miao));
+
+        return xiaoshi + ':' + fengzhong + ':' + miaoshu + ':' + haomiao
+    }
+
+    function format(i) {
+        i = parseInt(i);
+        return i > 10 ? i : '0' + i;
+    }
+
+    console.log(f(2800010001))
+</script>
+</html>
