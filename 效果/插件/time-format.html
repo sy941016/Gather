@@ -8,6 +8,7 @@
 
 </body>
 <script>
+    //转化ms为00:00:00:00    时 分 秒 毫秒
     function f(time) {
         let _xiaoshi = 1000 * 60 * 60;
         let _fenzhong = 1000 * 60;
@@ -16,15 +17,21 @@
         let fengzhong = format((time % _xiaoshi) / _fenzhong);
         let miaoshu = format((time % _fenzhong) / _miao);
         let haomiao = format((time % _miao));
+        //处理500ms的显示突兀
+        if (haomiao < 100) {
+            if (haomiao < 10) haomiao = 10;
+            haomiao = '0' + haomiao;
+        }
+        haomiao = haomiao.toString().substr(0, 2);
 
         return xiaoshi + ':' + fengzhong + ':' + miaoshu + ':' + haomiao
     }
 
     function format(i) {
         i = parseInt(i);
-        return i > 10 ? i : '0' + i;
+        return i >= 10 ? i : '0' + i;
     }
 
-    console.log(f(2800010001))
+    console.log(f(1100))
 </script>
 </html>
