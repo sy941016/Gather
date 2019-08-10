@@ -19,7 +19,7 @@
         let haomiao = format((time % _miao));
         //处理500ms的显示突兀
         if (haomiao < 100) {
-            if (haomiao < 10) haomiao = 10;
+            if (haomiao < 10 && haomiao > 0) haomiao = 10;
             haomiao = '0' + haomiao;
         }
         haomiao = haomiao.toString().substr(0, 2);
