@@ -1,66 +1,61 @@
 ﻿<html>
-	<head>
-	    <!---->
-		<title>canvas基础</title>
-		<script src="js/jquery-3.1.1.js"></script>
-		<style>
-		   canvas{
-		       background:#ccc
-		   }
-		</style>
-		<script>
-		  $(function(){
-		     var canvas=document.getElementById("canvas");
-			 var context=canvas.getContext("2d");
-			 /**
-			 //设置边框,绿色
-			 context.strokeStyle="green";
-			 //绘制矩形,设置位置和宽高
-			 context.rect(100,100,100,100);
-			 //设置路径,开始绘图
-			 context.stroke();
-			 */
-			 /**
-			 //开始绘制线条,并指定线条的起始点(0,0)
-			 context.moveTo(0,0);
-			 //指定线条的端点(100,100)
-			 context.lineTo(100,100);
-			 context.strokeStyle="green";
-			 //context.lineTo(100,200);
-			 //路径,开始绘图
-			 //beginPath清除原来的绘图路径,重新开始一个新的绘图路径
-			 context.beginPath();
-			 context.lineTo(0,200);
-			 context.lineTo(300,300);
-			 context.lineTo(100,400);
-			 //context.closePath();
-			 context.stroke();
-			 */
-			 //给画布绑定一个鼠标按下的事件,记录画图的起点
-			 canvas.onmousedown=function(e){
-				var startX=e.layerX;
-				var startY=e.layerY;
-				//开始绘图,起始位置为鼠标按下的位置
-				context.moveTo(startX,startY);
-				//给画布绑定一个鼠标移动事件,鼠标移动时开始绘图,线条端点鼠标移动时的位置
-				canvas.onmousemove=function(e){
-				    var endX=e.layerX;//记录鼠标移动时的x
-					var endY=e.layerY;//记录鼠标移动时的y
-					context.lineTo(endX,endY);
-					context.stroke();
-				};
-				//画布绑定一个鼠标弹起事件,鼠标弹起,停止绘图
-				canvas.onmouseup=function(e){
-				    canvas.onmousemove=null;
-					canvas.onmouseup=null;
-				}
-			 }
-		  })
-		</script>
-	</head>
-	<body>
-	    <canvas id="canvas" width="500" height="500">
-		    你的浏览器out了
-		</canvas>
-	</body>
+<head>
+    <!---->
+    <title>canvas基础</title>
+    <script src="js/jquery-3.1.1.js"></script>
+    <style>
+        canvas {
+            background: #ccc
+        }
+    </style>
+    <script>
+        $(function () {
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+            //设置边框,绿色
+            context.strokeStyle = "green";
+            //绘制矩形,设置位置和宽高
+            context.rect(100, 100, 100, 100);
+            //设置路径,开始绘图
+            context.stroke();
+            //开始绘制线条,并指定线条的起始点(0,0)
+            context.moveTo(0, 0);
+            //指定线条的端点(100,100)
+            context.lineTo(100, 100);
+            context.strokeStyle = "green";
+            //路径,开始绘图
+            //beginPath清除原来的绘图路径,重新开始一个新的绘图路径
+            context.beginPath();
+            context.lineTo(0, 200);
+            context.lineTo(300, 300);
+            context.lineTo(100, 400);
+            //实际地绘制出通过 moveTo() 和 lineTo() 方法定义的路径。默认颜色是黑色。
+            context.stroke();
+            //给画布绑定一个鼠标按下的事件,记录画图的起点
+            canvas.onmousedown = function (e) {
+                var startX = e.layerX;
+                var startY = e.layerY;
+                //开始绘图,起始位置为鼠标按下的位置
+                context.moveTo(startX, startY);
+                //给画布绑定一个鼠标移动事件,鼠标移动时开始绘图,线条端点鼠标移动时的位置
+                canvas.onmousemove = function (e) {
+                    var endX = e.layerX;//记录鼠标移动时的x
+                    var endY = e.layerY;//记录鼠标移动时的y
+                    context.lineTo(endX, endY);
+                    context.stroke();
+                };
+                //画布绑定一个鼠标弹起事件,鼠标弹起,停止绘图
+                canvas.onmouseup = function () {
+                    canvas.onmousemove = null;
+                    canvas.onmouseup = null;
+                }
+            }
+        })
+    </script>
+</head>
+<body>
+<canvas id="canvas" width="500" height="500">
+    你的浏览器out了
+</canvas>
+</body>
 </html>
