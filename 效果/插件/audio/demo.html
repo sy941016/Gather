@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>audio-canvas</title>
+</head>
+<body>
+<audio controls id="audio">
+    <source src="./sunny.mp3" type="audio/ogg">
+</audio>
+<button id="button">播放</button>
+<canvas width="600" height="300" id="canvas" style="border:1px solid red;background: #8C8D8F"></canvas>
+</body>
+<script>
+    let button = document.getElementById("button");
+    let audio = document.getElementById("audio");
+    let canvas = document.getElementById("canvas");
+    let canvasCtx = canvas.getContext("2d");
+    let width = canvas.width;
+    let height = canvas.height;
+
+    let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    let analyser = audioCtx.createAnalyser();
+
+    let source = audioCtx.createMediaElementSource(audio);
+
+    source.connect(analyser);
+    analyser.connect(audioCtx.destination);
+    analyser.fftSize = 2048;
+
+    let bufferLength = analyser.frequencyBinCount;
+    let dataArray = new Uint8Array(bufferLength);
+
+    canvasCtx.clearRect(0, 0, width, height);
+
+    function draw() {
+        requestAnimationFrame(draw);
+        analyser.getByteTimeDomainData(dataArray);
+        canvasCtx.fillStyle = 'rgb(200, 200, 200)';
+        canvasCtx.fillRect(0, 0, 600, 400);
+        canvasCtx.lineWidth = 2;
+        canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
+        canvasCtx.beginPath();
+        let sliceWidth = width * 1.0 / bufferLength;
+        let x = 0;
+        for (let i = 0; i < bufferLength; i++) {
+            let v = dataArray[i] / 128.0;
+            let y = v * height / 2;
+            if (i === 0) {
+                canvasCtx.moveTo(x, y);
+            } else {
+                canvasCtx.lineTo(x, y);
+            }
+            x += sliceWidth;
+        }
+        canvasCtx.lineTo(canvas.width, canvas.height / 2);
+        canvasCtx.stroke();
+    }
+
+    button.onclick = function () {
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+        draw();
+    };
+</script>
+</html>
