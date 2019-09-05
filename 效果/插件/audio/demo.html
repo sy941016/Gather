@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>audio-canvas</title>
+    <title>audio</title>
 </head>
 <body>
 <audio controls id="audio">
@@ -37,7 +37,7 @@
         requestAnimationFrame(draw);
         analyser.getByteTimeDomainData(dataArray);
         canvasCtx.fillStyle = 'rgb(200, 200, 200)';
-        canvasCtx.fillRect(0, 0, 600, 400);
+        canvasCtx.fillRect(0, 0, 600, 300);
         canvasCtx.lineWidth = 2;
         canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
         canvasCtx.beginPath();
@@ -53,7 +53,7 @@
             }
             x += sliceWidth;
         }
-        canvasCtx.lineTo(canvas.width, canvas.height / 2);
+        canvasCtx.lineTo(width, height / 2);
         canvasCtx.stroke();
     }
 

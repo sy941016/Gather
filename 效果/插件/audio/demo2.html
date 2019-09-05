@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>audio2</title>
+</head>
+<body>
+<div id="result"></div>
+<canvas width="1200" height="300" id="canvas" style="border:1px solid red;background: #8C8D8F"></canvas>
+</body>
+<script>
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    window.OfflineAudioContext = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+
+    let canvas = document.getElementById("canvas");
+    let canvasCtx = canvas.getContext("2d");
+    let width = canvas.width;
+    let height = canvas.height;
+    let audioArr = [];
+
+    const audioURL = './sunny.mp3';
+    const sharedAudioContext = new AudioContext();
+    const audioDidLoad = (buffer) => {
+        //let samplesCount = 0;
+        const context = new OfflineAudioContext(2, buffer.length, 44100);
+        const source = context.createBufferSource();
+        const processor = context.createScriptProcessor(2048, 1, 1);
+
+        const analyser = context.createAnalyser();
+        analyser.fftSize = 2048;
+        analyser.smoothingTimeConstant = 0.25;
+
+        source.buffer = buffer;
+
+        source.connect(analyser);
+        analyser.connect(processor);
+        processor.connect(context.destination);
+        let bufferLength = analyser.frequencyBinCount;
+        let freqData = new Uint8Array(bufferLength);
+        processor.onaudioprocess = () => {
+            analyser.getByteFrequencyData(freqData);
+            // samplesCount++;
+            //audio数据的总数组
+            audioArr.push(...freqData);
+        };
+        source.start(0);
+
+        context.startRendering().then(function (AudioBuffer) {
+            console.log(AudioBuffer);
+        });
+
+        // context.oncomplete = (e) => {
+        //     document.getElementById('result').innerHTML = 'Read ' + samplesCount + ' samples';
+        //     source.disconnect(analyser);
+        //     processor.disconnect(context.destination);
+        // };
+    };
+
+    let request = new XMLHttpRequest();
+    request.open('GET', audioURL, true);
+    request.responseType = 'arraybuffer';
+    request.onload = () => {
+        let audioData = request.response;
+        sharedAudioContext.decodeAudioData(
+            audioData,
+            audioDidLoad,
+            e => {
+                console.log(e.err)
+            }
+        );
+    };
+    request.send();
+
+    function draw() {
+        requestAnimationFrame(draw);
+        canvasCtx.fillStyle = 'rgb(200, 200, 200)';
+        canvasCtx.fillRect(0, 0, 1200, 300);
+        canvasCtx.lineWidth = 2;
+        canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
+        canvasCtx.beginPath();
+        let sliceWidth = width * 1.0 / audioArr.length;
+        let x = 0;
+        for (let i = 0; i < audioArr.length; i++) {
+            let v = audioArr[i] / 128.0;
+            let y = v * height / 2;
+            if (i === 0) {
+                canvasCtx.moveTo(x, y);
+            } else {
+                canvasCtx.lineTo(x, y);
+            }
+            x += sliceWidth;
+        }
+        canvasCtx.lineTo(width, height / 2);
+        canvasCtx.stroke();
+    }
+
+    draw();
+</script>
+</html>
