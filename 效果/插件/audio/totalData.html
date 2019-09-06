@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>audio2</title>
+    <title>audio-total</title>
 </head>
 <body>
-<div id="result"></div>
-<canvas width="1200" height="300" id="canvas" style="border:1px solid red;background: #8C8D8F"></canvas>
+<canvas width="1800" height="150" id="canvas" style="border:1px solid #000000;background: #8C8D8F"></canvas>
 </body>
 <script>
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -16,15 +15,16 @@
     let canvasCtx = canvas.getContext("2d");
     let width = canvas.width;
     let height = canvas.height;
-    let audioArr = [];
+    let audioArr = [], freqData, bufferLength;
 
-    const audioURL = './sunny.mp3';
+    const audioURL = './audio/sunny.mp3';
     const sharedAudioContext = new AudioContext();
     const audioDidLoad = (buffer) => {
-        //let samplesCount = 0;
+        let samplesCount = 0;
         const context = new OfflineAudioContext(2, buffer.length, 44100);
         const source = context.createBufferSource();
-        const processor = context.createScriptProcessor(2048, 1, 1);
+
+        const processor = context.createScriptProcessor(16384, 1, 1);//max-16384
 
         const analyser = context.createAnalyser();
         analyser.fftSize = 2048;
@@ -35,29 +35,31 @@
         source.connect(analyser);
         analyser.connect(processor);
         processor.connect(context.destination);
-        let bufferLength = analyser.frequencyBinCount;
-        let freqData = new Uint8Array(bufferLength);
+
+        bufferLength = analyser.frequencyBinCount;
+        freqData = new Uint8Array(bufferLength);
+
         processor.onaudioprocess = () => {
-            analyser.getByteFrequencyData(freqData);
-            // samplesCount++;
+            analyser.getByteTimeDomainData(freqData);
+            samplesCount++;
             //audio数据的总数组
             audioArr.push(...freqData);
         };
         source.start(0);
 
-        context.startRendering().then(function (AudioBuffer) {
-            console.log(AudioBuffer);
+        context.startRendering().then(function () {
+            console.log('audioArr为', audioArr);
+            draw();
         });
-
-        // context.oncomplete = (e) => {
-        //     document.getElementById('result').innerHTML = 'Read ' + samplesCount + ' samples';
-        //     source.disconnect(analyser);
-        //     processor.disconnect(context.destination);
-        // };
+        context.oncomplete = () => {
+            console.log('samplesCount=', samplesCount);
+            source.disconnect(analyser);
+            processor.disconnect(context.destination);
+        };
     };
 
     let request = new XMLHttpRequest();
-    request.open('GET', audioURL, true);
+    request.open('GET', audioURL, true);//允许异步
     request.responseType = 'arraybuffer';
     request.onload = () => {
         let audioData = request.response;
@@ -72,11 +74,10 @@
     request.send();
 
     function draw() {
-        requestAnimationFrame(draw);
-        canvasCtx.fillStyle = 'rgb(200, 200, 200)';
-        canvasCtx.fillRect(0, 0, 1200, 300);
-        canvasCtx.lineWidth = 2;
-        canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
+        canvasCtx.fillStyle = 'rgb(200, 200, 200)';//填充颜色
+        canvasCtx.fillRect(0, 0, 1800, 150);//(x,y,width.height)
+        canvasCtx.lineWidth = 2;//线宽
+        canvasCtx.strokeStyle = 'rgb(220, 20, 60)';//笔触颜色
         canvasCtx.beginPath();
         let sliceWidth = width * 1.0 / audioArr.length;
         let x = 0;
@@ -84,16 +85,14 @@
             let v = audioArr[i] / 128.0;
             let y = v * height / 2;
             if (i === 0) {
-                canvasCtx.moveTo(x, y);
+                canvasCtx.moveTo(x, y);//线起点
             } else {
-                canvasCtx.lineTo(x, y);
+                canvasCtx.lineTo(x, y);//线终点
             }
             x += sliceWidth;
         }
         canvasCtx.lineTo(width, height / 2);
-        canvasCtx.stroke();
+        canvasCtx.stroke();//实际绘出moveTo和lineTo定义的路径
     }
-
-    draw();
 </script>
 </html>

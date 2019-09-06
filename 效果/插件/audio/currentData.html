@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>audio</title>
+    <title>audio-current</title>
 </head>
 <body>
 <audio controls id="audio">
-    <source src="./sunny.mp3" type="audio/ogg">
+    <source src="./audio/sunny.mp3" type="audio/ogg">
 </audio>
 <button id="button">播放</button>
 <canvas width="600" height="300" id="canvas" style="border:1px solid red;background: #8C8D8F"></canvas>
@@ -19,7 +19,9 @@
     let width = canvas.width;
     let height = canvas.height;
 
-    let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+    let audioCtx = new AudioContext();
     let analyser = audioCtx.createAnalyser();
 
     let source = audioCtx.createMediaElementSource(audio);
