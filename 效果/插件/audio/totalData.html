@@ -10,14 +10,13 @@
 <script>
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
     window.OfflineAudioContext = window.OfflineAudioContext || window.webkitOfflineAudioContext;
-
+    const audioURL = './audio/sunny.mp3';
     let canvas = document.getElementById("canvas");
     let canvasCtx = canvas.getContext("2d");
     let width = canvas.width;
     let height = canvas.height;
-    let audioArr = [], freqData, bufferLength;
+    let audioArr = [];
 
-    const audioURL = './audio/sunny.mp3';
     const sharedAudioContext = new AudioContext();
     const audioDidLoad = (buffer) => {
         let samplesCount = 0;
@@ -36,8 +35,8 @@
         analyser.connect(processor);
         processor.connect(context.destination);
 
-        bufferLength = analyser.frequencyBinCount;
-        freqData = new Uint8Array(bufferLength);
+        let bufferLength = analyser.frequencyBinCount;
+        let freqData = new Uint8Array(bufferLength);
 
         processor.onaudioprocess = () => {
             analyser.getByteTimeDomainData(freqData);
@@ -51,33 +50,31 @@
             console.log('audioArr为', audioArr);
             draw();
         });
+
         context.oncomplete = () => {
             console.log('samplesCount=', samplesCount);
             source.disconnect(analyser);
             processor.disconnect(context.destination);
         };
     };
-
+    //ajax
     let request = new XMLHttpRequest();
     request.open('GET', audioURL, true);//允许异步
     request.responseType = 'arraybuffer';
     request.onload = () => {
         let audioData = request.response;
-        sharedAudioContext.decodeAudioData(
-            audioData,
-            audioDidLoad,
-            e => {
-                console.log(e.err)
-            }
-        );
+        sharedAudioContext.decodeAudioData(audioData).then(audioDidLoad).catch((e) => {
+            console.log(e.err)
+        });
     };
     request.send();
 
+    //canvas
     function draw() {
         canvasCtx.fillStyle = 'rgb(200, 200, 200)';//填充颜色
         canvasCtx.fillRect(0, 0, 1800, 150);//(x,y,width.height)
         canvasCtx.lineWidth = 2;//线宽
-        canvasCtx.strokeStyle = 'rgb(220, 20, 60)';//笔触颜色
+        canvasCtx.strokeStyle = 'red';//笔触颜色
         canvasCtx.beginPath();
         let sliceWidth = width * 1.0 / audioArr.length;
         let x = 0;
