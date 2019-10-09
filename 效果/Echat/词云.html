@@ -12,15 +12,15 @@
 <script>
     var myChart = echarts.init(document.getElementById('main'));
     option = {
-        backgroundColor:'rab(13,32,76,0.7)',
+        backgroundColor: 'rab(13,32,76,0.7)',
         series: [{
             type: 'wordCloud',
-            sizeRange: [12, 50],
-            rotationRange: [0, 0],
+            sizeRange: [12, 50],//字符的范围
+            rotationRange: [0, 0],//字符倾斜的角度
             shape: 'circle',
             textStyle: {
                 normal: {
-                    color: function() {
+                    color: function () {
                         return 'rgb(' + [
                             Math.round(Math.random() * 160),
                             Math.round(Math.random() * 160),
