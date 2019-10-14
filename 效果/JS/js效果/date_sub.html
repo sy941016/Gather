@@ -90,10 +90,10 @@
         dateSpan = Math.abs(dateSpan);  //取绝对值
         iDays = Math.floor(dateSpan / (24 * 3600 * 1000));   //换算天数
         return iDays
-    };
+    }
     write.onclick = function () {
-        let start_time = start_y.value + '-' + start_m.value + '-' + start_d.value
-        let end_time = end_y.value + '-' + end_m.value + '-' + end_d.value
+        let start_time = start_y.value + '-' + start_m.value + '-' + start_d.value;
+        let end_time = end_y.value + '-' + end_m.value + '-' + end_d.value;
         num.innerHTML = datedifference(start_time, end_time) + '天'
     }
 </script>
