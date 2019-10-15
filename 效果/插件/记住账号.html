@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>自动登录</title>
+    <title>记住账号</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body>
@@ -12,26 +12,23 @@
 </body>
 <script>
     $(function () {
-        alert(localStorage.getItem("username"));
-        alert(localStorage.getItem("pwd"));
-        //如果上次登录时,选中记住账号,那么就会在上次登录时把username和password放在localStorage
+        console.log(localStorage.getItem("username"));
+        console.log(localStorage.getItem("pwd"));
+        //如果上次登录时,选中记住账号,把username和password放在localStorage
         //再次登录时,首先判断localStorage是否保存有username和password
-        //如果有值,直接给这两个输入域赋值,从而实现自动登录
-        //如果无值,上次登录时,没有选中 记住账号
         if (localStorage.getItem("username") && localStorage.getItem("pwd")) {
             $("#username").val(localStorage.getItem("username"));
             $("#pwd").val(localStorage.getItem("pwd"));
         }
         $("#ckx").click(function () {
-            //判断复选框是否选中,如果选中,说明要实现记住账号功能,
-            //然后需要把username和password放到localStorage中
-            if ($(this).attr("checked")) {
-                var username = $("#username").val();
-                var password = $("#pwd").val();
+            //判断复选框是否选中,如果选中,把username和password放到localStorage中
+            let username = $("#username").val();
+            let password = $("#pwd").val();
+            if ($(this).prop("checked")) {
                 localStorage.setItem("username", username);
                 localStorage.setItem("pwd", password);
             } else {
-                //如果没有勾选记住账号,需要清空localStorage
+                //如果复选框没有选中,需要清空localStorage
                 localStorage.clear();
             }
         })
