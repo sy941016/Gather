@@ -5,26 +5,29 @@
     <title>time-format</title>
 </head>
 <body>
-
+<input type="text" id="input">
+<input type="submit" id="submit" value="转化">
+<br>
+<span id="time"></span>
 </body>
 <script>
     //转化ms为00:00:00:00    时 分 秒 毫秒
     function f(time) {
-        let _xiaoshi = 1000 * 60 * 60;
-        let _fenzhong = 1000 * 60;
-        let _miao = 1000;
-        let xiaoshi = format(time / _xiaoshi);
-        let fengzhong = format((time % _xiaoshi) / _fenzhong);
-        let miaoshu = format((time % _fenzhong) / _miao);
-        let haomiao = format((time % _miao));
-        //处理500ms的显示突兀
-        if (haomiao < 100) {
-            if (haomiao < 10 && haomiao > 0) haomiao = 10;
-            haomiao = '0' + haomiao;
+        let _hours = 1000 * 60 * 60;
+        let _minutes = 1000 * 60;
+        let _seconds = 1000;
+        let hours = format(time / _hours);
+        let minutes = format((time % _hours) / _minutes);
+        let seconds = format((time % _minutes) / _seconds);
+        let ms = format((time % _seconds));
+        //处理不足1s的情况
+        if (ms < 100) {
+            if (ms < 10 && ms > 0) ms = 10;
+            ms = '0' + ms;
         }
-        haomiao = haomiao.toString().substr(0, 2);
+        ms = ms.toString().substr(0, 2);
 
-        return xiaoshi + ':' + fengzhong + ':' + miaoshu + ':' + haomiao
+        return hours + ':' + minutes + ':' + seconds + ':' + ms
     }
 
     function format(i) {
@@ -32,6 +35,11 @@
         return i >= 10 ? i : '0' + i;
     }
 
-    console.log(f(1100))
+    let time = document.getElementById('time');
+    let input = document.getElementById('input');
+    let submit = document.getElementById('submit');
+    submit.onclick = function () {
+        time.innerHTML = f(input.value)
+    }
 </script>
 </html>
