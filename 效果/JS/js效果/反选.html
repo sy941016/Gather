@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
 </head>
 <style>
-    form input:nth-child(5),form input:nth-child(6),form input:nth-child(7){
+    form input:nth-child(5),
+    form input:nth-child(6),
+    form input:nth-child(7) {
         display: block;
-        margin-top:15px;
+        margin-top: 15px;
     }
 </style>
-<body>
-<form action="" name="myform">
-    <input type="checkbox" value="basketball" name="ball">篮球
-    <input type="checkbox" value="baseball" name="ball">棒球
-    <input type="checkbox" value="tennis" name="ball">乒乓球
-    <input type="checkbox" value="football" name="ball">足球
 
-    <input type="button" name="All" value="全选">
-    <input type="button" name="None" value="反选">
-    <input type="button" name="NotAll" value="全不选">
-</form>
+<body>
+    <form action="" name="myform">
+        <input type="checkbox" value="basketball" name="ball">篮球
+        <input type="checkbox" value="baseball" name="ball">棒球
+        <input type="checkbox" value="tennis" name="ball">乒乓球
+        <input type="checkbox" value="football" name="ball">足球
+
+        <input type="button" name="All" value="全选">
+        <input type="button" name="None" value="反选">
+        <input type="button" name="NotAll" value="全不选">
+    </form>
 </body>
 <script>
     let aa = document.myform.ball;
@@ -50,4 +54,5 @@
         }
     };
 </script>
+
 </html>
