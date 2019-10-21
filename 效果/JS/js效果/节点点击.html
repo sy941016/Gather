@@ -22,6 +22,7 @@
         padding-left: 30px;
         color: #fff;
         font-size: 24px;
+        cursor: pointer;
     }
 
     .bigbox > li:last-child > ul {
@@ -91,14 +92,15 @@
     //     }
     // }
     //第二种方法
-    var box = document.getElementsByClassName("box");
-    for (var i = 0; i < box.length; i++) {
+    let box = document.getElementsByClassName("box");
+    console.log(box);
+    for (let i = 0; i < box.length; i++) {
         box[i].index = i;
         box[i].onclick = function () {
             if (getNextSibling(box[this.index]).style.display == "block") {
                 getNextSibling(box[this.index]).style.display = "none";
             } else {
-                for (j = 0; j < box.length; j++) {
+                for (let j = 0; j < box.length; j++) {
                     getNextSibling(box[j]).style.display = "none";
                 }
                 getNextSibling(box[this.index]).style.display = "block";

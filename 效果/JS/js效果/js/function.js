@@ -38,9 +38,9 @@ function getStyle(obj, arrt) {
 
 //4.
 function getChilds(obj) {
-    var childs = obj.childNodes;
-    var arr = [];
-    for (var i = 0; i < childs.length; i++) {
+    let childs = obj.childNodes;
+    let arr = [];
+    for (let i = 0; i < childs.length; i++) {
         if (childs[i].nodeType == 1) {
             arr.push(childs[i]);
         }
@@ -55,13 +55,13 @@ function getFirstChild(obj) {
 
 //6.
 function getLastChild(obj) {
-    var arr = getChilds(obj);
+    let arr = getChilds(obj);
     return arr[arr.length - 1];
 }
 
 //7.
 function nextSibling(node) {
-    var next = node.nextSibling;
+    let next = node.nextSibling;
     if (next == null) {
         return undefined;
     }
@@ -76,7 +76,7 @@ function nextSibling(node) {
 
 //递归思想写法
 function getNextSibling(node) {//获得下一个兄弟节点
-    var next = node.nextSibling;
+    let next = node.nextSibling;
     if (next.nodeType == 1) {
         //判断下一个兄弟节点的nodeType是不是等于1，条件满足等于
         return next;//当前的NEXT就是想找的下一个兄弟节点
@@ -89,11 +89,11 @@ function getNextSibling(node) {//获得下一个兄弟节点
 
 //
 function getNextSib(node) {
-    var tempLast = getLastChild(node.parentNode);//是否为最后一个元素节点，是则为空
+    let tempLast = getLastChild(node.parentNode);//是否为最后一个元素节点，是则为空
     if (node == tempLast) {
         return null;
     }
-    var tempObj = node.nextSibling;
+    let tempObj = node.nextSibling;
     while (tempObj.nodeType != 1 && tempObj.nextSibling != null) {
         tempObj = tempObj.nextSibling;
     }
@@ -102,7 +102,7 @@ function getNextSib(node) {
 
 //8.
 function prevSibling(node) {
-    var prev = node.previousSibling;
+    let prev = node.previousSibling;
     if (prev == null) {
         return undefined;
     }
@@ -117,7 +117,7 @@ function prevSibling(node) {
 
 //递归思想写法
 function getPrevSibling(node) {
-    var prev = node.previousSibling;
+    let prev = node.previousSibling;
     if (prev.nodeType == 1) {
         return prev;
     }
