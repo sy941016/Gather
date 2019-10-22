@@ -127,17 +127,17 @@
                 document.onmousemove = null;
             }
         },
-        prevent: function (aa) {
-            if (aa.preventDefault) {
-                aa.preventDefault()
+        prevent: function (name) {
+            if (name.preventDefault) {
+                name.preventDefault()
             } else {
-                aa.returnValue = false;
+                name.returnValue = false;
             }
         }
     };
     let box = document.getElementsByClassName('box')[0];
     let bigbox = document.getElementsByClassName("bigbox")[0];
-    let aa = new Drag(box, { dragarea: bigbox, direction: "all" });
+    let drag = new Drag(box, { dragarea: bigbox, direction: "all" });
 </script>
 
 </html>
