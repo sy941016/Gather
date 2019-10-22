@@ -37,10 +37,10 @@
         name.style.left = offset + 'px';
     }
     moveC.onmousedown = function (e) {
-        let screenX = e.offsetX;
+        let offsetX = e.offsetX;
         window.onmousemove = function (e) {
             let left;
-            left = e.clientX - screenX - moveP.offsetLeft;
+            left = e.clientX - offsetX - moveP.offsetLeft;
             left = left > 0 ? left : 0;
             left = left > moveP.clientWidth - moveC.clientWidth ? moveP.clientWidth - moveC.clientWidth : left;
             move(moveC, left);
