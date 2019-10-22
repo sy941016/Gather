@@ -58,11 +58,11 @@ window.onload = function () {
 
     //左右按钮效果，优化用户体验
     bigbox.onmouseover = function () {
-        animate(leftbtn, {opacity: 1}, 200);
-        animate(rightbtn, {opacity: 1}, 200);
+        animate(leftbtn, { opacity: 1 }, 200);
+        animate(rightbtn, { opacity: 1 }, 200);
     };
     bigbox.onmouseout = function () {
-        animate(leftbtn, {opacity: 0}, 200);
-        animate(rightbtn, {opacity: 0}, 200);
+        animate(leftbtn, { opacity: 0 }, 200);
+        animate(rightbtn, { opacity: 0 }, 200);
     };
 };

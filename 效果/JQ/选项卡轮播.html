@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
     <script src="js/jquery-3.1.1.min.js"></script>
 </head>
 <style>
-    body, ul, li {
+    body,
+    ul,
+    li {
         margin: 0;
         padding: 0;
         list-style: none;
@@ -109,25 +112,26 @@
         position: relative
     }
 </style>
+
 <body>
-<div class="bigbox">
-    <div class="innerbox">
-        <div class="box one">01</div>
-        <div class="box two">02</div>
-        <div class="box three">03</div>
-        <div class="box four">04</div>
-        <div class="box five">05</div>
+    <div class="bigbox">
+        <div class="innerbox">
+            <div class="box one">01</div>
+            <div class="box two">02</div>
+            <div class="box three">03</div>
+            <div class="box four">04</div>
+            <div class="box five">05</div>
+        </div>
+        <ul class="btnbox">
+            <li class="btn"></li>
+            <li class="btn"></li>
+            <li class="btn"></li>
+            <li class="btn"></li>
+            <li class="btn"></li>
+        </ul>
+        <div class="btns left">&lt;</div>
+        <div class="btns right">&gt;</div>
     </div>
-    <ul class="btnbox">
-        <li class="btn"></li>
-        <li class="btn"></li>
-        <li class="btn"></li>
-        <li class="btn"></li>
-        <li class="btn"></li>
-    </ul>
-    <div class="btns left">&lt;</div>
-    <div class="btns right">&gt;</div>
-</div>
 </body>
 <script>
     $(function () {
@@ -168,9 +172,10 @@
 
         //处理函数
         function Btn(num) {
-            $(".box").eq(num).css({zIndex: 1}).siblings().css({zIndex: 0});
-            $(".btn").eq(num).css({backgroundColor: "gold"}).siblings().css({backgroundColor: "white"})
+            $(".box").eq(num).css({ zIndex: 1 }).siblings().css({ zIndex: 0 });
+            $(".btn").eq(num).css({ backgroundColor: "gold" }).siblings().css({ backgroundColor: "white" })
         }
     });
 </script>
+
 </html>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
     <script src="js/function.js"></script>
 </head>
 <style>
-
     .left-box {
         width: 200px;
         height: 200px;
@@ -53,7 +53,8 @@
         position: absolute;
     }
 
-    .tian-left, .tian-right {
+    .tian-left,
+    .tian-right {
         width: 200px;
         height: 200px;
         border: 1px solid #000;
@@ -68,33 +69,34 @@
         left: auto;
     }
 </style>
+
 <body>
-<div class="left-box">
-    <div class="box" draggable="true"></div>
-    <div class="box" draggable="true"></div>
-    <div class="box" draggable="true"></div>
-    <div class="box" draggable="true"></div>
-    <div class="box" draggable="true"></div>
-    <div class="box" draggable="true"></div>
-    <div class="box" draggable="true"></div>
-    <div class="box" draggable="true"></div>
-    <div class="box" draggable="true"></div>
-    <div class="box" draggable="true"></div>
-    <div class="box" draggable="true"></div>
-    <div class="box" draggable="true"></div>
-    <div class="box" draggable="true"></div>
-    <div class="box" draggable="true"></div>
-    <div class="box" draggable="true"></div>
-    <div class="box" draggable="true"></div>
-</div>
-<div class="tianping">
-    <div class="kuang">
-        <div class="line"></div>
-        <div class="tian-left"></div>
-        <div class="tian-right"></div>
+    <div class="left-box">
+        <div class="box" draggable="true"></div>
+        <div class="box" draggable="true"></div>
+        <div class="box" draggable="true"></div>
+        <div class="box" draggable="true"></div>
+        <div class="box" draggable="true"></div>
+        <div class="box" draggable="true"></div>
+        <div class="box" draggable="true"></div>
+        <div class="box" draggable="true"></div>
+        <div class="box" draggable="true"></div>
+        <div class="box" draggable="true"></div>
+        <div class="box" draggable="true"></div>
+        <div class="box" draggable="true"></div>
+        <div class="box" draggable="true"></div>
+        <div class="box" draggable="true"></div>
+        <div class="box" draggable="true"></div>
+        <div class="box" draggable="true"></div>
     </div>
-    <div id="tianjiao"></div>
-</div>
+    <div class="tianping">
+        <div class="kuang">
+            <div class="line"></div>
+            <div class="tian-left"></div>
+            <div class="tian-right"></div>
+        </div>
+        <div id="tianjiao"></div>
+    </div>
 </body>
 <script>
     var box = document.getElementsByClassName("box");
@@ -126,4 +128,5 @@
         kuang.style.transform = "rotate(" + cha + "deg)";
     };
 </script>
+
 </html>

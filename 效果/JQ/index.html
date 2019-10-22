@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>index</title>
@@ -7,7 +8,8 @@
     <script src="js/jquery-3.1.1.js"></script>
 </head>
 <style>
-    ul, li {
+    ul,
+    li {
         list-style: none;
         margin: 0;
         padding: 0;
@@ -17,7 +19,7 @@
         overflow: hidden;
     }
 
-    .week > li {
+    .week>li {
         height: 50px;
         padding: 10px 40px;
         line-height: 50px;
@@ -31,18 +33,19 @@
         background: #000000;
     }
 </style>
+
 <body>
-<ul class="week">
-    <li class="test">周一</li>
-    <li class="test">周二</li>
-    <li class="test">周三</li>
-    <li class="test">周四</li>
-</ul>
-<script>
-    $('ul>li').click(function () {
-        console.log($(this).index());
-        $(this).addClass('active').siblings().removeClass('active')
-    })
+    <ul class="week">
+        <li class="test">周一</li>
+        <li class="test">周二</li>
+        <li class="test">周三</li>
+        <li class="test">周四</li>
+    </ul>
+    <script>
+        $('ul>li').click(function () {
+            console.log($(this).index());
+            $(this).addClass('active').siblings().removeClass('active')
+        })
     // let li = document.getElementsByTagName('li');
     // for(let i=0;i<li.length;i++){
     //     li[i].onclick = function () {
@@ -54,6 +57,7 @@
     //     }
     // }
 
-</script>
+    </script>
 </body>
+
 </html>

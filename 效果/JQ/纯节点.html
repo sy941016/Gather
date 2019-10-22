@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
@@ -51,16 +52,17 @@
         background: gray;
     }
 </style>
+
 <body>
-<div class="container">
-    <div class="box">
-        <div class="box-inner b1">01</div>
-        <div class="box-inner b2">02</div>
-        <div class="box-inner b3 ">03</div>
-        <div class="box-inner b4">04</div>
-        <div class="box-inner b5">05</div>
+    <div class="container">
+        <div class="box">
+            <div class="box-inner b1">01</div>
+            <div class="box-inner b2">02</div>
+            <div class="box-inner b3 ">03</div>
+            <div class="box-inner b4">04</div>
+            <div class="box-inner b5">05</div>
+        </div>
     </div>
-</div>
 </body>
 <script>
     $(function () {
@@ -73,15 +75,15 @@
                 if (flag) {
                     num >= $('.box-inner').length - 1 ? num = 0 : num++;
                     //$(selector).animate(styles,speed,easing,callback)   speed,easing,callback可选
-                    box.animate({marginLeft: -500}, 1000, function () {
+                    box.animate({ marginLeft: -500 }, 1000, function () {
                         $(".box-inner").first().appendTo(box);
-                        $(".box").css({marginLeft: 0});
+                        $(".box").css({ marginLeft: 0 });
                     });
                 } else {
                     num == 0 ? num = $('.box-inner').length - 1 : num--;
                     $(".box-inner").last().prependTo(box);
-                    $(".box").css({marginLeft: -500});
-                    box.animate({marginLeft: 0}, 1000);
+                    $(".box").css({ marginLeft: -500 });
+                    box.animate({ marginLeft: 0 }, 1000);
                 }
             }
         }
@@ -91,4 +93,5 @@
         }
     })
 </script>
+
 </html>

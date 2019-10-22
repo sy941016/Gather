@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
@@ -55,16 +56,17 @@
         background-color: green;
     }
 </style>
+
 <body>
-<div class="bigbox">
-    <div class="innerbox">
-        <div class="box one">01</div>
-        <div class="box two">02</div>
-        <div class="box three">03</div>
-        <div class="box four">04</div>
-        <div class="box five">05</div>
+    <div class="bigbox">
+        <div class="innerbox">
+            <div class="box one">01</div>
+            <div class="box two">02</div>
+            <div class="box three">03</div>
+            <div class="box four">04</div>
+            <div class="box five">05</div>
+        </div>
     </div>
-</div>
 </body>
 <script>
     var innerbox = document.getElementsByClassName("innerbox")[0];
@@ -80,7 +82,7 @@
                 if (num >= box.length) {
                     num = box.length - 1;
                 }
-                animate(innerbox, {marginLeft: -500 * num}, 500, function () {
+                animate(innerbox, { marginLeft: -500 * num }, 500, function () {
                     flag = true;
                     flag1 = true;
                 })
@@ -93,7 +95,7 @@
                 if (num < 0) {
                     num = 0;
                 }
-                animate(innerbox, {marginLeft: -500 * num}, 500, function () {
+                animate(innerbox, { marginLeft: -500 * num }, 500, function () {
                     flag1 = true;
                     flag = true;
                 });
@@ -101,4 +103,5 @@
         }
     }
 </script>
+
 </html>

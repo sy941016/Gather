@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>audio-current</title>
 </head>
+
 <body>
-<audio controls id="audio">
-    <source src="./audio/sunny.mp3" type="audio/ogg">
-</audio>
-<button id="button">播放</button>
-<canvas width="600" height="300" id="canvas" style="border:1px solid red;background: #8C8D8F"></canvas>
+    <audio controls id="audio">
+        <source src="./audio/sunny.mp3" type="audio/ogg">
+    </audio>
+    <button id="button">播放</button>
+    <canvas width="600" height="300" id="canvas" style="border:1px solid red;background: #8C8D8F"></canvas>
 </body>
 <script>
     let button = document.getElementById("button");
@@ -68,4 +70,5 @@
         draw();
     };
 </script>
+
 </html>

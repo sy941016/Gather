@@ -1,25 +1,33 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
         }
+
         .wrap {
             padding: 0 100px 0 120px;
             overflow: hidden;
         }
-        .main, .left, .right {
+
+        .main,
+        .left,
+        .right {
             float: left;
             height: 200px;
         }
+
         .main {
             width: 100%;
             background: #eee;
         }
+
         .left {
             width: 120px;
             margin-left: -100%;
@@ -27,6 +35,7 @@
             position: relative;
             left: -120px;
         }
+
         .right {
             width: 100px;
             margin-left: -100px;
@@ -36,11 +45,13 @@
         }
     </style>
 </head>
+
 <body>
-<div class="wrap">
-    <div class="main">main</div>
-    <div class="left">left</div>
-    <div class="right">right</div>
-</div>
+    <div class="wrap">
+        <div class="main">main</div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
 </body>
+
 </html>

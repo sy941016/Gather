@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
 </head>
 <script src="./js/jquery-3.1.1.min.js"></script>
-<body>
-用户名：<input type="text" name="testInput" id="testInput"/><br/><br/>
-<input type="submit" id="submit" value="提交"/>
-<input type="button" id="revise" value="修改"/>
 
-<form action="">
-    <input type="checkbox" value="篮球"/>篮球
-    <input type="checkbox" value="篮球"/>篮球
-    <input type="checkbox" value="篮球"/>篮球
-    <input type="checkbox" value="篮球"/>篮球
-    <input type="checkbox" value="篮球"/>篮球
-    <input type="checkbox" value="篮球"/>篮球
-    <input type="checkbox" value="篮球"/>篮球
-    <input type="checkbox" value="篮球"/>篮球
-    <input type="button" id="checkAll" value="全选"/>
-    <input type="button" id="unCheckAll" value="全不选"/>
-    <input type="button" id="checkBack" value="反选"/>
-</form>
+<body>
+    用户名：<input type="text" name="testInput" id="testInput" /><br /><br />
+    <input type="submit" id="submit" value="提交" />
+    <input type="button" id="revise" value="修改" />
+
+    <form action="">
+        <input type="checkbox" value="篮球" />篮球
+        <input type="checkbox" value="篮球" />篮球
+        <input type="checkbox" value="篮球" />篮球
+        <input type="checkbox" value="篮球" />篮球
+        <input type="checkbox" value="篮球" />篮球
+        <input type="checkbox" value="篮球" />篮球
+        <input type="checkbox" value="篮球" />篮球
+        <input type="checkbox" value="篮球" />篮球
+        <input type="button" id="checkAll" value="全选" />
+        <input type="button" id="unCheckAll" value="全不选" />
+        <input type="button" id="checkBack" value="反选" />
+    </form>
 </body>
 <script>
     $(function () {
@@ -31,7 +33,7 @@
                 alert("表单内容不能为空")
             } else {
                 alert($("#testInput").val());
-                $("#testInput").attr({'disabled': 'disabled'});
+                $("#testInput").attr({ 'disabled': 'disabled' });
             }
         });
         $("#revise").click(function () {
@@ -53,4 +55,5 @@
         })
     })
 </script>
+
 </html>

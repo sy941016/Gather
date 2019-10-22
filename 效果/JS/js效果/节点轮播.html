@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
@@ -7,7 +8,9 @@
     <script src="js/animate.js"></script>
 </head>
 <style>
-    body, ul, li {
+    body,
+    ul,
+    li {
         margin: 0;
         padding: 0;
         list-style: none;
@@ -98,7 +101,7 @@
         left: 50%;
     }
 
-    .libtnbox > li {
+    .libtnbox>li {
         width: 30px;
         height: 100%;
         border-radius: 50%;
@@ -110,30 +113,31 @@
         font-size: 24px;
     }
 
-    .libtnbox > li:first-child {
+    .libtnbox>li:first-child {
         margin-left: 0;
         background: orange;
     }
 </style>
+
 <body>
-<div class="bigbox">
-    <div class="innerbox">
-        <div class="box one">一</div>
-        <div class="box two">二</div>
-        <div class="box three">三</div>
-        <div class="box four">四</div>
-        <div class="box five">五</div>
+    <div class="bigbox">
+        <div class="innerbox">
+            <div class="box one">一</div>
+            <div class="box two">二</div>
+            <div class="box three">三</div>
+            <div class="box four">四</div>
+            <div class="box five">五</div>
+        </div>
+        <div class="btn leftbtn">&lt;</div>
+        <div class="btn rightbtn">&gt;</div>
+        <ul class="libtnbox">
+            <li class="libtn">1</li>
+            <li class="libtn">2</li>
+            <li class="libtn">3</li>
+            <li class="libtn">4</li>
+            <li class="libtn">5</li>
+        </ul>
     </div>
-    <div class="btn leftbtn">&lt;</div>
-    <div class="btn rightbtn">&gt;</div>
-    <ul class="libtnbox">
-        <li class="libtn">1</li>
-        <li class="libtn">2</li>
-        <li class="libtn">3</li>
-        <li class="libtn">4</li>
-        <li class="libtn">5</li>
-    </ul>
-</div>
 </body>
 <script>
     let innerbox = document.getElementsByClassName('innerbox')[0];
@@ -146,7 +150,7 @@
     function move(flag) {
         if (flag) {
             num >= libtn.length - 1 ? num = 0 : num++;
-            animate(innerbox, {marginLeft: -600}, 500, function () {
+            animate(innerbox, { marginLeft: -600 }, 500, function () {
                 let first = getFirstChild(this);
                 this.appendChild(first);
                 this.style.marginLeft = 0;
@@ -157,7 +161,7 @@
             let last = getLastChild(innerbox); //当前innerboxd的最后一个box
             innerbox.insertBefore(last, first);
             innerbox.style.marginLeft = "-600px";
-            animate(innerbox, {marginLeft: 0}, 500)
+            animate(innerbox, { marginLeft: 0 }, 500)
         }
         Libtn(num)
     }
@@ -190,7 +194,7 @@
             clearTimeout(t)
             let numl = Index - num;
             if (numl >= 0) {
-                animate(innerbox, {marginLeft: numl * (-600)}, 300, function () {
+                animate(innerbox, { marginLeft: numl * (-600) }, 300, function () {
                     for (let i = 0; i < numl; i++) {
                         let first = getFirstChild(this);
                         this.appendChild(first);
@@ -204,7 +208,7 @@
                     let last = getLastChild(innerbox);
                     innerbox.insertBefore(last, first);
                 }
-                animate(innerbox, {marginLeft: 0}, 300)
+                animate(innerbox, { marginLeft: 0 }, 300)
             }
             Libtn(Index)
             num = Index;
@@ -221,4 +225,5 @@
         }
     }
 </script>
+
 </html>

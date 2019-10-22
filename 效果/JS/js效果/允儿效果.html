@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title>淘宝效果</title>
     <script src="js/function.js"></script>
 </head>
 <style>
-    body, ul, li {
+    body,
+    ul,
+    li {
         margin: 0;
         padding: 0;
         list-style: none;
@@ -36,7 +39,7 @@
         top: 0;
     }
 
-    .box > img {
+    .box>img {
         width: 100%;
         height: 100%;
     }
@@ -57,7 +60,7 @@
         margin-top: 20px;
     }
 
-    .nvfu > li {
+    .nvfu>li {
         width: 90px;
         height: 135px;
         float: left;
@@ -66,7 +69,7 @@
         margin-left: 15px;
     }
 
-    .nvfu > li > img {
+    .nvfu>li>img {
         width: 100%;
         height: 100%;
     }
@@ -82,7 +85,7 @@
         border: 2px solid blue;
     }
 
-    .showbox > img {
+    .showbox>img {
         width: 720px;
         height: 1080px;
     }
@@ -105,21 +108,22 @@
         display: block;
     }
 </style>
+
 <body>
-<div class="bigbox">
-    <div class="box">
-        <img src="" alt="">
-        <div class="mask"></div>
+    <div class="bigbox">
+        <div class="box">
+            <img src="" alt="">
+            <div class="mask"></div>
+        </div>
+        <div class="copy"></div>
+        <ul class="nvfu">
+            <li><img src="img/t1.jpg" alt="" /><span class="sanjiao a"></span></li>
+            <li><img src="img/t2.jpg" alt="" /><span class="sanjiao"></span></li>
+            <li><img src="img/t3.jpg" alt="" /><span class="sanjiao"></span></li>
+            <li><img src="img/t1.jpg" alt="" /><span class="sanjiao"></span></li>
+        </ul>
+        <div class="showbox"><img src="" alt="" /></div>
     </div>
-    <div class="copy"></div>
-    <ul class="nvfu">
-        <li><img src="img/t1.jpg" alt=""/><span class="sanjiao a"></span></li>
-        <li><img src="img/t2.jpg" alt=""/><span class="sanjiao"></span></li>
-        <li><img src="img/t3.jpg" alt=""/><span class="sanjiao"></span></li>
-        <li><img src="img/t1.jpg" alt=""/><span class="sanjiao"></span></li>
-    </ul>
-    <div class="showbox"><img src="" alt=""/></div>
-</div>
 </body>
 <script>
     var box = document.getElementsByClassName("box")[0];
@@ -177,4 +181,5 @@
         showimg.style.marginTop = -4 * top + "px";
     }
 </script>
+
 </html>

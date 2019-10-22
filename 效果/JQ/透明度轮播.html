@@ -1,12 +1,15 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>透明度轮播</title>
     <script src="js/jquery-3.1.1.js"></script>
 </head>
 <style>
-    body, ul, li {
+    body,
+    ul,
+    li {
         padding: 0;
         margin: 0;
         list-style: none;
@@ -36,14 +39,15 @@
         z-index: 1;
     }
 </style>
+
 <body>
-<ul class="box">
-    <li class="innerbox aa">1</li>
-    <li class="innerbox">2</li>
-    <li class="innerbox">3</li>
-    <li class="innerbox">4</li>
-    <li class="innerbox">5</li>
-</ul>
+    <ul class="box">
+        <li class="innerbox aa">1</li>
+        <li class="innerbox">2</li>
+        <li class="innerbox">3</li>
+        <li class="innerbox">4</li>
+        <li class="innerbox">5</li>
+    </ul>
 </body>
 <script>
     $(function () {
@@ -54,9 +58,10 @@
         }
 
         function move() {
-            num >= $(".innerbox").length-1 ? num = 0 : num++
+            num >= $(".innerbox").length - 1 ? num = 0 : num++
             $(".innerbox").eq(num).fadeIn(1000).siblings().fadeOut(1000);
         }
     })
 </script>
+
 </html>

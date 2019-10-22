@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
@@ -97,28 +98,29 @@
         background: gray;
     }
 </style>
+
 <body>
-<div class="container">
-    <!--内容div-->
-    <div class="box">
-        <div class="box-inner b1">一</div>
-        <div class="box-inner b2">二</div>
-        <div class="box-inner b3 ">三</div>
-        <div class="box-inner b4">四</div>
-        <div class="box-inner b5">五</div>
+    <div class="container">
+        <!--内容div-->
+        <div class="box">
+            <div class="box-inner b1">一</div>
+            <div class="box-inner b2">二</div>
+            <div class="box-inner b3 ">三</div>
+            <div class="box-inner b4">四</div>
+            <div class="box-inner b5">五</div>
+        </div>
+        <!--按钮div-->
+        <div class="spot-box">
+            <div class="spot hov"></div>
+            <div class="spot hov"></div>
+            <div class="spot hov"></div>
+            <div class="spot hov"></div>
+            <div class="spot hov"></div>
+        </div>
+        <!--左右按钮-->
+        <div class="btn left hov">&lt;</div>
+        <div class="btn right hov">&gt;</div>
     </div>
-    <!--按钮div-->
-    <div class="spot-box">
-        <div class="spot hov"></div>
-        <div class="spot hov"></div>
-        <div class="spot hov"></div>
-        <div class="spot hov"></div>
-        <div class="spot hov"></div>
-    </div>
-    <!--左右按钮-->
-    <div class="btn left hov">&lt;</div>
-    <div class="btn right hov">&gt;</div>
-</div>
 </body>
 <script>
     $(function () {
@@ -136,15 +138,15 @@
             if (!box.is(":animated")) {
                 if (flag) {
                     num >= spot.length - 1 ? num = 0 : num++;
-                    box.animate({marginLeft: -500}, 1000, function () {
+                    box.animate({ marginLeft: -500 }, 1000, function () {
                         $(".box-inner").first().appendTo(box);
-                        $(".box").css({marginLeft: 0});
+                        $(".box").css({ marginLeft: 0 });
                     });
                 } else {
                     num == 0 ? num = spot.length - 1 : num--;
                     $(".box-inner").last().prependTo(box);
-                    $(".box").css({marginLeft: -500});
-                    box.animate({marginLeft: 0}, 1000);
+                    $(".box").css({ marginLeft: -500 });
+                    box.animate({ marginLeft: 0 }, 1000);
                 }
                 Spot(num);
             }
@@ -174,19 +176,19 @@
             let cha = Index - num;
             if (cha >= 0) {
                 //当前的下标和点击的下标的差值 就滑动几屏 每屏幕为500
-                box.animate({marginLeft: -500 * cha}, 500, function () {
+                box.animate({ marginLeft: -500 * cha }, 500, function () {
                     for (let i = 0; i < cha; i++) {
                         $(".box-inner").first().appendTo(box);
                     }
-                    $(".box").css({marginLeft: 0});
+                    $(".box").css({ marginLeft: 0 });
                 });
             } else {
                 //取绝对值Math.abs()
-                $(".box").css({marginLeft: -500 * Math.abs(cha)});
+                $(".box").css({ marginLeft: -500 * Math.abs(cha) });
                 for (let j = 0; j < Math.abs(cha); j++) {
                     $(".box-inner").last().prependTo(box);
                 }
-                box.animate({marginLeft: 0}, 500);
+                box.animate({ marginLeft: 0 }, 500);
             }
             Spot(Index);
             num = Index;
@@ -194,8 +196,9 @@
 
         //处理spot颜色
         function Spot(num) {
-            spot.eq(num).css({"background": "orange"}).siblings().css({"background": "#ccc"});
+            spot.eq(num).css({ "background": "orange" }).siblings().css({ "background": "#ccc" });
         }
     })
 </script>
+
 </html>
