@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/opacity_rotation.css">
     <script src="js/function.js"></script>
     <script src="js/animate.js"></script>
-    <script src="js/opacity_rotation.js"></script>
 </head>
 
 <body>
@@ -22,5 +21,31 @@
         <div class="box"><img src="img/8.jpg" alt="" /></div>
     </div>
 </body>
+<script>
+    window.onload = function () {
+        let img = document.getElementsByTagName("img");
+        console.log(img);
+        let num = 0;
+        setInterval(move, 2000);
+
+        //opacity 0 -> 0.3 -> 1
+        function move() {
+            num >= img.length - 1 ? num = 0 : num++;
+            for (let i = 0; i < img.length; i++) {
+                for (let j = 0; j < img.length; j++) {
+                    img[j].style.opacity = 0;
+                    if (num - 1 == -1) {
+                        animate(img[0], { opacity: 0 }, 800);
+                    } else {
+                        animate(img[num - 1], { opacity: 0 }, 800);
+                    }
+                    img[num].style.opacity = 0.3;
+                }
+                animate(img[num], { opacity: 1 }, 1000);
+            }
+        }
+    }
+
+</script>
 
 </html>
