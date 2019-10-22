@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>move</title>
+</head>
+<style>
+    .move-p {
+        width: 300px;
+        height: 50px;
+        border: 1px solid #000000;
+        position: relative;
+    }
+
+    .move-c {
+        width: 10px;
+        height: 100%;
+        background: red;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+</style>
+
+<body>
+    <div class="move-p">
+        <div class="move-c"></div>
+    </div>
+</body>
+<script>
+    let moveP = document.getElementsByClassName('move-p')[0];
+    let moveC = document.getElementsByClassName('move-c')[0];
+    let move = function (name, offset) {
+        name.style.left = offset + 'px';
+    }
+    moveC.onmousedown = function (e) {
+        let screenX = e.offsetX;
+        window.onmousemove = function (e) {
+            let left;
+            left = e.clientX - screenX - moveP.offsetLeft;
+            left = left > 0 ? left : 0;
+            left = left > moveP.clientWidth - moveC.clientWidth ? moveP.clientWidth - moveC.clientWidth : left;
+            move(moveC, left);
+        };
+    };
+    window.onmouseup = function () {
+        window.onmousemove = null
+    };
+</script>
+
+</html>
