@@ -320,12 +320,11 @@ function setCss(obj, attr, val) {
     }
 }
 
-//��ɫ���䶯��
-//�����ɫ
+
 function getColor(color) {
     var str, r, g, b, arr;
     if (typeof color == "string") {
-        //16 ����
+
         if (color.charAt(0) === "#") {
             str = color.substring(1)
             r = parseInt(str.substr(0, 2), 16);
@@ -343,14 +342,7 @@ function getColor(color) {
     }
 }
 
-/*
-  ���� colorAnimate (obj,attr,val,dur,fn,callback)
-  obj   Ҫ�����Ķ���
-  attr  Ҫ����������  background   color
-  val   ������ɫ rbg    #
-  fn    �����ķ�ʽ
-  callback  �仯���֮��Ҫ����������
-*/
+
 function colorAnimate(obj, attr, val, dur, fn, callback) {
     if (obj.time) {
         clearInterval(obj.time);
