@@ -157,14 +157,6 @@ Tween = {
     }
 }
 
-/*
-  �������� animate (obj,attrObj,dur,fun,callback)
-  obj   Ҫ�����Ķ���
-  attrobj   Ҫ���������Զ���{width:xxxx,height:xxx,left:xxxx,top:xxxx,opacity:xxx}
-  dur   ����ʱ��
-  fun   ������ʽ
-  callback �ص�����
-  */
 
 function animate(obj, attrObj, dur, fun, callback) {
     clearInterval(obj.t);
@@ -244,11 +236,8 @@ function setCss(obj, attr, val) {
     if (obj.nodeType !== 1) {
         return;
     }
-    //��ʼ������
     var attr = attr.replace(/^\s*|\s*$/g, "");
-    //��ȡֵ
     if (arguments.length == 2) {
-        //λ�úͳߴ�
         if (attr == "height" || attr == "width" || attr == "top" || attr == "left" || attr == "right" || attr == "bottom") {
             var val = obj.currentStyle ? parseInt(obj.currentStyle[attr]) : parseInt(getComputedStyle(obj, null)[attr]);
             if (!val) {
@@ -262,14 +251,11 @@ function setCss(obj, attr, val) {
             var cc = parseInt(obj.currentStyle ? ((obj.currentStyle[attr] == undefined || obj.currentStyle[attr] == "auto") ? 0 : obj.currentStyle[attr]) : (getComputedStyle(obj, null)[attr] == undefined ? 0 : getComputedStyle(obj, null)[attr]));
             return cc;
         }
-        //͸����
         if (attr == "opacity") {
             return obj.currentStyle ? parseFloat(obj.currentStyle[attr] || 1) : parseFloat(getComputedStyle(obj, null)[attr] || 1);
         }
-        //��ɫ
         if (attr == 'color' || attr == "background" || attr == "backgroundColor" || attr == 'borderBottomColor' || attr == 'borderLeftColor' || attr == 'borderRightColor' || attr == 'borderTopColor') {
             var colors = obj.currentStyle ? (obj.currentStyle[attr] || "#000000") : (getComputedStyle(obj, null)[attr] || "#000000");
-            //��ȡ����
             return getColor(colors);
         }
         if (attr == "scrollTop") {
