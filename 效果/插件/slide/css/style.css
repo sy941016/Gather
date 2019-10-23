@@ -4,25 +4,12 @@
     list-style-type: none;
 }
 
-a, img {
-    border: 0;
-}
-
 body {
     font-size: 13px;
     background-color: #f0f0f0;
     color: #666666;
 }
 
-#box_title {
-    width: 394px;
-    margin: 20px auto 0 auto;
-    font-weight: bold;
-    line-height: 28px;
-    font-size: 14px;
-}
-
-/* con */
 #con {
     width: 394px;
     height: 540px;
@@ -38,7 +25,6 @@ body {
     margin: 0 10px 0 10px;
     top: 0;
     left: 0;
-    padding: 0;
 }
 
 #con ul li {

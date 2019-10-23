@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <link type="text/css" rel="stylesheet" href="css/style.css" />
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <!--jQuery动画暂停插件-->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <!--jQuery动画暂停-->
     <script type="text/javascript" src="js/jquery.pause.min.js"></script>
 </head>
 
@@ -62,21 +62,20 @@
     <script>
         function slide(a1, a2) {
             let scrtime;
-            let $ul = $(a1);
-            let liFirstHeight = $ul.find(a2 + ":first").height() + 20; //第一个li的高度
-            $ul.hover(function () {
-                $ul.pause(); //暂停动画
+            let liFirstHeight = $(a1).find(a2 + ":first").height() + 20; //第一个li的高度
+            $(a1).hover(function () {
+                $(a1).pause(); //暂停动画
                 clearInterval(scrtime)
             }, function () {
-                $ul.resume(); //恢复播放动画
+                $(a1).resume(); //恢复播放动画
                 scrtime = setInterval(function scrolllist() {
                     //动画形式展现第一个li
-                    $ul.animate({
+                    $(a1).animate({
                         top: "-" + liFirstHeight + "px"
                     }, 3000, function () {
                         //动画完成时
-                        $ul.find(a2 + ":first").appendTo($ul);
-                        $ul.css({
+                        $(a1).find(a2 + ":first").appendTo($(a1));
+                        $(a1).css({
                             top: 0 + "px"
                         });
                     })
