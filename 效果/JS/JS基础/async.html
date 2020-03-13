@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>async</title>
 </head>
+
 <body>
 
 </body>
@@ -31,7 +33,7 @@
         });
         return p;
     }
-
+    //洗碗
     function wash(data) {
         console.log('开始洗碗：' + data);
         var p = new Promise(function (resolve, reject) {
@@ -45,15 +47,16 @@
     }
 
     async function cooked() {
-        try{
+        try {
             let a = await cook()
             let b = await eat(a)
             await wash(b)
-        }catch(err){
+        } catch (err) {
             console.log(err)
         }
     }
 
     cooked()
 </script>
+
 </html>
