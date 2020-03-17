@@ -48,9 +48,9 @@
 
     async function cooked() {
         try {
-            let a = await cook()
-            let b = await eat(a)
-            await wash(b)
+            let cooked = await cook()
+            let eated = await eat(cooked)
+            await wash(eated)
         } catch (err) {
             console.log(err)
         }
