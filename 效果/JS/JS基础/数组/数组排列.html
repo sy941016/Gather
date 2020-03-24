@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
 </head>
+
 <body>
 
 </body>
@@ -19,20 +21,22 @@
         return temp;
     }
 
-    let aa = [1, 1, 2];
-    console.log(uniq(aa));
+    let a = [1, 1, 2];
+    console.log(uniq(a));
     //Set去重
-    let bb = [1, 1, 2]
+    let b = [1, 1, 2]
     let arraySet = (arr) => {
         arr = new Set(arr);
         arr = Array.from(arr)
         return arr
     }
-    console.log(arraySet(bb));
+    console.log(arraySet(b));
 
-    //选择排序
-    let arr1 = [6, 7, 5, 3, 4, 8, 1];
-    let Sort = function (arr) {
+    //*****************对于 100000 个随机数排序，选择排序约 20s，冒泡排序约 60s，快排约 0.02s*************
+
+    //选择排序 时间复杂度 - O(n2) 空间复杂度 - O(n2)
+    let c = [6, 7, 5, 3, 4, 8, 1];
+    let sort = function (arr) {
         for (let i = 0; i < arr.length; i++) {
             for (let j = i + 1; j < arr.length; j++) {
                 if (arr[i] >= arr[j]) {
@@ -43,12 +47,12 @@
         }
         return arr;
     }
-    console.log(Sort(arr1));
+    console.log(sort(c));
 
-    //冒泡排序
+    //冒泡排序  时间复杂度 - O(n2) 空间复杂度 - O(n)
     // 原理:每一次比较相邻两个数的大小，小的排在前面，如果前面的数比后面的大就交换这两个数的位置
-    let arr2 = [6, 7, 5, 3, 4, 8, 1];
-    let sortarr = function (arr) {
+    let d = [6, 7, 5, 3, 4, 8, 1];
+    let sortArr = function (arr) {
         for (let i = 0; i < arr.length - 1; i++) {
             for (let j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j] > arr[j + 1]) {
@@ -59,12 +63,12 @@
         }
         return arr;
     }
-    console.log(sortarr(arr2));
+    console.log(sortArr(d));
 
-    //快速排序
+    //快速排序  时间复杂度 - O(nlogn)  空间复杂度 - O(logn)
     //原理: 找到一个基准点（一般指数组的中部），然后数组被该基准点分为两部分，依次与该基准点数据比较，如果比它小，放左边；反之，放右边
     //左右分别用一个空数组去存储比较后的数据。最后递归执行上述操作，直到数组长度<=1
-    let arr3 = [6, 7, 5, 3, 4, 8, 1];
+    let e = [6, 7, 5, 3, 4, 8, 1];
     let quickSort = function (arr) {
         //如果数组长度小于等于1无需判断直接返回即可
         if (arr.length <= 1) {
@@ -85,6 +89,7 @@
         //递归执行以上操作,对左右两个数组进行操作，直到数组长度为<=1；
         return quickSort(left).concat(midIndexVal, quickSort(right));
     };
-    console.log(quickSort(arr3));
+    console.log(quickSort(e));
 </script>
+
 </html>
