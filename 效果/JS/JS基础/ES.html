@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title id="title">ES</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
+
 <body>
 
 </body>
@@ -26,14 +28,15 @@
     //extends   继承Student的所有方法
     class PrimaryStudent extends Student {
         constructor(name, grade) {
-            // 使用 super() 调用父类构造函数(仅在constructor函数中)
-            // 使用 super.methodName() 调用父类方法
-            // 在子类的constructor中,只有调用super之后,才能使用this关键字,否则会报错
+            //super用在构造函数中，必须在this之前调用
+            //通过super(name)来调用父类的构造函数，否则父类的name属性无法正常初始化
+            //super(name)相当于PrimaryStudent.call(this,name)
             super(name);
             this.grade = grade;
         }
 
         myGrade() {
+            //super.methodName() 调用父类方法
             super.hello()
             console.log('I am at grade ' + this.grade);
         }
@@ -109,4 +112,5 @@
         }
     });
 </script>
+
 </html>
