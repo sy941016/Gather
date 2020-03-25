@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>练习</title>
@@ -7,7 +8,8 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <style>
-    ul, li {
+    ul,
+    li {
         margin: 0;
         padding: 0;
         list-style: none;
@@ -18,7 +20,7 @@
         margin-top: 10px;
     }
 
-    #p-num > li {
+    #p-num>li {
         float: left;
         width: 56px;
         height: 56px;
@@ -29,93 +31,81 @@
         font-size: 40px;
     }
 
-    #p-num > li:nth-child(1) {
+    #p-num>li:nth-child(1) {
         margin-left: 0px;
     }
 
-    #p-num > li:nth-child(2), #p-num > li:nth-child(6), #p-num > li:nth-child(10) {
+    #p-num>li:nth-child(2),
+    #p-num>li:nth-child(6),
+    #p-num>li:nth-child(10) {
         width: 10px;
         border: 0;
         background: none;
     }
 </style>
+
 <body>
-<ul></ul>
-<ul id="p-num">
-    <li style="background-image: linear-gradient(90deg, #FF7200 0%, #FF6717 98%)">0</li>
-    <li data-replace="true">,</li>
-    <li style="background-image: linear-gradient(-85deg, #FF962A 0%, #FF6D4F 100%);">0</li>
-    <li style="background-image: linear-gradient(-90deg, #FF724A 6%, #FF563C 100%);">0</li>
-    <li style="background-image: linear-gradient(90deg, #F84A43 5%, #F6403C 99%);">0</li>
-    <li data-replace="true">,</li>
-    <li style="background-image: linear-gradient(90deg, #F84843 5%, #E72B43 99%);">0</li>
-    <li style="background-image: linear-gradient(90deg, #EE2D2C 0%, #F54343 100%);">0</li>
-    <li style="background-image: linear-gradient(-90deg, #EF302F 0%, #E01D1D 100%);">0</li>
-    <li data-replace="true">,</li>
-    <li style="background-image: linear-gradient(90deg, #E21F1F 14%, #DD1616 98%);">0</li>
-    <li style="background-image: linear-gradient(-90deg, #E21F1F 0%, #FF0C0C 100%);">0</li>
-    <li style="background-image: linear-gradient(-90deg, #FE0C0C 0%, #C90D09 100%);">0</li>
-</ul>
-<script>
-    let data = '94941016';
-    let ul = document.getElementsByTagName('ul');
-    let li = ul[1].getElementsByTagName('li');
+    <ul></ul>
+    <ul id="p-num">
+        <li style="background-image: linear-gradient(90deg, #FF7200 0%, #FF6717 98%)">0</li>
+        <li data-replace="true">,</li>
+        <li style="background-image: linear-gradient(-85deg, #FF962A 0%, #FF6D4F 100%);">0</li>
+        <li style="background-image: linear-gradient(-90deg, #FF724A 6%, #FF563C 100%);">0</li>
+        <li style="background-image: linear-gradient(90deg, #F84A43 5%, #F6403C 99%);">0</li>
+        <li data-replace="true">,</li>
+        <li style="background-image: linear-gradient(90deg, #F84843 5%, #E72B43 99%);">0</li>
+        <li style="background-image: linear-gradient(90deg, #EE2D2C 0%, #F54343 100%);">0</li>
+        <li style="background-image: linear-gradient(-90deg, #EF302F 0%, #E01D1D 100%);">0</li>
+        <li data-replace="true">,</li>
+        <li style="background-image: linear-gradient(90deg, #E21F1F 14%, #DD1616 98%);">0</li>
+        <li style="background-image: linear-gradient(-90deg, #E21F1F 0%, #FF0C0C 100%);">0</li>
+        <li style="background-image: linear-gradient(-90deg, #FE0C0C 0%, #C90D09 100%);">0</li>
+    </ul>
+    <script>
+        let data = '94941016';
+        let ul = document.getElementsByTagName('ul');
+        let li = ul[1].getElementsByTagName('li');
 
-    // let objArray = new Array();
-    // $("#p-num li").each(function () {
-    //     objArray.push($(this));
-    // });
-    // objArray = objArray.reverse(); //倒序
-    // let viewIndex = 0;
-    // for (let index = data.length - 1; index >= 0; index--) {
-    //     let num = data.charAt(index);//返回字符串当前的值
-    //     let isReplace = $(objArray[viewIndex]).data("replace");
-    //     if (isReplace) {
-    //         viewIndex += 1;
-    //     }
-    //     $(objArray[viewIndex]).html(num);
-    //     viewIndex++;
-    // }
+        class setNum {
+            constructor(data, li) {
+                this.data = data;
+                this.li = li;
+                this.arr = Array.from(this.li)
+                this.init();
+            }
 
-    class Setnum {
-        constructor(data, li) {
-            this.data = data;
-            this.li = li;
-            this.arr = Array.from(this.li)
-            this.init();
-        }
-
-        init() {
-            this.reverseArr();
-            this.dealData();
-            this.dataOf()
-        }
+            init() {
+                this.reverseArr();
+                this.dealData();
+                this.dataOf()
+            }
 
 
-        reverseArr() {
-            this.arr.reverse()
-        }
+            reverseArr() {
+                this.arr.reverse()
+            }
 
-        dealData() {
-            this.data = parseInt(this.data).toString()
-        }
+            dealData() {
+                this.data = parseInt(this.data).toString()
+            }
 
-        dataOf() {
-            let arr = this.arr;
-            let viewIndex = 0;
-            for (let index = data.length - 1; index >= 0; index--) {
-                let num = data.charAt(index);
-                let isReplace = arr[viewIndex].getAttribute("data-replace")
-                if (isReplace) {
-                    viewIndex += 1;
+            dataOf() {
+                let arr = this.arr;
+                let viewIndex = 0;
+                for (let index = data.length - 1; index >= 0; index--) {
+                    let num = data.charAt(index);
+                    let isReplace = arr[viewIndex].getAttribute("data-replace")
+                    if (isReplace) {
+                        viewIndex += 1;
+                    }
+                    arr[viewIndex].innerHTML = num;
+                    viewIndex++;
                 }
-                arr[viewIndex].innerHTML = num;
-                viewIndex++;
             }
         }
-    }
 
-    new Setnum(data, li);
-</script>
+        new setNum(data, li);
+    </script>
 </body>
+
 </html>
