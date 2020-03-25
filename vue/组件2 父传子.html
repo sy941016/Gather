@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>父->子</title>
     <script src="js/vue.js"></script>
 </head>
+
 <body>
-<div id="app">
-    <child :who="who"></child>
-</div>
+    <div id="app">
+        <child :who="who"></child>
+    </div>
 </body>
 <script>
     Vue.component("child", {
         template: "<p>父组件传来的信息：{{who}}</p>",
-        props: ["who"],
+        props: {
+            who: {
+                type: String
+            }
+        },
     });
     new Vue({
         el: "#app",
@@ -22,4 +28,5 @@
         }
     })
 </script>
+
 </html>
