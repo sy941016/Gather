@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>canvas-video</title>
 </head>
+
 <body>
-<canvas id="canvas" width="640" height="640"></canvas>
-<video src="video/iceage4.mp4" controls=controls hidden id="video"></video>
+    <canvas id="canvas" width="640" height="640"></canvas>
+    <video src="video/iceage4.mp4" controls=controls hidden id="video"></video>
 </body>
+
 </html>
 <script>
     let canvas = document.getElementById('canvas');
@@ -16,10 +19,10 @@
     let img = new Image();
     img.src = 'img/4.jpg';
     img.onload = function () {
-        cobj.drawImage(img, 0, 0, 640, 640);
+        cobj.drawImage(img, 0, 0, 400, 200);
     };
     //绘制矩形
-    cobj.rect(0, 0, 640, 640);
+    cobj.rect(0, 0, 400, 200);
     cobj.stroke();
     canvas.onclick = function (e) {
         let ox = e.offsetX;
@@ -28,7 +31,7 @@
         if (cobj.isPointInPath(ox, oy)) {
             video.play();
             setInterval(function () {
-                cobj.drawImage(video, 0, 0, 640, 640);
+                cobj.drawImage(video, 0, 0, 400, 200);
             }, 20)
         }
     }

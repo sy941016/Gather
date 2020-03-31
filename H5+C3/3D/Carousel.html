@@ -1,14 +1,15 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>carousel</title>
-    <script src="js/jquery-3.1.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <style>
     body {
         margin: 0;
-        padding:0;
+        padding: 0;
     }
 
     .container {
@@ -64,23 +65,24 @@
     }
 
     .item img {
-        width: 300px;;
+        width: 300px;
+        ;
     }
 </style>
+
 <body>
-<div class="container">
-    <div class="item"><img src="img/1.jpg" alt=""></div>
-    <div class="item"><img src="img/2.jpg" alt=""></div>
-    <div class="item"><img src="img/3.jpg" alt=""></div>
-    <div class="item"><img src="img/4.jpg" alt=""></div>
-    <div class="item"><img src="img/5.jpg" alt=""></div>
-    <div class="item"><img src="img/6.jpg" alt=""></div>
-    <div class="item"><img src="img/7.jpg" alt=""></div>
-</div>
+    <div class="container">
+        <div class="item"><img src="img/1.jpg" alt=""></div>
+        <div class="item"><img src="img/2.jpg" alt=""></div>
+        <div class="item"><img src="img/3.jpg" alt=""></div>
+        <div class="item"><img src="img/4.jpg" alt=""></div>
+        <div class="item"><img src="img/5.jpg" alt=""></div>
+        <div class="item"><img src="img/6.jpg" alt=""></div>
+        <div class="item"><img src="img/7.jpg" alt=""></div>
+    </div>
 </body>
 <script>
     let item = $(".item");
-    console.log(item.length)
     let container = $(".container");
     item.each(function () {
         $(this).click(function () {
@@ -105,4 +107,5 @@
         t = setInterval(move, 2000);
     })
 </script>
+
 </html>
