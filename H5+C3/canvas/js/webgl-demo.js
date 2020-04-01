@@ -175,7 +175,7 @@ function initBuffers(gl) {
     // This array defines each face as two triangles, using the
     // indices into the vertex array to specify each triangle's
     // position.
-
+    // 定义元素（三角形）数组
     const indices = [
         0, 1, 2, 0, 2, 3,    // front
         4, 5, 6, 4, 6, 7,    // back
