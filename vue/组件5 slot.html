@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>插槽</title>
     <script src="js/vue.js"></script>
 </head>
+
 <body>
-<div id="app">
-    <child>
-        <p slot="header">我是头</p>
-        <p slot="footer">我是尾</p>
-    </child>
-</div>
+    <div id="app">
+        <child>
+            <template v-slot:header></template>
+            <p>000</p>
+            <template v-slot:footer></template>
+        </child>
+    </div>
 </body>
 <script>
+    //具名插槽
     Vue.component("child", {
         template: '\
         <div>\
         <header ><slot name="header">这是头部</slot></header>\
-        <slot>默认是空的</slot>\
+        <slot></slot>\
         <footer><slot name="footer">这是尾部</slot></footer>\
         </div>\
         '
@@ -27,4 +31,5 @@
         el: "#app"
     })
 </script>
+
 </html>
