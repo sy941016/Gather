@@ -21,13 +21,17 @@
     }
 
     Object.defineProperty(data, "mes", {
+        // 当访问该属性时，会调用此函数
         get() {
-            return data;
+            return 'data的mes被读取了';
         },
+        // 当属性值被修改时，会调用此函数。参数：被赋予的新值
         set(newValue) {
+            console.log('data的mes被修改了')
             name.innerHTML = newValue;
         }
     })
+    console.log(data.mes);
 </script>
 
 </html>
