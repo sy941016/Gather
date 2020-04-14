@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双向绑定</title>
+</head>
+
+<body>
+    <div id="name">双向绑定</div>
+    <div>
+        <input type="text" oninput="change(this.value)">
+    </div>
+</body>
+<script>
+    let data = {};
+    let name = document.getElementById("name");
+    function change(value) {
+        data.mes = value
+    }
+
+    Object.defineProperty(data, "mes", {
+        get() {
+            return a;
+        },
+        set(newValue) {
+            name.innerHTML = newValue;
+        }
+    })
+</script>
+
+</html>
