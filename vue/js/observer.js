@@ -1,7 +1,10 @@
+// @param标签提供了对某个函数的参数的各项说明，包括参数名、参数数据类型、描述等
+
 /**
  * 把一个对象的每一项都转化成可观测对象
  * @param { Object } obj 对象
  */
+
 function observable(obj) {
     if (!obj || typeof obj !== 'object') {
         return;
@@ -12,6 +15,7 @@ function observable(obj) {
     })
     return obj;
 }
+
 /**
  * 使一个对象转化成可观测对象
  * @param { Object } obj 对象
@@ -29,10 +33,11 @@ function defineReactive(obj, key, val) {
         set(newVal) {
             val = newVal;
             console.log(`${key}属性被修改了`);
-            dep.notify()                    //数据变化通知所有订阅者
+            dep.notify()   //数据变化通知所有订阅者
         }
     })
 }
+
 class Dep {
 
     constructor() {

@@ -10,36 +10,29 @@
 <body>
     <h1 id="name"></h1>
     <input type="text">
-    <input type="button" value="改变data内容" onclick="changeInput()">
-
     <script src="./js/observer.js"></script>
     <script src="./js/watcher.js"></script>
     <script>
-        function myVue(data, el, exp) {
+        let name = document.querySelector('#name');
+        let input = document.querySelector('input');
+
+        function Vue(data, el, exp) {
             this.data = data;
-            observable(data);                      //将数据变的可观测
-            el.innerHTML = this.data[exp];           // 初始化模板数据的值
+            observable(data);                      // 将数据变的可观测
+            el.innerHTML = this.data[exp];         // 初始化模板数据的值
             new Watcher(this, exp, function (value) {
                 el.innerHTML = value;
             });
             return this;
         }
 
-        var ele = document.querySelector('#name');
-        var input = document.querySelector('input');
-
-        var myVue = new myVue({
-            name: 'hello world'
-        }, ele, 'name');
+        let myVue = new Vue({
+            mes: 'hello world'
+        }, name, 'mes');
 
         //改变输入框内容
         input.oninput = function (e) {
-            myVue.data.name = e.target.value
-        }
-        //改变data内容
-        function changeInput() {
-            myVue.data.name = "难凉热血"
-
+            myVue.data.mes = e.target.value
         }
     </script>
 </body>
