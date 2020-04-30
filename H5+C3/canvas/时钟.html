@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -9,9 +10,10 @@
         background: #ccc;
     }
 </style>
+
 <body>
-<canvas id="canvas" width="500" height="500"></canvas>
-<audio src="video/1.wav" id="audio"></audio>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <audio src="video/1.wav" id="audio"></audio>
 </body>
 <script>
     var canvas = document.getElementById("canvas");
@@ -110,10 +112,11 @@
             }
             //5.画零度的刻度与大小
             cobj.beginPath();
-            cobj.moveTo(cx + r * Math.cos(angle), cy + r * Math.sin(angle));
-            cobj.lineTo(cx + (r1) * Math.cos(angle), cy + (r1) * Math.sin(angle));
+            cobj.moveTo(cx + r * Math.sin(angle), cy + r * Math.cos(angle));
+            cobj.lineTo(cx + (r1) * Math.sin(angle), cy + (r1) * Math.cos(angle));
             cobj.stroke();
         }
     }
 </script>
+
 </html>
