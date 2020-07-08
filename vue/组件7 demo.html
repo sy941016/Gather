@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="fan">
+        <button @click="add">添加</button>
+        <child :fans="fans"></child>
+    </div>
+</body>
+<script>
+    Vue.component('child', {
+        template: '\
+        <div>\
+         <table>\
+        <tr><th>fan</th><th>删除</th><th>修改</th></tr>\
+        <tr v-for="(item,index) in fans" :key="index"><td>{{item}}</td><td @click="del(index)">删除</td><td @click="getvalue(item,index)">修改</td>\
+        </tr>\
+        </table>\
+        <div v-show="isShow">\
+        <input type="text" v-model="fan">\
+        <button @click="setValue">save</button><button @click="isShow = false">cancle</button>\
+        </div>\
+        </div>\
+        ',
+        data: function () {
+            return {
+                isShow: false,
+                index: 0,
+                fan: ''
+            }
+        },
+        props: {
+            fans: {
+                type: Array,
+                default: []
+            }
+        },
+        methods: {
+            setValue () {
+                // this.$set(Array, index, newValue)
+                this.$set(this.fans, this.index, this.fan)
+                this.isShow = false
+            },
+            del(index) {
+                this.fans.splice(index, 1)
+            },
+            getvalue (item, index) {
+                this.isShow = true
+                this.fan = item
+                this.index = index
+            }
+        }
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            fans: [],
+            fan: 'jay'
+        },
+        methods: {
+            add () {
+                this.fans.push(this.fan)
+            }
+        }
+    })
+</script>
+
+</html>

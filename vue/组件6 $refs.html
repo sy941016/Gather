@@ -7,32 +7,18 @@
 </head>
 <body>
 <div id="app">
-    <button id="father" @click="father_id" ref="idName">父亲</button>
+    <button id="father" @click="getId" ref="idName">父亲</button>
     <p>{{id}}</p>
-    <child></child>
 </div>
 </body>
 <script>
-    Vue.component("child", {
-        template: '<div><button id="child" @click="child_id" ref="idName">儿子</button> <p>{{id}}</p></div>',
-        data:()=>{
-            return{
-                id:''
-            }
-        },
-        methods: {
-            child_id: function () {
-                this.id=this.$refs.idName.id
-            }
-        }
-    });
     new Vue({
         el: "#app",
         data:{
-          id:''
+          id:0
         },
         methods: {
-            father_id: function () {
+            getId: function () {
                 this.id=this.$refs.idName.id
             }
         }

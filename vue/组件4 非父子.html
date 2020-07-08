@@ -36,7 +36,6 @@
         },
         mounted: function () {
             bus.$on("by_child1", (msg) => {
-                console.log(msg)
                 this.answer = msg
             })
         }

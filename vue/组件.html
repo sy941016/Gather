@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>component</title>
     <script src="js/vue.js"></script>
 </head>
 <body>
 <div id="app">
-    <aaa></aaa>
+    <aa></aa>
 </div>
-<div id="app1">
-    <bbb></bbb>
+<div id="_app">
+    <bb></bb>
 </div>
 <script>
     //全局组件
-    Vue.component("aaa", {
-        template: "<p>hello,world</p>"
+    Vue.component("aa", {
+        template: "<p>hello</p>"
     });
     new Vue({
         el: "#app"
@@ -23,12 +23,12 @@
 
     //局部组件
     var child = {
-        template: "<p>hello,hello</p>"
+        template: "<p>world</p>"
     };
     new Vue({
-        el: "#app1",
+        el: "#_app",
         components: {
-            "bbb": child
+            "bb": child
         }
     })
 </script>
