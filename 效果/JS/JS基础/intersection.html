@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>算法求交</title>
+    <title>求交</title>
 </head>
 
 <body>
 
 </body>
 <script>
-    let interTime = [];//交集的数组
+    let interTime = []; // 交集的数组
     let time_1 = [{ s: 4, e: 6 }, { s: 8, e: 11 }, { s: 15, e: 22 }];
     let alltime = [{ s: 5, e: 12 }, { s: 18, e: 26 }];
     let temp = [];
@@ -54,7 +54,7 @@
                 }
             }
         }
-        newTime = temp;
+        alltime = temp;
         temp = []
     }
     console.log(interTime);
