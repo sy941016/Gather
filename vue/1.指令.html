@@ -6,19 +6,17 @@
     <script src="js/vue.js"></script>
 </head>
 <body>
-<div id="app" v-show="true">
+<div id="app">
     <p v-text="msg"></p>
     <input type="text" v-model="msg">
     <br>
-    <button v-on:click="add">添加</button>
+    <button @click="add">添加</button>
     <ul>
-        <li v-for="(item,index) in animal" :key="index">
-            <span>{{item}}</span>
-        </li>
+        <li v-for="(item,index) in animal" :key="index">{{item}}</li>
     </ul>
-    <button @click="hidden">消失</button>
+    <button @click="hide">消失</button>
     <br>
-    <img v-bind:src="cat" alt="" v-show="show">
+    <img :src="url" v-show="show">
 </div>
 </body>
 <script>
@@ -27,18 +25,18 @@
     let app = new Vue({
         el: "#app",
         data: {
-            msg: "hello,world",
+            msg: "Animal,World",
             animal: ["萨摩", "哈士奇", "拉布拉多"],
+            url: "img/cat.jpg",
             show: true,
-            cat: "img/cat.jpg"
         },
         methods: {
-            add: function () {
+            add() {
                 if (!this.animal.includes('牧羊犬')) {
                     this.animal.push("牧羊犬")
                 }
             },
-            hidden: function () {
+            hide() {
                 this.show ? this.show = false : this.show = true
             }
         }
