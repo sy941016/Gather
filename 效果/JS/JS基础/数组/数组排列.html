@@ -14,7 +14,7 @@
     function uniq(array) {
         let temp = [];
         for (let i = 0; i < array.length; i++) {
-            if (temp.indexOf(array[i]) == -1) {
+            if (!temp.includes(array[i])) {
                 temp.push(array[i]);
             }
         }
@@ -70,7 +70,6 @@
     //左右分别用一个空数组去存储比较后的数据。最后递归执行上述操作，直到数组长度<=1
     let e = [6, 7, 5, 3, 4, 8, 1];
     let quickSort = function (arr) {
-        //如果数组长度小于等于1无需判断直接返回即可
         if (arr.length <= 1) {
             return arr;
         }

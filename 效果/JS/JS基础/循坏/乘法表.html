@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
@@ -23,14 +24,15 @@
         }
     </style>
 </head>
+
 <body>
 
 </body>
 <script>
-    document.write("<table>");
-    let str = "乘法表";
-    document.write("<h1>" + str + "</h1>");
+    const name = "乘法表";
     let color;
+    document.write("<table>");
+    document.write("<h1>" + name + "</h1>");
     for (let x = 1; x <= 9; x++) {
         document.write("<tr>");
         for (let y = 1; y <= x; y++) {
@@ -49,4 +51,5 @@
     }
     document.write("</table>");
 </script>
+
 </html>
