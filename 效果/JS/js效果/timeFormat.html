@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>timeFormat</title>
+</head>
+
+<body>
+    <input type="text" id="input">
+    <input type="submit" id="submit" value="转化">
+    <br>
+    <span id="time"></span>
+</body>
+<script>
+    //转化ms为00:00:00:00    时 分 秒 毫秒
+    function f(time) {
+        time = Number(time).toFixed(2) * 1000
+        let _h = 1000 * 60 * 60;
+        let _m = 1000 * 60;
+        let _s = 1000;
+        let h = format(time / _h);
+        let m = format((time % _h) / _m);
+        let s = format((time % _m) / _s);
+        let ms = time % _s;
+        if (ms <= 100) { ms = '01' } else { ms = Math.floor(ms / 10) }
+        return h + ':' + m + ':' + s + ':' + ms;
+    }
+
+    function format(time) {
+        time = parseInt(time);
+        return time >= 10 ? time : '0' + time;
+    }
+
+    let time = document.getElementById('time');
+    let input = document.getElementById('input');
+    let submit = document.getElementById('submit');
+    submit.onclick = function () {
+        time.innerHTML = f(input.value)
+    }
+</script>
+
+</html>
