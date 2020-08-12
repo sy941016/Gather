@@ -31,15 +31,16 @@ window.onscroll = function () {
     let windowHeight = window.innerHeight;
     let documentHeight = $(document).height();
     let scrolltop = document.body.scrollTop;
-    if(documentHeight-100<=windowHeight+scrolltop){
-        for(let i=1;i<11;i++){
-            let img=document.createElement('img');
-            img.src=`images/${i}.jpg`;
+    if (documentHeight - 100 <= windowHeight + scrolltop) {
+        for (let i = 1; i < 11; i++) {
+            let img = document.createElement('img');
+            img.src = `images/${i}.jpg`;
             container.appendChild(img);
         }
         position();
     }
 };
-window.onresize=function(){//事件会在窗口或框架被调整大小时发生
+
+window.onresize = function () {
     position();
 };
