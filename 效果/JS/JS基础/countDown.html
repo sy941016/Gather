@@ -9,22 +9,22 @@
     <div class="count"></div>
 </body>
 <script>
-    let endtime = 15 * 60 * 1000;
+    let endtime = 15 * 60 * 1000; // 15min
     countDown();
     function addZero(i) {
         return i < 10 ? "0" + i : i + "";
     }
     function countDown() {
-        let lefttime = parseInt((endtime) / 1000);
-        let d = parseInt(lefttime / (24 * 60 * 60))
-        let h = parseInt(lefttime / (60 * 60) % 24);
-        let m = parseInt(lefttime / 60 % 60);
-        let s = parseInt(lefttime % 60);
+        let time = parseInt((endtime) / 1000);
+        let d = parseInt(time / (24 * 60 * 60))
+        let h = parseInt(time / (60 * 60) % 24);
+        let m = parseInt(time / 60 % 60);
+        let s = parseInt(time % 60);
         h = addZero(h);
         m = addZero(m);
         s = addZero(s);
         document.querySelector(".count").innerHTML = `活动倒计时 ${h} 时 ${m} 分 ${s} 秒`;
-        if (lefttime <= 0) {
+        if (time <= 0) {
             document.querySelector(".count").innerHTML = "活动已结束";
             return;
         }

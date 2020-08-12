@@ -3,9 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>练习</title>
-    <script src=""></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <title>fill</title>
 </head>
 <style>
     ul,
@@ -62,9 +60,8 @@
         <li style="background-image: linear-gradient(-90deg, #FE0C0C 0%, #C90D09 100%);">0</li>
     </ul>
     <script>
-        let data = '94941016';
-        let ul = document.getElementsByTagName('ul');
-        let li = ul[1].getElementsByTagName('li');
+        const data = '94941016';
+        let li = document.getElementsByTagName('li');
 
         class setNum {
             constructor(data, li) {
@@ -91,6 +88,7 @@
 
             dataOf() {
                 let arr = this.arr;
+                let data = this.data
                 let viewIndex = 0;
                 for (let index = data.length - 1; index >= 0; index--) {
                     let num = data.charAt(index);

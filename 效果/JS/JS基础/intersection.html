@@ -11,11 +11,11 @@
 
 </body>
 <script>
-    let interTime = []; // 交集的数组
-    let time_1 = [{ s: 4, e: 6 }, { s: 8, e: 11 }, { s: 15, e: 22 }];
+    let dealTime = []; // 交集的数组
+    let _time = [{ s: 4, e: 6 }, { s: 8, e: 11 }, { s: 15, e: 22 }];
     let alltime = [{ s: 5, e: 12 }, { s: 18, e: 26 }];
     let temp = [];
-    for (let time of time_1) {
+    for (let time of _time) {
         for (let timeTemp of alltime) {
             if (time.s >= timeTemp.e) {
                 temp.push(timeTemp);
@@ -57,7 +57,7 @@
         alltime = temp;
         temp = []
     }
-    console.log(interTime);
+    console.log(`处理后的time：${dealTime}`);
 </script>
 
 </html>

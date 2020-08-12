@@ -13,7 +13,7 @@
     // 0 - 并
     // 1 - 交
     // -1 - 补
-    class deal_arr {
+    class dealArr {
         constructor(arr1, arr2, i) {
             this.arr1 = arr1
             this.arr2 = arr2
@@ -30,7 +30,7 @@
             } else if (this.i == -1) {
                 newArr = this.difference()
             }
-            console.log(newArr)
+            console.log(`处理后的数组：${newArr}`)
         }
 
         uniq(arr) {
@@ -55,6 +55,6 @@
 
     }
 
-    new deal_arr(arr1, arr2, 0)
+    new dealArr(arr1, arr2, 0)
 </script>
 </html>

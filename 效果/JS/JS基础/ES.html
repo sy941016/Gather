@@ -3,8 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title id="title">ES</title>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <title id="title">es</title>
 </head>
 
 <body>
@@ -17,7 +16,7 @@
         }
 
         hello() {
-            console.log('Hello,' + this.name + '!');
+            console.log('Hello,' + this.name);
         }
     }
 
@@ -29,8 +28,7 @@
     class PrimaryStudent extends Student {
         constructor(name, grade) {
             //super用在构造函数中，必须在this之前调用
-            //通过super(name)来调用父类的构造函数，否则父类的name属性无法正常初始化
-            //super(name)相当于PrimaryStudent.call(this,name)
+            //super(name) <=> PrimaryStudent.call(this,name)
             super(name);
             this.grade = grade;
         }
@@ -45,48 +43,38 @@
     let jay = new PrimaryStudent('jay', '100')
     jay.myGrade()
 
-    //继承了谁?
-    console.log(Object.getPrototypeOf(PrimaryStudent) === Student)   //true
-
-    //解构赋值
-    const [a, b, c, d, e] = 'hello';
-    console.log(a);
-
-    //promise
+    // promise
     //做饭
     function cook() {
         console.log('开始做饭。');
-        var p = new Promise(function (resolve, reject) {
+        return new Promise(function (resolve, reject) {
             setTimeout(function () {
                 console.log('做饭完毕！');
                 resolve('鸡蛋炒饭');
             }, 2000);
         });
-        return p;
     }
 
     //吃饭
     function eat(data) {
         console.log('开始吃饭：' + data);
-        var p = new Promise(function (resolve, reject) {
+        return new Promise(function (resolve, reject) {
             setTimeout(function () {
                 console.log('吃饭完毕!');
                 resolve('一块碗和一双筷子');
             }, 2000);
         });
-        return p;
     }
 
     function wash(data) {
         console.log('开始洗碗：' + data);
-        var p = new Promise(function (resolve, reject) {
+        return new Promise(function (resolve, reject) {
             setTimeout(function () {
                 console.log('洗碗完毕!');
                 // resolve('干净的碗筷');
                 reject('闹肚子了')
             }, 2000);
         });
-        return p;
     }
 
     cook()
@@ -96,21 +84,9 @@
         .then((data) => {
             return wash(data);
         })
-        .catch((data) => {
-            console.log(data);
+        .catch((err) => {
+            console.log(err);
         });
-
-    //node接口调用
-    $.ajax({
-        type: 'get',
-        url: 'http://localhost:3002/api',
-        success: function (data) {
-            console.log(data)
-        },
-        error: function (err) {
-            console.log(err)
-        }
-    });
 </script>
 
 </html>
