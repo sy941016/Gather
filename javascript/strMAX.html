@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寻找字符串中出现最多的字符</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let str = "abbbacadba";
+    function setStrMax(str) {
+        let str_con = {};
+        for (let i = 0; i < str.length; i++) {
+            let char = str.charAt(i);//返回指定位置字符
+            if (str_con[char]) {
+                str_con[char]++
+            } else {
+                str_con[char] = 1
+            }
+        }
+
+        let maxNum = 0;
+        let maxStr = '';
+        for (let item in str_con) {
+            if (maxNum < str_con[item]) {
+                maxNum = str_con[item];
+                maxStr = item;
+            }
+        }
+        //若重复
+        for (let item in str_con) {
+            if (str_con[item] == maxNum) {
+                console.log(`最多的符为${item},出现次数为${maxNum}`)
+            }
+        }
+    }
+    setStrMax(str);
+
+    //统计字符出现的次数
+    let itemNumArr = [...str].reduce((pre, cur) => {
+        if (cur in pre) {
+            pre[cur]++
+        } else {
+            pre[cur] = 1
+        }
+        return pre
+    }, {})
+    console.log(itemNumArr);
+</script>
+
+</html>

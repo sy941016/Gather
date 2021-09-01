@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // merge and sort
+    function clear(arr){
+        var temp = []
+        for(var i = 0;i<arr.length;i++){
+            if(temp.indexOf(arr[i])<0){
+                temp.push(arr[i])
+            }
+        }
+        return temp;
+    }
+    function quickSort(arr) {
+            if (arr.length <= 1) {
+                return arr;
+            }
+            var midIndex = Math.floor(arr.length / 2);
+            var midIndexVal = arr.splice(midIndex, 1);
+            var left = [];
+            var right = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i] < midIndexVal) {
+                    left.push(arr[i]);
+                } else {
+                    right.push(arr[i]);
+                }
+            }
+            return quickSort(left).concat(midIndexVal, quickSort(right));
+        };
+    
+    function mergeSort(arr1,arr2){
+        var cur = clear(arr1.concat(arr2));
+        return quickSort(cur);
+    }
+
+    function _mergeSort(arr1,arr2){
+        var temp = [];
+        var output = [];
+        arr1.forEach(item=>temp[item]=item);
+        arr2.forEach(item=>temp[item]=item);
+        temp.forEach(item=>output.push(item));
+        return output;
+    }
+
+    // flat
+   function _flat(arr , result  = []) {
+        array.forEach(item => {
+            Array.isArray(item)?flattern(item, result):result.push(item)
+        });
+        return result
+    }
+
+    Array.prototype.flatten = function(depth = 1) {  
+        return this.reduce((pre, cur) => {    
+            return pre.concat(Array.isArray(cur) && depth > 1 ? cur.flatten(depth - 1) : cur)  
+        }, [])
+    }
+
+    // map
+    Array.prototype._map = function(fn){
+        return this.reduce((pre,cur,index,arr)=>{
+            return [...pre,fn.call(this,cur,index,arr)]
+        },[])
+    }
+    
+    // filter
+    Array.prototype._filter = function(fn){
+        return this.reduce((pre,cur,index)=>{
+            if (fn.call(this, cur, index)) {
+               prev.push(cur)
+            }
+            return prev
+        },[])
+    }
+</script>
+</html>
